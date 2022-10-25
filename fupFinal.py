@@ -128,6 +128,8 @@ def quantidadeDeEscolhas(player, sala):
             print(f"Item na sala: {qualItem}")
             if qualItem != "Nenhum":
                 usar = input("Usar item: S/N")
+                while not(usar.lower() == "s" or usar.lower() == "n"):
+                    usar = input("Usar item: S/N")
                 if usar.lower() == "s":
                     aplicandoItem(player, qualItem)
                     print(player)
@@ -143,6 +145,8 @@ def quantidadeDeEscolhas(player, sala):
             print(f"Item na sala: {qualItem}")
             if qualItem != "Nenhum":
                 usar = input("Usar item: S/N")
+                while not(usar.lower() == "s" or usar.lower() == "n"):
+                    usar = input("Usar item: S/N")
                 if usar.lower() == "s":
                     aplicandoItem(player, qualItem)
                     print(player)
@@ -153,6 +157,8 @@ def quantidadeDeEscolhas(player, sala):
             print(f"Item na sala: {qualItem}")
             if qualItem != "Nenhum":
                 usar = input("Usar item: S/N")
+                while not(usar.lower() == "s" or usar.lower() == "n"):
+                    usar = input("Usar item: S/N")
                 if usar.lower() == "s":
                     aplicandoItem(player, qualItem)
                     print(player)
@@ -163,6 +169,8 @@ def quantidadeDeEscolhas(player, sala):
             print(f"Item na sala: {qualItem}")
             if qualItem != "Nenhum":
                 usar = input("Usar item: S/N")
+                while not(usar.lower() == "s" or usar.lower() == "n"):
+                    usar = input("Usar item: S/N")
                 if usar.lower() == "s":
                     aplicandoItem(player, qualItem)
                     print(player)
@@ -175,6 +183,8 @@ def quantidadeDeEscolhas(player, sala):
             print(f"Item na sala: {qualItem}")
             if qualItem != "Nenhum":
                 usar = input("Usar item: S/N")
+                while not(usar.lower() == "s" or usar.lower() == "n"):
+                    usar = input("Usar item: S/N")
                 if usar.lower() == "s":
                     aplicandoItem(player, qualItem)
                     print(player)
@@ -185,6 +195,8 @@ def quantidadeDeEscolhas(player, sala):
             print(f"Item na sala: {qualItem}")
             if qualItem != "Nenhum":
                 usar = input("Usar item: S/N")
+                while not(usar.lower() == "s" or usar.lower() == "n"):
+                    usar = input("Usar item: S/N")
                 if usar.lower() == "s":
                     aplicandoItem(player, qualItem)
                     print(player)
@@ -195,6 +207,8 @@ def quantidadeDeEscolhas(player, sala):
             print(f"Item na sala: {qualItem}")
             if qualItem != "Nenhum":
                 usar = input("Usar item: S/N")
+                while not(usar.lower() == "s" or usar.lower() == "n"):
+                    usar = input("Usar item: S/N")
                 if usar.lower() == "s":
                     aplicandoItem(player, qualItem)
                     print(player)
@@ -205,6 +219,8 @@ def quantidadeDeEscolhas(player, sala):
             print(f"Item na sala: {qualItem}")
             if qualItem != "Nenhum":
                 usar = input("Usar item: S/N")
+                while not(usar.lower() == "s" or usar.lower() == "n"):
+                    usar = input("Usar item: S/N")
                 if usar.lower() == "s":
                     aplicandoItem(player, qualItem)
                     print(player)
@@ -215,6 +231,8 @@ def quantidadeDeEscolhas(player, sala):
             print(f"Item na sala: {qualItem}")
             if qualItem != "Nenhum":
                 usar = input("Usar item: S/N")
+                while not(usar.lower() == "s" or usar.lower() == "n"):
+                    usar = input("Usar item: S/N")
                 if usar.lower() == "s":
                     aplicandoItem(player, qualItem)
                     print(player)
@@ -225,6 +243,8 @@ def quantidadeDeEscolhas(player, sala):
             print(f"Item na sala: {qualItem}")
             if qualItem != "Nenhum":
                 usar = input("Usar item: S/N")
+                while not(usar.lower() == "s" or usar.lower() == "n"):
+                    usar = input("Usar item: S/N")
                 if usar.lower() == "s":
                     aplicandoItem(player, qualItem)
                     print(player)
@@ -237,6 +257,8 @@ def quantidadeDeEscolhas(player, sala):
             print(f"Item na sala: {qualItem}")
             if qualItem != "Nenhum":
                 usar = input("Usar item: S/N")
+                while not(usar.lower() == "s" or usar.lower() == "n"):
+                    usar = input("Usar item: S/N")
                 if usar.lower() == "s":
                     aplicandoItem(player, qualItem)
                     print(player)
@@ -247,6 +269,8 @@ def quantidadeDeEscolhas(player, sala):
             print(f"Item na sala: {qualItem}")
             if qualItem != "Nenhum":
                 usar = input("Usar item: S/N")
+                while not(usar.lower() == "s" or usar.lower() == "n"):
+                    usar = input("Usar item: S/N")
                 if usar.lower() == "s":
                     aplicandoItem(player, qualItem)
                     print(player)
@@ -257,6 +281,8 @@ def quantidadeDeEscolhas(player, sala):
             print(f"Item na sala: {qualItem}")
             if qualItem != "Nenhum":
                 usar = input("Usar item: S/N")
+                while not(usar.lower() == "s" or usar.lower() == "n"):
+                    usar = input("Usar item: S/N")
                 if usar.lower() == "s":
                     aplicandoItem(player, qualItem)
                     print(player)
@@ -267,6 +293,8 @@ def quantidadeDeEscolhas(player, sala):
             print(f"Item na sala: {qualItem}")
             if qualItem != "Nenhum":
                 usar = input("Usar item: S/N")
+                while not(usar.lower() == "s" or usar.lower() == "n"):
+                    usar = input("Usar item: S/N")
                 if usar.lower() == "s":
                     aplicandoItem(player, qualItem)
                     print(player)
@@ -277,6 +305,8 @@ def quantidadeDeEscolhas(player, sala):
         print(f"Item na sala: {qualItem}")
         if qualItem != "Nenhum":
             usar = input("Usar item: S/N")
+            while not(usar.lower() == "s" or usar.lower() == "n"):
+                    usar = input("Usar item: S/N")
             if usar.lower() == "s":
                 aplicandoItem(player, qualItem)
                 print(player)
