@@ -1,12 +1,12 @@
-import random
+from random import randint
 def temItem():
-    itemSN = random.randint(1,5)
+    itemSN = randint(1,5)
     if itemSN == 1 or itemSN == 2:
         return "S"
     else:
         return "N"
 def item():
-    qualItem = random.randint(1,3)
+    qualItem = randint(1,3)
     if temItem() == "S":
         if qualItem == 1:
             return "Espada"
@@ -17,13 +17,13 @@ def item():
     else:
         return "Nenhum"
 def temInimigo():
-    inimigoSN = random.randint(1,3)
+    inimigoSN = randint(1,3)
     if inimigoSN == 1 or inimigoSN == 2:
         return "S"
     else:
         return "N"
 def inimigo():
-    qualInimigo = random.randint(1,4)
+    qualInimigo = randint(1,4)
     if temInimigo() == "S":
         if qualInimigo == 1:
             return "Slime"
@@ -116,11 +116,11 @@ def addStatus(player):
         print("Fuga muito alta ou INVALIDA. Novo valor:")
         player["fuga"] = int(input("Quanto de Fuga ? \n"))
 def quantidadeDeEscolhas(player, sala):
-    quantEscolhas = random.randint(1,4)
+    quantEscolhas = randint(1,4)
     if sala == 0:
         print("Você esta na sala principal")
     elif quantEscolhas == 1:
-        lados = random.randint(1,4)
+        lados = randint(1,4)
         if lados == 1:
             print(f"A porta aberta esta na direção: Cima")
             qualItem = item()
@@ -167,7 +167,7 @@ def quantidadeDeEscolhas(player, sala):
                     aplicandoItem(player, qualItem)
                     print(player)
     elif quantEscolhas == 2:
-        lados = random.randint(1,6)
+        lados = randint(1,6)
         if lados == 1:
             print(f"Você pode ir para Cima ou Baixo")
             qualItem = item()
@@ -229,7 +229,7 @@ def quantidadeDeEscolhas(player, sala):
                     aplicandoItem(player, qualItem)
                     print(player)
     elif quantEscolhas == 3:
-        lados = random.randint(1,4)
+        lados = randint(1,4)
         if lados == 1:
             print("Você pode ir para Cima, Baixo ou Esquerda")
             qualItem = item()
