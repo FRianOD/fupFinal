@@ -122,122 +122,166 @@ def quantidadeDeEscolhas(player, sala):
     elif quantEscolhas == 1:
         lados = random.randint(1,4)
         if lados == 1:
+            print(f"A porta aberta esta na direção: Cima")
             qualItem = item()
             qualInimigo = inimigo()
+            print(f"Item na sala: {qualItem}")
             if qualItem != "Nenhum":
-                print(f"Item na sala: {qualItem}")
                 usar = input("Usar item: S/N")
                 if usar.lower() == "s":
                     aplicandoItem(player, qualItem)
-            if qualInimigo != "Nenhum":
+                    print(player)
+            """if qualInimigo != "Nenhum":
                 print(f"Monstro na sala: {qualInimigo}")
-                usar = input("Lutar contro o Monstro agora ?: S/N")
+                usar = input("Lutar contra o Monstro agora ?: S/N")
                 if usar.lower() == "s":
-                    batalha(player,qualInimigo)
+                    batalha(player,qualInimigo)"""
         elif lados == 2:
             print(f"Você pode apenas ir para Baixo")
-            item()
-            inimigo()
-            escolha = input("Oque você quer fazer ?")
-            if escolha.lower() == "baixo" and qualInimigo != "Nenhum":
-                print("Derrote os inimigos primeiro")
+            qualItem = item()
+            qualInimigo = inimigo()
+            print(f"Item na sala: {qualItem}")
+            if qualItem != "Nenhum":
+                usar = input("Usar item: S/N")
+                if usar.lower() == "s":
+                    aplicandoItem(player, qualItem)
+                    print(player)
         elif lados == 3:
             print(f"Você pode apenas ir para Esquerda")
-            item()
-            inimigo()
-            escolha = input("Oque você quer fazer ?")
-            if escolha.lower() == "esquerda" and qualInimigo != "Nenhum":
-                print("Derrote os inimigos primeiro")
+            qualItem = item()
+            qualInimigo = inimigo()
+            print(f"Item na sala: {qualItem}")
+            if qualItem != "Nenhum":
+                usar = input("Usar item: S/N")
+                if usar.lower() == "s":
+                    aplicandoItem(player, qualItem)
+                    print(player)
         else:
             print(f"Você pode apenas ir para Direita")
-            item()
-            inimigo()
-            escolha = input("Oque você quer fazer ?")
-            if escolha.lower() == "direita" and qualInimigo != "Nenhum":
-                print("Derrote os inimigos primeiro")
+            qualItem = item()
+            qualInimigo = inimigo()
+            print(f"Item na sala: {qualItem}")
+            if qualItem != "Nenhum":
+                usar = input("Usar item: S/N")
+                if usar.lower() == "s":
+                    aplicandoItem(player, qualItem)
+                    print(player)
     elif quantEscolhas == 2:
         lados = random.randint(1,6)
         if lados == 1:
             print(f"Você pode ir para Cima ou Baixo")
-            item()
-            inimigo()
-            escolha = input("Oque você quer fazer ?")
-            if escolha.lower() == "cima" or escolha.lower() == "baixo" and qualInimigo != "Nenhum":
-                print("Derrote os inimigos primeiro")
+            qualItem = item()
+            qualInimigo = inimigo()
+            print(f"Item na sala: {qualItem}")
+            if qualItem != "Nenhum":
+                usar = input("Usar item: S/N")
+                if usar.lower() == "s":
+                    aplicandoItem(player, qualItem)
+                    print(player)
         elif lados == 2:
             print(f"Você pode ir para Cima ou Direita")
-            item()
-            inimigo()
-            escolha = input("Oque você quer fazer ?")
-            if escolha.lower() == "cima" or escolha.lower() == "direita" and qualInimigo != "Nenhum":
-                print("Derrote os inimigos primeiro")
+            qualItem = item()
+            qualInimigo = inimigo()
+            print(f"Item na sala: {qualItem}")
+            if qualItem != "Nenhum":
+                usar = input("Usar item: S/N")
+                if usar.lower() == "s":
+                    aplicandoItem(player, qualItem)
+                    print(player)
         elif lados == 3:
             print(f"Você pode ir para Cima ou Esquerda")
-            item()
-            inimigo()
-            escolha = input("Oque você quer fazer ?")
-            if escolha.lower() == "cima" or escolha.lower() == "esquerda" and qualInimigo != "Nenhum":
-                print("Derrote os inimigos primeiro")
+            qualItem = item()
+            qualInimigo = inimigo()
+            print(f"Item na sala: {qualItem}")
+            if qualItem != "Nenhum":
+                usar = input("Usar item: S/N")
+                if usar.lower() == "s":
+                    aplicandoItem(player, qualItem)
+                    print(player)
         elif lados == 4:
             print(f"Você pode ir para Baixo ou Direita")
-            item()
-            inimigo()
-            escolha = input("Oque você quer fazer ?")
-            if escolha.lower() == "baixo" or escolha.lower() == "direita" and qualInimigo != "Nenhum":
-                print("Derrote os inimigos primeiro")
+            qualItem = item()
+            qualInimigo = inimigo()
+            print(f"Item na sala: {qualItem}")
+            if qualItem != "Nenhum":
+                usar = input("Usar item: S/N")
+                if usar.lower() == "s":
+                    aplicandoItem(player, qualItem)
+                    print(player)
         elif lados == 5:
             print(f"Você pode ir para Baixo ou Esquerda")
-            item()
-            inimigo()
-            escolha = input("Oque você quer fazer ?")
-            if escolha.lower() == "baixo" or escolha.lower() == "esquerda" and qualInimigo != "Nenhum":
-                print("Derrote os inimigos primeiro")
+            qualItem = item()
+            qualInimigo = inimigo()
+            print(f"Item na sala: {qualItem}")
+            if qualItem != "Nenhum":
+                usar = input("Usar item: S/N")
+                if usar.lower() == "s":
+                    aplicandoItem(player, qualItem)
+                    print(player)
         else:
             print(f"Você pode ir para Esquerda ou Direita")
-            item()
-            inimigo()
-            escolha = input("Oque você quer fazer ?")
-            if escolha.lower() == "esquerda" or escolha.lower() == "direita" and qualInimigo != "Nenhum":
-                print("Derrote os inimigos primeiro")
+            qualItem = item()
+            qualInimigo = inimigo()
+            print(f"Item na sala: {qualItem}")
+            if qualItem != "Nenhum":
+                usar = input("Usar item: S/N")
+                if usar.lower() == "s":
+                    aplicandoItem(player, qualItem)
+                    print(player)
     elif quantEscolhas == 3:
         lados = random.randint(1,4)
         if lados == 1:
             print("Você pode ir para Cima, Baixo ou Esquerda")
-            item()
-            inimigo()
-            escolha = input("Oque você quer fazer ?")
-            if escolha.lower() == "cima" or escolha.lower() == "baixo" or escolha.lower() == "esquerda" and qualInimigo != "Nenhum":
-                print("Derrote os inimigos primeiro")
+            qualItem = item()
+            qualInimigo = inimigo()
+            print(f"Item na sala: {qualItem}")
+            if qualItem != "Nenhum":
+                usar = input("Usar item: S/N")
+                if usar.lower() == "s":
+                    aplicandoItem(player, qualItem)
+                    print(player)
         elif lados == 2:
             print("Você pode ir para Cima, Baixo ou Direita")
-            item()
-            inimigo()
-            escolha = input("Oque você quer fazer ?")
-            if escolha.lower() == "cima" or escolha.lower() == "baixo" or escolha.lower() == "direita" and qualInimigo != "Nenhum":
-                print("Derrote os inimigos primeiro")
+            qualItem = item()
+            qualInimigo = inimigo()
+            print(f"Item na sala: {qualItem}")
+            if qualItem != "Nenhum":
+                usar = input("Usar item: S/N")
+                if usar.lower() == "s":
+                    aplicandoItem(player, qualItem)
+                    print(player)
         elif lados == 3:
             print("Você pode ir para Esquerda, Direita ou Cima")
-            item()
-            inimigo()
-            escolha = input("Oque você quer fazer ?")
-            if escolha.lower() == "cima" or escolha.lower() == "direita" or escolha.lower() == "esquerda" and qualInimigo != "Nenhum":
-                print("Derrote os inimigos primeiro")
+            qualItem = item()
+            qualInimigo = inimigo()
+            print(f"Item na sala: {qualItem}")
+            if qualItem != "Nenhum":
+                usar = input("Usar item: S/N")
+                if usar.lower() == "s":
+                    aplicandoItem(player, qualItem)
+                    print(player)
         else:
             print("Você pode ir para Esquerda, Direita ou Baixo")
-            item()
-            inimigo()
-            escolha = input("Oque você quer fazer ?")
-            if escolha.lower() == "baixo" or escolha.lower() == "direita" or escolha.lower() == "esquerda" and qualInimigo != "Nenhum":
-                print("Derrote os inimigos primeiro")
+            qualItem = item()
+            qualInimigo = inimigo()
+            print(f"Item na sala: {qualItem}")
+            if qualItem != "Nenhum":
+                usar = input("Usar item: S/N")
+                if usar.lower() == "s":
+                    aplicandoItem(player, qualItem)
+                    print(player)
     elif quantEscolhas == 4:
         print("Você pode ir para todos os lados")
-        item()
-        inimigo()
-        escolha = input("Oque você quer fazer ?")
-        if escolha.lower() == "cima" or escolha.lower() == "baixo" or escolha.lower() == "direita" or escolha.lower() == "esquerda" and qualInimigo != "Nenhum":
-                print("Derrote os inimigos primeiro")
-def criarSala(sala):
-    quantidadeDeEscolhas(sala)
+        qualItem = item()
+        qualInimigo = inimigo()
+        print(f"Item na sala: {qualItem}")
+        if qualItem != "Nenhum":
+            usar = input("Usar item: S/N")
+            if usar.lower() == "s":
+                aplicandoItem(player, qualItem)
+                print(player)
+def criarSala(player, sala):
+    quantidadeDeEscolhas(player, sala)
 quantPlayer = int(input("1 jogador ou 2 jogadores ?\n"))
 while not(quantPlayer == 1 or quantPlayer == 2):
     quantPlayer = int(input("1 jogador ou 2 jogadores ?\n"))
