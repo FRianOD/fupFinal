@@ -433,15 +433,6 @@ player1 = {
     "fuga": 0
 }
 addStatus(player1)
-if quantPlayer == 2:            # CRIA PLAYER 2 SE A QUANTIDADE DE JOGADORES FOR 2
-    player2 = {
-        "nome": "jogador2",
-        "itens": [],
-        "forca": 0,
-        "vitalidade": 0,
-        "fuga": 0
-    }
-    addStatus(player2)
 resultado = "Vitoria"
 contSala = 0
 while resultado.lower() == "vitoria":
