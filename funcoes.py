@@ -100,5 +100,3 @@ def batalha(player, monstro):
                 return "Vitoria"
             elif aranha["defesa"] >= 0 and player["defesa"] <= 0:
                 return "GameOver"
-
-print(item())

@@ -36,7 +36,6 @@ def quantidadeDeEscolhas(player, sala):
                         qualInimigo = "Nenhum"
                         if resultado == "Vitoria":
                             qualInimigo = "Nenhum"
-                            return "Vitoria"
                         elif resultado == "GameOver":
                             print("Você perdeu")
                             return "Derrota"
@@ -49,6 +48,7 @@ def quantidadeDeEscolhas(player, sala):
                             aplicandoItem(player, qualItem)
                             qualItem = "Nenhum"
                         print(player)
+            return "Vitoria"
         elif lados == 2:
             print(f"Você pode apenas ir para Baixo")
             qualItem = item()
@@ -65,7 +65,6 @@ def quantidadeDeEscolhas(player, sala):
                         qualInimigo = "Nenhum"
                         if resultado == "Vitoria":
                             qualInimigo = "Nenhum"
-                            return "Vitoria"
                         elif resultado == "GameOver":
                             print("Você perdeu")
                             return "Derrota"
@@ -78,6 +77,7 @@ def quantidadeDeEscolhas(player, sala):
                             aplicandoItem(player, qualItem)
                             qualItem = "Nenhum"
                         print(player)
+            return "Vitoria"
         elif lados == 3:
             print(f"Você pode apenas ir para Esquerda")
             qualItem = item()
@@ -93,7 +93,6 @@ def quantidadeDeEscolhas(player, sala):
                         qualInimigo = "Nenhum"
                         if resultado == "Vitoria":
                             qualInimigo = "Nenhum"
-                            return "Vitoria"
                         elif resultado == "GameOver":
                             print("Você perdeu")
                             return "Derrota"
@@ -104,11 +103,9 @@ def quantidadeDeEscolhas(player, sala):
                             usar = input("Usar item: S/N")
                         if usar.lower() == "s":
                             aplicandoItem(player, qualItem)
-                        qualItem = "Nenhum"
+                            qualItem = "Nenhum"
                         print(player)
-                elif resultado == "GameOver":
-                    print("Você perdeu")
-                    break
+            return "Vitoria"
         else:
             print(f"Você pode apenas ir para Direita")
             qualItem = item()
@@ -118,13 +115,11 @@ def quantidadeDeEscolhas(player, sala):
             print(f"Monstro na sala: {qualInimigo}")
             while not(qualInimigo == "Nenhum" and qualItem == "Nenhum"):
                 if qualInimigo != "Nenhum":
-            
                     lutar = input("Lutar contra o Monstro agora ?: S/N")
                     if lutar.lower() == "s":
                         resultado = batalha(player,qualInimigo)
                         if resultado == "Vitoria":
                             qualInimigo = "Nenhum"
-                            return "Vitoria"
                         elif resultado == "GameOver":
                             print("Você perdeu")
                             return "Derrota"
@@ -135,9 +130,9 @@ def quantidadeDeEscolhas(player, sala):
                             usar = input("Usar item: S/N")
                         if usar.lower() == "s":
                             aplicandoItem(player, qualItem)
-                        qualItem = "Nenhum"
+                            qualItem = "Nenhum"
                         print(player)
-    return "Vitoria"
+            return "Vitoria"
                 
     """elif quantEscolhas == 2:
         lados = randint(1,6)
@@ -422,9 +417,6 @@ def quantidadeDeEscolhas(player, sala):
                     qualItem = "Nenhum"
                     print(player)"""
                     
-quantPlayer = int(input("1 jogador ou 2 jogadores ?\n"))
-while not(quantPlayer == 1 or quantPlayer == 2):
-    quantPlayer = int(input("1 jogador ou 2 jogadores ?\n"))
 player1 = {
     "nome": "jogador1",
     "itens": [],
