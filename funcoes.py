@@ -7,14 +7,17 @@ def temItem():
         return "N"
 def item():
     qualItem = randint(0,2)
-    itens = ["Espada","Escudo","bota"]
+    qualVariacao = randint(0,2)
     if temItem() == "S":
         if qualItem == 0:
-            return itens[qualItem]
+            qualEspada = ["Espada de Madeira", "Espada de Ferro", "Dragon Slayer"]
+            return qualEspada[qualVariacao]
         elif qualItem == 1:
-            return itens[qualItem]
+            qualEscudo = ["Escudo de Madeira", "Escudo de Ferro", "Escudo Hylian"]
+            return qualEscudo[qualVariacao]
         else:
-            return itens[qualItem]
+            qualBota = ["Meia", "Bota de Couro", "Botas Espaciais"]
+            return qualBota[qualVariacao]
     else:
         return "Nenhum"
 def temInimigo():
@@ -38,14 +41,32 @@ def inimigo():
     else:
         return "Nenhum"
 def aplicandoItem(player,item):
-    if item == "Espada":
+    if item == "Espada de Madeira":
         player["forca"] += 1
         return player["forca"]
-    elif item == "Escudo":
+    elif item == "Espada de Ferro":
+        player["forca"] += 2
+        return player["forca"]
+    elif item == "Dragon Slayer":
+        player["forca"] += 3
+        return player["forca"]
+    elif item == "Escudo de Madeira":
         player["defesa"] += 1
         return player["defesa"]
-    else:
+    elif item == "Escudo de Ferro":
+        player["defesa"] += 2
+        return player["defesa"]
+    elif item == "Escudo Hylian":
+        player["defesa"] += 3
+        return player["defesa"]
+    elif item == "Meia":
         player["fuga"] += 1
+        return player["fuga"]
+    elif item == "Bota de Couro":
+        player["fuga"] += 2
+        return player["fuga"]
+    elif item == "Botas Espaciais":
+        player["fuga"] += 3
         return player["fuga"]
 def batalha(player, monstro):
     if monstro == "Slime":
