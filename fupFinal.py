@@ -1,19 +1,26 @@
 from funcoes import item, inimigo, batalha, aplicandoItem
 from random import randint
 def addStatus(player):
+    
     print(f"Quanto de cada <STATUS> você quer dar para {player['nome']}?")
     player["forca"] = int(input("Quanto de Força ? \n"))
+    
     while player["forca"] <= 0 or player["forca"] > 5:
         print("Força muito alta ou INVALIDA. Novo valor:")
         player["forca"] = int(input("Quanto de Força ? \n"))
+    
     player["defesa"] = int(input("Quanto de Defesa ? \n"))
+    
     while player["defesa"] <= 0 or player["defesa"] > 11:
         print("Defesa muito alta ou INVALIDA. Novo valor:")
         player["defesa"] = int(input("Quanto de Defesa ? \n"))
+    
     player["fuga"] = int(input("Quanto de Fuga ? \n"))
+    
     while player["fuga"] < 0 or player["fuga"] > 3:
         print("Fuga muito alta ou INVALIDA. Novo valor:")
         player["fuga"] = int(input("Quanto de Fuga ? \n"))
+
 def quantidadeDeEscolhas(player, sala):
     quantEscolhas = randint(1,4)
     if sala == 0:
@@ -26,22 +33,23 @@ def quantidadeDeEscolhas(player, sala):
             qualItem = item()
             qualInimigo = inimigo()
             resultado = ""
-            print(f"Item na sala: {qualItem}")
             print(f"Monstro na sala: {qualInimigo}")
+            print(f"Item na sala: {qualItem}")
             while not(qualInimigo == "Nenhum" and qualItem == "Nenhum"):
                 if qualInimigo != "Nenhum":
-                    lutar = input("Lutar contra o Monstro agora ?: S/N")
+                    lutar = input("Lutar contra o Monstro agora ?: S/N\n")
                     if lutar.lower() == "s":
                         resultado = batalha(player,qualInimigo)
                         qualInimigo = "Nenhum"
                 if player["defesa"] <= 0 :
                     print("Você perdeu")
+                    input()
                     return "Derrota"
                 if resultado == "Vitoria" or qualInimigo == "Nenhum":
                     if qualItem != "Nenhum":
-                        usar = input("Usar item: S/N")
+                        usar = input("Usar item: S/N\n")
                         while not(usar.lower() == "s" or usar.lower() == "n"):
-                            usar = input("Usar item: S/N")
+                            usar = input("Usar item: S/N\n")
                         if usar.lower() == "s":
                             aplicandoItem(player, qualItem)
                             qualItem = "Nenhum"
@@ -54,23 +62,24 @@ def quantidadeDeEscolhas(player, sala):
             qualItem = item()
             qualInimigo = inimigo()
             resultado = ""
-            print(f"Item na sala: {qualItem}")
             print(f"Monstro na sala: {qualInimigo}")
+            print(f"Item na sala: {qualItem}")
             while not(qualInimigo == "Nenhum" and qualItem == "Nenhum"):
                 if qualInimigo != "Nenhum":
             
-                    lutar = input("Lutar contra o Monstro agora ?: S/N")
+                    lutar = input("Lutar contra o Monstro agora ?: S/N\n")
                     if lutar.lower() == "s":
                         resultado = batalha(player,qualInimigo)
                         qualInimigo = "Nenhum"
                 if player["defesa"] <= 0 :
                     print("Você perdeu")
+                    input()
                     return "Derrota"
                 if resultado == "Vitoria" or qualInimigo == "Nenhum":
                     if qualItem != "Nenhum":
-                        usar = input("Usar item: S/N")
+                        usar = input("Usar item: S/N\n")
                         while not(usar.lower() == "s" or usar.lower() == "n"):
-                            usar = input("Usar item: S/N")
+                            usar = input("Usar item: S/N\n")
                         if usar.lower() == "s":
                             aplicandoItem(player, qualItem)
                             qualItem = "Nenhum"
@@ -83,22 +92,23 @@ def quantidadeDeEscolhas(player, sala):
             qualItem = item()
             qualInimigo = inimigo()
             resultado = ""
-            print(f"Item na sala: {qualItem}")
             print(f"Monstro na sala: {qualInimigo}")
+            print(f"Item na sala: {qualItem}")
             while not(qualInimigo == "Nenhum" and qualItem == "Nenhum"):
                 if qualInimigo != "Nenhum":
-                    lutar = input("Lutar contra o Monstro agora ?: S/N")
+                    lutar = input("Lutar contra o Monstro agora ?: S/N\n")
                     if lutar.lower() == "s":
                         resultado = batalha(player,qualInimigo)
                         qualInimigo = "Nenhum"
                 if player["defesa"] <= 0 :
                     print("Você perdeu")
+                    input()
                     return "Derrota"
                 if resultado == "Vitoria" or qualInimigo == "Nenhum":
                     if qualItem != "Nenhum":
-                        usar = input("Usar item: S/N")
+                        usar = input("Usar item: S/N\n")
                         while not(usar.lower() == "s" or usar.lower() == "n"):
-                            usar = input("Usar item: S/N")
+                            usar = input("Usar item: S/N\n")
                         if usar.lower() == "s":
                             aplicandoItem(player, qualItem)
                             qualItem = "Nenhum"
@@ -111,22 +121,23 @@ def quantidadeDeEscolhas(player, sala):
             qualItem = item()
             qualInimigo = inimigo()
             resultado = ""
-            print(f"Item na sala: {qualItem}")
             print(f"Monstro na sala: {qualInimigo}")
+            print(f"Item na sala: {qualItem}")
             while not(qualInimigo == "Nenhum" and qualItem == "Nenhum"):
                 if qualInimigo != "Nenhum":
-                    lutar = input("Lutar contra o Monstro agora ?: S/N")
+                    lutar = input("Lutar contra o Monstro agora ?: S/N\n")
                     if lutar.lower() == "s":
                         resultado = batalha(player,qualInimigo)
                         qualInimigo = "Nenhum"
-                if player["defesa"] <= 0 :
+                if player["defesa"] <= 0:
                     print("Você perdeu")
+                    input()
                     return "Derrota"
                 if resultado == "Vitoria" or qualInimigo == "Nenhum":
                     if qualItem != "Nenhum":
-                        usar = input("Usar item: S/N")
+                        usar = input("Usar item: S/N\n")
                         while not(usar.lower() == "s" or usar.lower() == "n"):
-                            usar = input("Usar item: S/N")
+                            usar = input("Usar item: S/N\n")
                         if usar.lower() == "s":
                             aplicandoItem(player, qualItem)
                             qualItem = "Nenhum"
@@ -142,23 +153,23 @@ def quantidadeDeEscolhas(player, sala):
             qualItem = item()
             qualInimigo = inimigo()
             resultado = ""
-            print(f"Item na sala: {qualItem}")
             print(f"Monstro na sala: {qualInimigo}")
+            print(f"Item na sala: {qualItem}")
             while not(qualInimigo == "Nenhum" and qualItem == "Nenhum"):
-                if qualInimigo != "Nenhum":
-            
-                    lutar = input("Lutar contra o Monstro agora ?: S/N")
+                if qualInimigo != "Nenhum":            
+                    lutar = input("Lutar contra o Monstro agora ?: S/N\n")
                     if lutar.lower() == "s":
                         resultado = batalha(player,qualInimigo)
                         qualInimigo = "Nenhum"
                 if player["defesa"] <= 0 :
                     print("Você perdeu")
+                    input()
                     return "Derrota"
                 if resultado == "Vitoria" or qualInimigo == "Nenhum":
                     if qualItem != "Nenhum":
-                        usar = input("Usar item: S/N")
+                        usar = input("Usar item: S/N\n")
                         while not(usar.lower() == "s" or usar.lower() == "n"):
-                            usar = input("Usar item: S/N")
+                            usar = input("Usar item: S/N\n")
                         if usar.lower() == "s":
                             aplicandoItem(player, qualItem)
                             qualItem = "Nenhum"
@@ -172,23 +183,23 @@ def quantidadeDeEscolhas(player, sala):
             qualItem = item()
             qualInimigo = inimigo()
             resultado = ""
-            print(f"Item na sala: {qualItem}")
             print(f"Monstro na sala: {qualInimigo}")
+            print(f"Item na sala: {qualItem}")
             while not(qualInimigo == "Nenhum" and qualItem == "Nenhum"):
-                if qualInimigo != "Nenhum":
-            
-                    lutar = input("Lutar contra o Monstro agora ?: S/N")
+                if qualInimigo != "Nenhum":            
+                    lutar = input("Lutar contra o Monstro agora ?: S/N\n")
                     if lutar.lower() == "s":
                         resultado = batalha(player,qualInimigo)
                         qualInimigo = "Nenhum"
                 if player["defesa"] <= 0 :
                     print("Você perdeu")
+                    input()
                     return "Derrota"
                 if resultado == "Vitoria" or qualInimigo == "Nenhum":
                     if qualItem != "Nenhum":
-                        usar = input("Usar item: S/N")
+                        usar = input("Usar item: S/N\n")
                         while not(usar.lower() == "s" or usar.lower() == "n"):
-                            usar = input("Usar item: S/N")
+                            usar = input("Usar item: S/N\n")
                         if usar.lower() == "s":
                             aplicandoItem(player, qualItem)
                             qualItem = "Nenhum"
@@ -201,22 +212,23 @@ def quantidadeDeEscolhas(player, sala):
             qualItem = item()
             qualInimigo = inimigo()
             resultado = ""
-            print(f"Item na sala: {qualItem}")
             print(f"Monstro na sala: {qualInimigo}")
+            print(f"Item na sala: {qualItem}")
             while not(qualInimigo == "Nenhum" and qualItem == "Nenhum"):
                 if qualInimigo != "Nenhum":
-                    lutar = input("Lutar contra o Monstro agora ?: S/N")
+                    lutar = input("Lutar contra o Monstro agora ?: S/N\n")
                     if lutar.lower() == "s":
                         resultado = batalha(player,qualInimigo)
                         qualInimigo = "Nenhum"
                 if player["defesa"] <= 0 :
                     print("Você perdeu")
+                    input()
                     return "Derrota"
                 if resultado == "Vitoria" or qualInimigo == "Nenhum":
                     if qualItem != "Nenhum":
-                        usar = input("Usar item: S/N")
+                        usar = input("Usar item: S/N\n")
                         while not(usar.lower() == "s" or usar.lower() == "n"):
-                            usar = input("Usar item: S/N")
+                            usar = input("Usar item: S/N\n")
                         if usar.lower() == "s":
                             aplicandoItem(player, qualItem)
                             qualItem = "Nenhum"
@@ -229,23 +241,23 @@ def quantidadeDeEscolhas(player, sala):
             qualItem = item()
             qualInimigo = inimigo()
             resultado = ""
-            print(f"Item na sala: {qualItem}")
             print(f"Monstro na sala: {qualInimigo}")
+            print(f"Item na sala: {qualItem}")            
             while not(qualInimigo == "Nenhum" and qualItem == "Nenhum"):
                 if qualInimigo != "Nenhum":
-            
-                    lutar = input("Lutar contra o Monstro agora ?: S/N")
+                    lutar = input("Lutar contra o Monstro agora ?: S/N\n")
                     if lutar.lower() == "s":
                         resultado = batalha(player,qualInimigo)
                         qualInimigo = "Nenhum"
                 if player["defesa"] <= 0 :
                     print("Você perdeu")
+                    input()
                     return "Derrota"
                 if resultado == "Vitoria" or qualInimigo == "Nenhum":
                     if qualItem != "Nenhum":
-                        usar = input("Usar item: S/N")
+                        usar = input("Usar item: S/N\n")
                         while not(usar.lower() == "s" or usar.lower() == "n"):
-                            usar = input("Usar item: S/N")
+                            usar = input("Usar item: S/N\n")
                         if usar.lower() == "s":
                             aplicandoItem(player, qualItem)
                             qualItem = "Nenhum"
@@ -258,23 +270,23 @@ def quantidadeDeEscolhas(player, sala):
             qualItem = item()
             qualInimigo = inimigo()
             resultado = ""
-            print(f"Item na sala: {qualItem}")
             print(f"Monstro na sala: {qualInimigo}")
+            print(f"Item na sala: {qualItem}")
             while not(qualInimigo == "Nenhum" and qualItem == "Nenhum"):
-                if qualInimigo != "Nenhum":
-            
-                    lutar = input("Lutar contra o Monstro agora ?: S/N")
+                if qualInimigo != "Nenhum":            
+                    lutar = input("Lutar contra o Monstro agora ?: S/N\n")
                     if lutar.lower() == "s":
                         resultado = batalha(player,qualInimigo)
                         qualInimigo = "Nenhum"
                 if player["defesa"] <= 0 :
                     print("Você perdeu")
+                    input()
                     return "Derrota"
                 if resultado == "Vitoria" or qualInimigo == "Nenhum":
                     if qualItem != "Nenhum":
-                        usar = input("Usar item: S/N")
+                        usar = input("Usar item: S/N\n")
                         while not(usar.lower() == "s" or usar.lower() == "n"):
-                            usar = input("Usar item: S/N")
+                            usar = input("Usar item: S/N\n")
                         if usar.lower() == "s":
                             aplicandoItem(player, qualItem)
                             qualItem = "Nenhum"
@@ -287,23 +299,23 @@ def quantidadeDeEscolhas(player, sala):
             qualItem = item()
             qualInimigo = inimigo()
             resultado = ""
-            print(f"Item na sala: {qualItem}")
             print(f"Monstro na sala: {qualInimigo}")
+            print(f"Item na sala: {qualItem}")           
             while not(qualInimigo == "Nenhum" and qualItem == "Nenhum"):
-                if qualInimigo != "Nenhum":
-            
-                    lutar = input("Lutar contra o Monstro agora ?: S/N")
+                if qualInimigo != "Nenhum":            
+                    lutar = input("Lutar contra o Monstro agora ?: S/N\n")
                     if lutar.lower() == "s":
                         resultado = batalha(player,qualInimigo)
                         qualInimigo = "Nenhum"
                 if player["defesa"] <= 0 :
                     print("Você perdeu")
+                    input()
                     return "Derrota"
                 if resultado == "Vitoria" or qualInimigo == "Nenhum":
                     if qualItem != "Nenhum":
-                        usar = input("Usar item: S/N")
+                        usar = input("Usar item: S/N\n")
                         while not(usar.lower() == "s" or usar.lower() == "n"):
-                            usar = input("Usar item: S/N")
+                            usar = input("Usar item: S/N\n")
                         if usar.lower() == "s":
                             aplicandoItem(player, qualItem)
                             qualItem = "Nenhum"
@@ -318,23 +330,23 @@ def quantidadeDeEscolhas(player, sala):
             qualItem = item()
             qualInimigo = inimigo()
             resultado = ""
-            print(f"Item na sala: {qualItem}")
             print(f"Monstro na sala: {qualInimigo}")
+            print(f"Item na sala: {qualItem}")            
             while not(qualInimigo == "Nenhum" and qualItem == "Nenhum"):
-                if qualInimigo != "Nenhum":
-            
-                    lutar = input("Lutar contra o Monstro agora ?: S/N")
+                if qualInimigo != "Nenhum":            
+                    lutar = input("Lutar contra o Monstro agora ?: S/N\n")
                     if lutar.lower() == "s":
                         resultado = batalha(player,qualInimigo)
                         qualInimigo = "Nenhum"
                 if player["defesa"] <= 0 :
                     print("Você perdeu")
+                    input()
                     return "Derrota"
                 if resultado == "Vitoria" or qualInimigo == "Nenhum":
                     if qualItem != "Nenhum":
-                        usar = input("Usar item: S/N")
+                        usar = input("Usar item: S/N\n")
                         while not(usar.lower() == "s" or usar.lower() == "n"):
-                            usar = input("Usar item: S/N")
+                            usar = input("Usar item: S/N\n")
                         if usar.lower() == "s":
                             aplicandoItem(player, qualItem)
                             qualItem = "Nenhum"
@@ -347,23 +359,23 @@ def quantidadeDeEscolhas(player, sala):
             qualItem = item()
             qualInimigo = inimigo()
             resultado = ""
-            print(f"Item na sala: {qualItem}")
             print(f"Monstro na sala: {qualInimigo}")
+            print(f"Item na sala: {qualItem}")            
             while not(qualInimigo == "Nenhum" and qualItem == "Nenhum"):
-                if qualInimigo != "Nenhum":
-            
-                    lutar = input("Lutar contra o Monstro agora ?: S/N")
+                if qualInimigo != "Nenhum":            
+                    lutar = input("Lutar contra o Monstro agora ?: S/N\n")
                     if lutar.lower() == "s":
                         resultado = batalha(player,qualInimigo)
                         qualInimigo = "Nenhum"
                 if player["defesa"] <= 0 :
                     print("Você perdeu")
+                    input()
                     return "Derrota"
                 if resultado == "Vitoria" or qualInimigo == "Nenhum":
                     if qualItem != "Nenhum":
-                        usar = input("Usar item: S/N")
+                        usar = input("Usar item: S/N\n")
                         while not(usar.lower() == "s" or usar.lower() == "n"):
-                            usar = input("Usar item: S/N")
+                            usar = input("Usar item: S/N\n")
                         if usar.lower() == "s":
                             aplicandoItem(player, qualItem)
                             qualItem = "Nenhum"
@@ -376,23 +388,23 @@ def quantidadeDeEscolhas(player, sala):
             qualItem = item()
             qualInimigo = inimigo()
             resultado = ""
-            print(f"Item na sala: {qualItem}")
             print(f"Monstro na sala: {qualInimigo}")
+            print(f"Item na sala: {qualItem}")            
             while not(qualInimigo == "Nenhum" and qualItem == "Nenhum"):
-                if qualInimigo != "Nenhum":
-            
-                    lutar = input("Lutar contra o Monstro agora ?: S/N")
+                if qualInimigo != "Nenhum":            
+                    lutar = input("Lutar contra o Monstro agora ?: S/N\n")
                     if lutar.lower() == "s":
                         resultado = batalha(player,qualInimigo)
                         qualInimigo = "Nenhum"
                 if player["defesa"] <= 0 :
                     print("Você perdeu")
+                    input()
                     return "Derrota"
                 if resultado == "Vitoria" or qualInimigo == "Nenhum":
                     if qualItem != "Nenhum":
-                        usar = input("Usar item: S/N")
+                        usar = input("Usar item: S/N\n")
                         while not(usar.lower() == "s" or usar.lower() == "n"):
-                            usar = input("Usar item: S/N")
+                            usar = input("Usar item: S/N\n")
                         if usar.lower() == "s":
                             aplicandoItem(player, qualItem)
                             qualItem = "Nenhum"
@@ -405,23 +417,23 @@ def quantidadeDeEscolhas(player, sala):
             qualItem = item()
             qualInimigo = inimigo()
             resultado = ""
-            print(f"Item na sala: {qualItem}")
             print(f"Monstro na sala: {qualInimigo}")
+            print(f"Item na sala: {qualItem}")            
             while not(qualInimigo == "Nenhum" and qualItem == "Nenhum"):
-                if qualInimigo != "Nenhum":
-            
-                    lutar = input("Lutar contra o Monstro agora ?: S/N")
+                if qualInimigo != "Nenhum":           
+                    lutar = input("Lutar contra o Monstro agora ?: S/N\n")
                     if lutar.lower() == "s":
                         resultado = batalha(player,qualInimigo)
                         qualInimigo = "Nenhum"
                 if player["defesa"] <= 0 :
                     print("Você perdeu")
+                    input
                     return "Derrota"
                 if resultado == "Vitoria" or qualInimigo == "Nenhum":
                     if qualItem != "Nenhum":
-                        usar = input("Usar item: S/N")
+                        usar = input("Usar item: S/N\n")
                         while not(usar.lower() == "s" or usar.lower() == "n"):
-                            usar = input("Usar item: S/N")
+                            usar = input("Usar item: S/N\n")
                         if usar.lower() == "s":
                             aplicandoItem(player, qualItem)
                             qualItem = "Nenhum"
@@ -434,23 +446,23 @@ def quantidadeDeEscolhas(player, sala):
         qualItem = item()
         qualInimigo = inimigo()
         resultado = ""
-        print(f"Item na sala: {qualItem}")
         print(f"Monstro na sala: {qualInimigo}")
+        print(f"Item na sala: {qualItem}")        
         while not(qualInimigo == "Nenhum" and qualItem == "Nenhum"):
-            if qualInimigo != "Nenhum":
-            
-                lutar = input("Lutar contra o Monstro agora ?: S/N")
+            if qualInimigo != "Nenhum":            
+                lutar = input("Lutar contra o Monstro agora ?: S/N\n")
                 if lutar.lower() == "s":
                     resultado = batalha(player,qualInimigo)
                     qualInimigo = "Nenhum"
             if player["defesa"] <= 0 :
                 print("Você perdeu")
+                input()
                 return "Derrota"
             if resultado == "Vitoria" or qualInimigo == "Nenhum":
                 if qualItem != "Nenhum":
-                    usar = input("Usar item: S/N")
+                    usar = input("Usar item: S/N\n")
                     while not(usar.lower() == "s" or usar.lower() == "n"):
-                        usar = input("Usar item: S/N")
+                        usar = input("Usar item: S/N\n")
                     if usar.lower() == "s":
                         aplicandoItem(player, qualItem)
                         qualItem = "Nenhum"
