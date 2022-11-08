@@ -121,3 +121,25 @@ def batalha(player, monstro):
                 return "Vitoria"
             elif aranha["defesa"] >= 0 and player["defesa"] <= 0:
                 return "GameOver"
+def qualBoss():
+    escolhaDeBoss = randint(0,2)
+    bosses = ["Locus, Moonlight Knight", "Grunbeld, The Great Flame Dragon","Nosferatu Zodd, The Immortal"]
+    if escolhaDeBoss == 0:
+        return bosses[escolhaDeBoss]
+    elif escolhaDeBoss == 1:
+        return bosses[escolhaDeBoss]
+    else:
+        return bosses[escolhaDeBoss]
+def batalhaBoss(player,boss):
+    if boss == "Locus, Moonlight Knight":
+        locus = {
+            "Nome": "Locus, Moonlight Knight"
+        }
+    elif boss == "Grunbeld, The Great Flame Dragon":
+        grunbeld = {
+            "Nome": "Grunbeld, The Great Flame Dragon"
+        }
+    elif boss == "Nosferatu Zodd, The Immortal":
+        zodd = {
+            "Nome": "Nosferatu Zodd, The Immortal"
+        }

@@ -1,4 +1,4 @@
-from funcoes import item, inimigo, batalha, aplicandoItem
+from funcoes import item, inimigo, batalha, aplicandoItem, qualBoss, batalhaBoss
 from random import randint
 from time import sleep
 def addStatus(player):
@@ -10,6 +10,7 @@ def addStatus(player):
 
     while player["forca"] <= 0 or player["forca"] > 10:
         print("Força muito alta ou INVALIDA. Novo valor:")
+        sleep(tempo)
         player["forca"] = int(input("Quanto de Força ? \n"))
         sleep(tempo)
 
@@ -19,12 +20,14 @@ def addStatus(player):
     if player["forca"] <= 5:        
         while player["defesa"] <= 0 or player["defesa"] > 10:
             print("Defesa muito alta ou INVALIDA. Novo valor:")
+            sleep(tempo)
             player["defesa"] = int(input("Quanto de Defesa ? \n"))
             sleep(tempo)
 
     elif player["forca"] > 5:
         while player["defesa"] <= 0 or player["defesa"] > 5:
             print("Defesa muito alta ou INVALIDA. Novo valor:")
+            sleep(tempo)
             player["defesa"] = int(input("Quanto de Defesa ? \n"))
             sleep(tempo)
 
@@ -33,6 +36,7 @@ def addStatus(player):
 
     while player["fuga"] < 0 or player["fuga"] > 3:
         print("Fuga muito alta ou INVALIDA. Novo valor:")
+        sleep(tempo)
         player["fuga"] = int(input("Quanto de Fuga ? \n"))
         sleep(tempo)
 
@@ -43,15 +47,28 @@ def quantidadeDeEscolhas(player, sala, escolhaAnterior):
         print("Você esta na sala principal.\nVocê segue para unica porta aberta")
         sleep(tempo)
         return "Nenhum"
-    elif quantEscolhas == 5 and sala >= 7:
+    elif quantEscolhas == 5 or sala >= 7:
+        print("A porta atras de você se fecha.")
+        sleep(tempo)
+        print("Não a nenhuma porta aberta.")
+        sleep(tempo)
+        print("Você chegou a sala do boss")
+        sleep(tempo)
+        
+        boss = qualBoss()
+        print(f"Boss da sala: {boss}")
+        sleep(tempo)
+
+        batalhaBoss(player, boss)
         print("Você derrotou o BOSS!!!\nParabens!!!\nFIM DE JOGO!!!")
         sleep(tempo)
+
         return "Acabou"
     elif quantEscolhas == 1:
         while True:
             lados = randint(1,4)
             if lados == 1 and escolhaAnterior != "Baixo":
-                print("A porta atras de você se fecha.\nA porta aberta esta na direção: Cima")
+                print("A porta atras de você se fecha.\nVocê pode apenas ir para Cima")
                 sleep(tempo)
                 salas = ["Cima"]
                 qualItem = item()
@@ -84,6 +101,7 @@ def quantidadeDeEscolhas(player, sala, escolhaAnterior):
                                 aplicandoItem(player, qualItem)
                                 qualItem = "Nenhum"
                 print(player)
+                sleep(tempo)
                 print("Sala Limpa!")
                 sleep(tempo)
                 print("Você so pode ir para Cima")
@@ -94,7 +112,7 @@ def quantidadeDeEscolhas(player, sala, escolhaAnterior):
                     sleep(tempo)
                 return escolha
             elif lados == 2 and escolhaAnterior != "Cima":
-                print("""A porta atras de você se fecha.\nVocê pode apenas ir para Baixo""")
+                print("A porta atras de você se fecha.\nVocê pode apenas ir para Baixo")
                 sleep(tempo)
                 salas = ["Baixo"]
                 qualItem = item()
@@ -106,7 +124,6 @@ def quantidadeDeEscolhas(player, sala, escolhaAnterior):
                 sleep(tempo)
                 while not(qualInimigo == "Nenhum" and qualItem == "Nenhum"):
                     if qualInimigo != "Nenhum":
-                
                         lutar = input("Lutar contra o Monstro agora ?: S/N\n")
                         sleep(tempo)
                         if lutar.lower() == "s":
@@ -127,6 +144,7 @@ def quantidadeDeEscolhas(player, sala, escolhaAnterior):
                                 aplicandoItem(player, qualItem)
                                 qualItem = "Nenhum"
                 print(player)
+                sleep(tempo)
                 print("Sala Limpa!")
                 sleep(tempo)
                 print("Você so pode ir para Baixo")
@@ -169,6 +187,7 @@ def quantidadeDeEscolhas(player, sala, escolhaAnterior):
                                 aplicandoItem(player, qualItem)
                                 qualItem = "Nenhum"
                 print(player)
+                sleep(tempo)
                 print("Sala Limpa!")
                 sleep(tempo)
                 print("Você so pode ir para Esquerda")
@@ -211,6 +230,7 @@ def quantidadeDeEscolhas(player, sala, escolhaAnterior):
                                 aplicandoItem(player, qualItem)
                                 qualItem = "Nenhum"
                 print(player)
+                sleep(tempo)
                 print("Sala Limpa!")
                 sleep(tempo)
                 print("Você so pode ir para Direita")
@@ -427,7 +447,7 @@ def quantidadeDeEscolhas(player, sala, escolhaAnterior):
         while True:
             lados = randint(1,4)
             if lados == 1 and (escolhaAnterior == "Cima" or escolhaAnterior == "Baixo" or escolhaAnterior == "Direita"):
-                print("A porta atras de Você se fecha.\nVocê pode ir para Cima, Baixo ou Esquerda")
+                print("A porta atras de você se fecha.\nVocê pode ir para Cima, Baixo ou Esquerda")
                 qualItem = item()
                 qualInimigo = inimigo()
                 resultado = ""
@@ -459,7 +479,7 @@ def quantidadeDeEscolhas(player, sala, escolhaAnterior):
                     escolha = input("Você so pode ir para Cima, Baixo ou Esquerda\n")
                 return escolha
             elif lados == 2 and (escolhaAnterior == "Cima" or escolhaAnterior == "Baixo" or escolhaAnterior == "Esquerda"):
-                print("A porta atras de Você se fecha.\nVocê pode ir para Cima, Baixo ou Direita")
+                print("A porta atras de você se fecha.\nVocê pode ir para Cima, Baixo ou Direita")
                 qualItem = item()
                 qualInimigo = inimigo()
                 resultado = ""
@@ -491,7 +511,7 @@ def quantidadeDeEscolhas(player, sala, escolhaAnterior):
                     escolha = input("Você so pode ir para Cima, Baixo ou Direita\n")
                 return escolha
             elif lados == 3 and (escolhaAnterior == "Direita" or escolhaAnterior == "Esquerda" or escolhaAnterior == "Baixo"):
-                print("A porta atras de Você se fecha.\nVocê pode ir para Esquerda, Direita ou Cima")
+                print("A porta atras de você se fecha.\nVocê pode ir para Esquerda, Direita ou Cima")
                 qualItem = item()
                 qualInimigo = inimigo()
                 resultado = ""
@@ -523,7 +543,7 @@ def quantidadeDeEscolhas(player, sala, escolhaAnterior):
                     escolha = input("Você so pode ir para Esquerda, Direita ou Cima\n")
                 return escolha
             elif lados == 4 and (escolhaAnterior == "Direita" or escolhaAnterior == "Esquerda" or escolhaAnterior == "Cima"):
-                print("A porta atras de Você se fecha.\nVocê pode ir para Esquerda, Direita ou Baixo")
+                print("A porta atras de você se fecha.\nVocê pode ir para Esquerda, Direita ou Baixo")
                 qualItem = item()
                 qualInimigo = inimigo()
                 resultado = ""
