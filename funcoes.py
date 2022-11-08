@@ -1,4 +1,5 @@
 from random import randint
+from time import sleep
 def temItem():
     itemSN = randint(1,5)
     if itemSN == 1 or itemSN == 2:
@@ -73,7 +74,7 @@ def batalha(player, monstro):
         slime ={
             "nome": "Slime",
             "forca": 1,
-            "defesa": 1
+            "defesa": 3
         }
         while (player["defesa"] >= 0 or slime["defesa"] >= 0):
             player["defesa"] -= slime["forca"]
@@ -86,7 +87,7 @@ def batalha(player, monstro):
         zumbi ={
             "nome": "Zumbi",
             "forca": 2,
-            "defesa": 2
+            "defesa": 3
         }
         while (player["defesa"] >= 0 or zumbi["defesa"] >= 0):
             player["defesa"] -= zumbi["forca"]
@@ -98,7 +99,7 @@ def batalha(player, monstro):
     elif monstro == "Esqueleto":
         esqueleto ={
             "nome": "Esqueleto",
-            "forca": 2,
+            "forca": 3,
             "defesa": 3
         }
         while (player["defesa"] >= 0 or esqueleto["defesa"] >= 0):
@@ -111,8 +112,8 @@ def batalha(player, monstro):
     elif monstro == "Aranha":
         aranha ={
             "nome": "Aranha",
-            "forca": 3,
-            "defesa": 3
+            "forca": 4,
+            "defesa": 4
         }
         while (player["defesa"] >= 0 or aranha["defesa"] >= 0):
             player["defesa"] -= aranha["forca"]
@@ -123,7 +124,7 @@ def batalha(player, monstro):
                 return "GameOver"
 def qualBoss():
     escolhaDeBoss = randint(0,2)
-    bosses = ["Locus, Moonlight Knight", "Grunbeld, The Great Flame Dragon","Nosferatu Zodd, The Immortal"]
+    bosses = ["Locus", "Grunbeld","Zodd"]
     if escolhaDeBoss == 0:
         return bosses[escolhaDeBoss]
     elif escolhaDeBoss == 1:
@@ -131,15 +132,117 @@ def qualBoss():
     else:
         return bosses[escolhaDeBoss]
 def batalhaBoss(player,boss):
-    if boss == "Locus, Moonlight Knight":
+    tempo = 1
+    if boss == "Locus":
         locus = {
-            "Nome": "Locus, Moonlight Knight"
+            "Nome": "Locus, Moonlight Knight",
+            "forca": 8,
+            "defesa": 7
         }
-    elif boss == "Grunbeld, The Great Flame Dragon":
+        sleep(tempo)
+        print(f"Nome: {locus['Nome']}")
+        sleep(tempo)
+        print(f"forca: {locus['forca']}")
+        sleep(tempo)
+        print(f"defesa: {locus['defesa']}")
+        sleep(tempo)
+
+        print("Lute ou morra para Locus")
+        sleep(tempo)
+        acao = input("Você ira lutar ou tentar fugir ?")  #Inputs esperados lutar/fugir
+        tentativa = 0  #Variavel contador
+        while acao.lower() != "lutar":
+            if tentativa < 2:
+                print("Lute ou morra")
+                acao = input("Você ira lutar ou tentar fugir ?")
+                tentativa += 1
+            elif tentativa == 2:
+                print("Você tentou correr")
+                player["defesa"] = 0
+                return player["defesa"]
+        if acao.lower() == "lutar":
+            while (player["defesa"] >= 0 or locus["defesa"] >= 0):
+                player["defesa"] -= locus["forca"]
+                locus["defesa"] -= player["forca"]
+                if player["defesa"] >= 0 and locus["defesa"] <= 0:
+                    return player["defesa"]
+                elif locus["defesa"] >= 0 and player["defesa"] <= 0:
+                    print("Fraco")
+                    player["defesa"] = 0
+                    return player["defesa"]
+
+    elif boss == "Grunbeld":
         grunbeld = {
-            "Nome": "Grunbeld, The Great Flame Dragon"
+            "Nome": "Grunbeld, The Great Flame Dragon",
+            "forca": 6,
+            "defesa": 14
         }
-    elif boss == "Nosferatu Zodd, The Immortal":
+        sleep(tempo)
+        print(f"Nome: {grunbeld['Nome']}")
+        sleep(tempo)
+        print(f"forca: {grunbeld['forca']}")
+        sleep(tempo)
+        print(f"defesa: {grunbeld['defesa']}")
+        sleep(tempo)
+
+        print("Lute ou morra para Grunbeld")
+        sleep(tempo)
+        acao = input("Você ira lutar ou tentar fugir ?")  #Inputs esperados lutar/fugir
+        tentativa = 0  #Variavel contador
+        while acao.lower() != "lutar":
+            if tentativa < 2:
+                print("Lute ou morra")
+                acao = input("Você ira lutar ou tentar fugir ?")
+                tentativa += 1
+            elif tentativa == 2:
+                print("Você tentou correr")
+                player["defesa"] = 0
+                return player["defesa"]
+        if acao.lower() == "lutar":
+            while (player["defesa"] >= 0 or grunbeld["defesa"] >= 0):
+                player["defesa"] -= grunbeld["forca"]
+                grunbeld["defesa"] -= player["forca"]
+                if player["defesa"] >= 0 and grunbeld["defesa"] <= 0:
+                    return player["defesa"]
+                elif grunbeld["defesa"] >= 0 and player["defesa"] <= 0:
+                    print("Fraco")
+                    player["defesa"] = 0
+                    return player["defesa"]
+
+    elif boss == "Zodd":
         zodd = {
-            "Nome": "Nosferatu Zodd, The Immortal"
+            "Nome": "Nosferatu Zodd, The Immortal",
+            "forca": 9,
+            "defesa": 12
         }
+        sleep(tempo)
+        print(f"Nome: {zodd['Nome']}")
+        sleep(tempo)
+        print(f"forca: {zodd['forca']}")
+        sleep(tempo)
+        print(f"defesa: {zodd['defesa']}")
+        sleep(tempo)
+
+        print("Lute ou morra para Zodd")
+        sleep(tempo)
+        acao = input("Você ira lutar ou tentar fugir ?")  #Inputs esperados lutar/fugir
+        tentativa = 0  #Variavel contador
+        while acao.lower() != "lutar":
+            if tentativa < 2:
+                print("Lute ou morra")
+                acao = input("Você ira lutar ou tentar fugir ?")
+                tentativa += 1
+            elif tentativa == 2:
+                print("Você tentou correr")
+                player["defesa"] = 0
+                return player["defesa"]
+        if acao.lower() == "lutar":
+            while (player["defesa"] >= 0 or zodd["defesa"] >= 0):
+                player["defesa"] -= zodd["forca"]
+                zodd["defesa"] -= player["forca"]
+                if player["defesa"] >= 0 and zodd["defesa"] <= 0:
+                    return player["defesa"]
+                elif zodd["defesa"] >= 0 and player["defesa"] <= 0:
+                    print("Fraco")
+                    player["defesa"] = 0
+                    return player["defesa"]
