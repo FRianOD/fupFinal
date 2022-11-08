@@ -5,10 +5,16 @@ def temItem():
         return "S"
     else:
         return "N"
+def temInimigo():
+    inimigoSN = randint(1,3)
+    if inimigoSN == 1 or inimigoSN == 2:
+        return "S"
+    else:
+        return "N"
 def item():
     qualItem = randint(0,2)
     qualVariacao = randint(0,2)
-    if temItem() == "S":
+    if temItem() == "S" or temInimigo() == "S" :
         if qualItem == 0:
             qualEspada = ["Espada de Madeira", "Espada de Ferro", "Dragon Slayer"]
             return qualEspada[qualVariacao]
@@ -20,12 +26,6 @@ def item():
             return qualBota[qualVariacao]
     else:
         return "Nenhum"
-def temInimigo():
-    inimigoSN = randint(1,3)
-    if inimigoSN == 1 or inimigoSN == 2:
-        return "S"
-    else:
-        return "N"
 def inimigo():
     qualInimigo = randint(0,3)
     monstros = ["Slime", "Zumbi","Esqueleto","Aranha"]
@@ -51,13 +51,13 @@ def aplicandoItem(player,item):
         player["forca"] += 3
         return player["forca"]
     elif item == "Escudo de Madeira":
-        player["defesa"] += 1
-        return player["defesa"]
-    elif item == "Escudo de Ferro":
         player["defesa"] += 2
         return player["defesa"]
-    elif item == "Escudo Hylian":
+    elif item == "Escudo de Ferro":
         player["defesa"] += 3
+        return player["defesa"]
+    elif item == "Escudo Hylian":
+        player["defesa"] += 5
         return player["defesa"]
     elif item == "Meia":
         player["fuga"] += 1
@@ -72,7 +72,7 @@ def batalha(player, monstro):
     if monstro == "Slime":
         slime ={
             "nome": "Slime",
-            "forca": 2,
+            "forca": 1,
             "defesa": 1
         }
         while (player["defesa"] >= 0 or slime["defesa"] >= 0):
@@ -85,8 +85,8 @@ def batalha(player, monstro):
     elif monstro == "Zumbi":
         zumbi ={
             "nome": "Zumbi",
-            "forca": 1,
-            "defesa": 3
+            "forca": 2,
+            "defesa": 2
         }
         while (player["defesa"] >= 0 or zumbi["defesa"] >= 0):
             player["defesa"] -= zumbi["forca"]
@@ -98,8 +98,8 @@ def batalha(player, monstro):
     elif monstro == "Esqueleto":
         esqueleto ={
             "nome": "Esqueleto",
-            "forca": 3,
-            "defesa": 2
+            "forca": 2,
+            "defesa": 3
         }
         while (player["defesa"] >= 0 or esqueleto["defesa"] >= 0):
             player["defesa"] -= esqueleto["forca"]
