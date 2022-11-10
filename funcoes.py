@@ -73,12 +73,12 @@ def batalha(player, monstro):
     tempo = 1
     if monstro == "Slime":
         mob ={
-            "nome": "Slime",
+            "Nome": "Slime",
             "forca": 1,
             "defesa": 3
         }
         while (player["defesa"] >= 0 or mob["defesa"] >= 0):
-            print(f"{player['Nome']} X {mob['nome']}")
+            print(f"{player['Nome']} X {mob['Nome']}")
             sleep(tempo)
             player["defesa"] -= mob["forca"]
             print(f"{player['Nome']} defesa: {player['defesa']}")
@@ -92,12 +92,12 @@ def batalha(player, monstro):
                 return "GameOver"
     elif monstro == "Zumbi":
         mob ={
-            "nome": "Zumbi",
+            "Nome": "Zumbi",
             "forca": 2,
             "defesa": 3
         }
         while (player["defesa"] >= 0 or mob["defesa"] >= 0):
-            print(f"{player['Nome']} X {mob['nome']}")
+            print(f"{player['Nome']} X {mob['Nome']}")
             sleep(tempo)
             player["defesa"] -= mob["forca"]
             print(f"{player['Nome']} defesa: {player['defesa']}")
@@ -111,12 +111,12 @@ def batalha(player, monstro):
                 return "GameOver"
     elif monstro == "Esqueleto":
         mob ={
-            "nome": "Esqueleto",
+            "Nome": "Esqueleto",
             "forca": 3,
             "defesa": 3
         }
         while (player["defesa"] >= 0 or mob["defesa"] >= 0):
-            print(f"{player['Nome']} X {mob['nome']}")
+            print(f"{player['Nome']} X {mob['Nome']}")
             sleep(tempo)
             player["defesa"] -= mob["forca"]
             print(f"{player['Nome']} defesa: {player['defesa']}")
@@ -130,12 +130,12 @@ def batalha(player, monstro):
                 return "GameOver"
     elif monstro == "Aranha":
         mob ={
-            "nome": "Aranha",
+            "Nome": "Aranha",
             "forca": 4,
             "defesa": 4
         }
         while (player["defesa"] >= 0 or mob["defesa"] >= 0):
-            print(f"{player['Nome']} X {mob['nome']}")
+            print(f"{player['Nome']} X {mob['Nome']}")
             sleep(tempo)
             player["defesa"] -= mob["forca"]
             print(f"{player['Nome']} defesa: {player['defesa']}")
@@ -209,116 +209,143 @@ def qualBoss():
 def batalhaBoss(player,boss):
     tempo = 1
     if boss == "Locus":
-        locus = {
+        chefe = {
             "Nome": "Locus, Moonlight Knight",
             "forca": 8,
             "defesa": 7
         }
         sleep(tempo)
-        print(f"Nome: {locus['Nome']}")
+        print(f"Nome: {chefe['Nome']}")
         sleep(tempo)
-        print(f"forca: {locus['forca']}")
+        print(f"forca: {chefe['forca']}")
         sleep(tempo)
-        print(f"defesa: {locus['defesa']}")
+        print(f"defesa: {chefe['defesa']}")
         sleep(tempo)
 
         print("Lute ou morra para Locus")
         sleep(tempo)
         acao = input("Você ira lutar ou tentar fugir ?")  #Inputs esperados lutar/fugir
+        sleep(tempo)
         tentativa = 0  #Variavel contador
         while acao.lower() != "lutar":
             if tentativa < 2:
                 print("Lute ou morra")
+                sleep(tempo)
                 acao = input("Você ira lutar ou tentar fugir ?")
+                sleep(tempo)
                 tentativa += 1
             elif tentativa == 2:
                 print("Você tentou correr")
+                sleep(tempo)
                 player["defesa"] = 0
                 return player["defesa"]
         if acao.lower() == "lutar":
-            while (player["defesa"] >= 0 or locus["defesa"] >= 0):
-                player["defesa"] -= locus["forca"]
-                locus["defesa"] -= player["forca"]
-                if player["defesa"] >= 0 and locus["defesa"] <= 0:
+            while (player["defesa"] >= 0 or chefe["defesa"] >= 0):
+                print(f"{player['Nome']} X {chefe['Nome']}")
+                sleep(tempo)
+                player["defesa"] -= chefe["forca"]
+                print(f"{player['Nome']} defesa: {player['defesa']}")
+                chefe["defesa"] -= player["forca"]
+                print(f"{chefe['Nome']} defesa: {chefe['defesa']}")
+                if player["defesa"] >= 0 and chefe["defesa"] <= 0:
                     return player["defesa"]
-                elif locus["defesa"] >= 0 and player["defesa"] <= 0:
+                elif chefe["defesa"] >= 0 and player["defesa"] <= 0:
                     print("Fraco")
+                    sleep(tempo)
                     player["defesa"] = 0
                     return player["defesa"]
 
     elif boss == "Grunbeld":
-        grunbeld = {
+        chefe = {
             "Nome": "Grunbeld, The Great Flame Dragon",
             "forca": 6,
             "defesa": 14
         }
         sleep(tempo)
-        print(f"Nome: {grunbeld['Nome']}")
+        print(f"Nome: {chefe['Nome']}")
         sleep(tempo)
-        print(f"forca: {grunbeld['forca']}")
+        print(f"forca: {chefe['forca']}")
         sleep(tempo)
-        print(f"defesa: {grunbeld['defesa']}")
+        print(f"defesa: {chefe['defesa']}")
         sleep(tempo)
 
         print("Lute ou morra para Grunbeld")
         sleep(tempo)
         acao = input("Você ira lutar ou tentar fugir ?")  #Inputs esperados lutar/fugir
+        sleep(tempo)
         tentativa = 0  #Variavel contador
         while acao.lower() != "lutar":
             if tentativa < 2:
                 print("Lute ou morra")
+                sleep(tempo)
                 acao = input("Você ira lutar ou tentar fugir ?")
+                sleep(tempo)
                 tentativa += 1
             elif tentativa == 2:
                 print("Você tentou correr")
+                sleep(tempo)
                 player["defesa"] = 0
                 return player["defesa"]
         if acao.lower() == "lutar":
-            while (player["defesa"] >= 0 or grunbeld["defesa"] >= 0):
-                player["defesa"] -= grunbeld["forca"]
-                grunbeld["defesa"] -= player["forca"]
-                if player["defesa"] >= 0 and grunbeld["defesa"] <= 0:
+            while (player["defesa"] >= 0 or chefe["defesa"] >= 0):
+                print(f"{player['Nome']} X {chefe['Nome']}")
+                sleep(tempo)
+                player["defesa"] -= chefe["forca"]
+                print(f"{player['Nome']} defesa: {player['defesa']}")
+                chefe["defesa"] -= player["forca"]
+                print(f"{chefe['Nome']} defesa: {chefe['defesa']}")
+                if player["defesa"] >= 0 and chefe["defesa"] <= 0:
                     return player["defesa"]
-                elif grunbeld["defesa"] >= 0 and player["defesa"] <= 0:
+                elif chefe["defesa"] >= 0 and player["defesa"] <= 0:
                     print("Fraco")
+                    sleep(tempo)
                     player["defesa"] = 0
                     return player["defesa"]
 
     elif boss == "Zodd":
-        zodd = {
+        chefe = {
             "Nome": "Nosferatu Zodd, The Immortal",
             "forca": 9,
             "defesa": 12
         }
         sleep(tempo)
-        print(f"Nome: {zodd['Nome']}")
+        print(f"Nome: {chefe['Nome']}")
         sleep(tempo)
-        print(f"forca: {zodd['forca']}")
+        print(f"forca: {chefe['forca']}")
         sleep(tempo)
-        print(f"defesa: {zodd['defesa']}")
+        print(f"defesa: {chefe['defesa']}")
         sleep(tempo)
 
         print("Lute ou morra para Zodd")
         sleep(tempo)
         acao = input("Você ira lutar ou tentar fugir ?")  #Inputs esperados lutar/fugir
+        sleep(tempo)
         tentativa = 0  #Variavel contador
         while acao.lower() != "lutar":
             if tentativa < 2:
                 print("Lute ou morra")
+                sleep(tempo)
                 acao = input("Você ira lutar ou tentar fugir ?")
+                sleep(tempo)
                 tentativa += 1
             elif tentativa == 2:
                 print("Você tentou correr")
+                sleep(tempo)
                 player["defesa"] = 0
                 return player["defesa"]
         if acao.lower() == "lutar":
-            while (player["defesa"] >= 0 or zodd["defesa"] >= 0):
-                player["defesa"] -= zodd["forca"]
-                zodd["defesa"] -= player["forca"]
-                if player["defesa"] >= 0 and zodd["defesa"] <= 0:
+            while (player["defesa"] >= 0 or chefe["defesa"] >= 0):
+                print(f"{player['Nome']} X {chefe['Nome']}")
+                sleep(tempo)
+                player["defesa"] -= chefe["forca"]
+                print(f"{player['Nome']} defesa: {player['defesa']}")
+                chefe["defesa"] -= player["forca"]
+                print(f"{chefe['Nome']} defesa: {chefe['defesa']}")
+                if player["defesa"] >= 0 and chefe["defesa"] <= 0:
                     return player["defesa"]
-                elif zodd["defesa"] >= 0 and player["defesa"] <= 0:
+                elif chefe["defesa"] >= 0 and player["defesa"] <= 0:
                     print("Fraco")
+                    sleep(tempo)
                     player["defesa"] = 0
                     return player["defesa"]
 def salas(player,inimigo,item): 

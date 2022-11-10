@@ -4,7 +4,7 @@ from time import sleep
 def addStatus(player):
     tempo = 0.5
     
-    print(f"Quanto de cada <STATUS> você quer dar para {player['nome']}?")
+    print(f"Quanto de cada <STATUS> você quer dar para {player['Nome']}?")
     sleep(tempo)
     print("Forças recomendadas: 2, 5, 10")
     sleep(tempo)
@@ -19,13 +19,13 @@ def addStatus(player):
         player["forca"] = int(input("Quanto de Força ? \n"))
         sleep(tempo)
 
-    print("Defesas recomendadas: 5, 9, 14.")
+    print("Defesas recomendadas: 5, 10, 15.")
     sleep(tempo)
     player["defesa"] = int(input("Quanto de Defesa ? \n"))
     sleep(tempo)
 
     if player["forca"] <= 2:        
-        while player["defesa"] <= 0 or player["defesa"] > 14:
+        while player["defesa"] <= 0 or player["defesa"] > 15:
             print("Defesa muito alta ou INVALIDA. Novo valor.")
             sleep(tempo)
             print("Defesa max: 14.")
@@ -34,7 +34,7 @@ def addStatus(player):
             sleep(tempo)
 
     elif player["forca"] <= 5:        
-        while player["defesa"] <= 0 or player["defesa"] > 9:
+        while player["defesa"] <= 0 or player["defesa"] > 10:
             print("Defesa muito alta ou INVALIDA. Novo valor.")
             sleep(tempo)
             print("Defesa max: 9.")
@@ -155,18 +155,21 @@ def quantidadeDeEscolhas(player, sala, escolhaAnterior):
                     #salas = ["Esquerda"]
                     qualItem = item()
                     qualInimigo = inimigo()
-                    salas(player,qualInimigo,qualItem)
-                    print(player)
-                    sleep(tempo)
-                    print("Sala Limpa!")
-                    sleep(tempo)
-                    print("Você so pode ir para Esquerda")
-                    escolha = input("Qual lado você ira ?\n")
-                    sleep(tempo)
-                    while escolha != "Esquerda":
-                        escolha = input("Você so pode ir para Esquerda\n")  
-                        sleep(tempo)              
-                    return escolha
+                    result = salas(player,qualInimigo,qualItem)
+                    if result == "Vitoria":
+                        print(player)
+                        sleep(tempo)
+                        print("Sala Limpa!")
+                        sleep(tempo)
+                        print("Você so pode ir para Esquerda")
+                        escolha = input("Qual lado você ira ?\n")
+                        sleep(tempo)
+                        while escolha != "Esquerda":
+                            escolha = input("Você so pode ir para Esquerda\n")  
+                            sleep(tempo)              
+                        return escolha
+                    else:
+                        break
                 elif lados == 4 and not(escolhaAnterior == "Esquerda"):
                     print("A porta atras de você se fecha.")
                     sleep(tempo)
@@ -435,7 +438,7 @@ def quantidadeDeEscolhas(player, sala, escolhaAnterior):
 nomePlayer = input("Insira um nome:\n")
 
 player1 = {
-    "nome": nomePlayer,
+    "Nome": nomePlayer,
     "forca": 0,
     "defesa": 0,
     "fuga": 0
