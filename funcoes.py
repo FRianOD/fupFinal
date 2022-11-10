@@ -1,8 +1,8 @@
 from random import randint
 from time import sleep
-def temItem():
+def temItem(inimigo):
     itemSN = randint(1,5)
-    if itemSN == 1 or itemSN == 2:
+    if itemSN == 1 or itemSN == 2 or inimigo != "Nenhum":
         return "S"
     else:
         return "N"
@@ -12,10 +12,10 @@ def temInimigo():
         return "S"
     else:
         return "N"
-def item():
+def item(inimigo):
     qualItem = randint(0,2)
     qualVariacao = randint(0,2)
-    if temItem() == "S" or temInimigo() == "S" :
+    if temItem(inimigo) == "S":
         if qualItem == 0:
             qualEspada = ["Espada de Madeira", "Espada de Ferro", "Dragon Slayer"]
             return qualEspada[qualVariacao]
@@ -81,15 +81,24 @@ def batalha(player, monstro):
             print(f"{player['Nome']} X {mob['Nome']}")
             sleep(tempo)
             player["defesa"] -= mob["forca"]
+            if player["defesa"] <= 0:
+                player["defesa"] = 0
+                print(f"{player['Nome']} defesa: {player['defesa']}")
+                sleep(tempo)
+                print(f"{mob['Nome']} defesa: {mob['defesa']}")
+                sleep(tempo)
+                return "GameOver"
             print(f"{player['Nome']} defesa: {player['defesa']}")
             sleep(tempo)
             mob["defesa"] -= player["forca"]
+            if mob["defesa"] <= 0:
+                mob["defesa"] = 0
+                print(f"{mob['Nome']} defesa: {mob['defesa']}")
+                sleep(tempo)
+                return "Vitoria"
             print(f"{mob['Nome']} defesa: {mob['defesa']}")
             sleep(tempo)
-            if player["defesa"] >= 0 and mob["defesa"] <= 0:
-                return "Vitoria"
-            elif mob["defesa"] >= 0 and player["defesa"] <= 0:
-                return "GameOver"
+            
     elif monstro == "Zumbi":
         mob ={
             "Nome": "Zumbi",
@@ -100,15 +109,23 @@ def batalha(player, monstro):
             print(f"{player['Nome']} X {mob['Nome']}")
             sleep(tempo)
             player["defesa"] -= mob["forca"]
+            if player["defesa"] <= 0:
+                player["defesa"] = 0
+                print(f"{player['Nome']} defesa: {player['defesa']}")
+                sleep(tempo)
+                print(f"{mob['Nome']} defesa: {mob['defesa']}")
+                sleep(tempo)
+                return "GameOver"
             print(f"{player['Nome']} defesa: {player['defesa']}")
             sleep(tempo)
             mob["defesa"] -= player["forca"]
+            if mob["defesa"] <= 0:
+                mob["defesa"] = 0
+                print(f"{mob['Nome']} defesa: {mob['defesa']}")
+                sleep(tempo)
+                return "Vitoria"
             print(f"{mob['Nome']} defesa: {mob['defesa']}")
             sleep(tempo)
-            if player["defesa"] >= 0 and mob["defesa"] <= 0:
-                return "Vitoria"
-            elif mob["defesa"] >= 0 and player["defesa"] <= 0:
-                return "GameOver"
     elif monstro == "Esqueleto":
         mob ={
             "Nome": "Esqueleto",
@@ -119,15 +136,23 @@ def batalha(player, monstro):
             print(f"{player['Nome']} X {mob['Nome']}")
             sleep(tempo)
             player["defesa"] -= mob["forca"]
+            if player["defesa"] <= 0:
+                player["defesa"] = 0
+                print(f"{player['Nome']} defesa: {player['defesa']}")
+                sleep(tempo)
+                print(f"{mob['Nome']} defesa: {mob['defesa']}")
+                sleep(tempo)
+                return "GameOver"
             print(f"{player['Nome']} defesa: {player['defesa']}")
             sleep(tempo)
             mob["defesa"] -= player["forca"]
+            if mob["defesa"] <= 0:
+                mob["defesa"] = 0
+                print(f"{mob['Nome']} defesa: {mob['defesa']}")
+                sleep(tempo)
+                return "Vitoria"
             print(f"{mob['Nome']} defesa: {mob['defesa']}")
             sleep(tempo)
-            if player["defesa"] >= 0 and mob["defesa"] <= 0:
-                return "Vitoria"
-            elif mob["defesa"] >= 0 and player["defesa"] <= 0:
-                return "GameOver"
     elif monstro == "Aranha":
         mob ={
             "Nome": "Aranha",
@@ -138,15 +163,23 @@ def batalha(player, monstro):
             print(f"{player['Nome']} X {mob['Nome']}")
             sleep(tempo)
             player["defesa"] -= mob["forca"]
+            if player["defesa"] <= 0:
+                player["defesa"] = 0
+                print(f"{player['Nome']} defesa: {player['defesa']}")
+                sleep(tempo)
+                print(f"{mob['Nome']} defesa: {mob['defesa']}")
+                sleep(tempo)
+                return "GameOver"
             print(f"{player['Nome']} defesa: {player['defesa']}")
             sleep(tempo)
             mob["defesa"] -= player["forca"]
+            if mob["defesa"] <= 0:
+                mob["defesa"] = 0
+                print(f"{mob['Nome']} defesa: {mob['defesa']}")
+                sleep(tempo)
+                return "Vitoria"
             print(f"{mob['Nome']} defesa: {mob['defesa']}")
             sleep(tempo)
-            if player["defesa"] >= 0 and mob["defesa"] <= 0:
-                return "Vitoria"
-            elif mob["defesa"] >= 0 and player["defesa"] <= 0:
-                return "GameOver"
 def fuga(player,monstro):
     mob = monstro
     if mob == "Slime":
@@ -207,7 +240,7 @@ def qualBoss():
     else:
         return bosses[escolhaDeBoss]
 def batalhaBoss(player,boss):
-    tempo = 1
+    tempo = 1.5
     if boss == "Locus":
         chefe = {
             "Nome": "Locus, Moonlight Knight",
@@ -240,20 +273,29 @@ def batalhaBoss(player,boss):
                 player["defesa"] = 0
                 return player["defesa"]
         if acao.lower() == "lutar":
+            print(f"{player['Nome']} X {chefe['Nome']}")
             while (player["defesa"] >= 0 or chefe["defesa"] >= 0):
-                print(f"{player['Nome']} X {chefe['Nome']}")
                 sleep(tempo)
                 player["defesa"] -= chefe["forca"]
-                print(f"{player['Nome']} defesa: {player['defesa']}")
-                chefe["defesa"] -= player["forca"]
-                print(f"{chefe['Nome']} defesa: {chefe['defesa']}")
-                if player["defesa"] >= 0 and chefe["defesa"] <= 0:
-                    return player["defesa"]
-                elif chefe["defesa"] >= 0 and player["defesa"] <= 0:
+                if player["defesa"] <= 0:
+                    player["defesa"] = 0
+                    print(f"{player['Nome']} defesa: {player['defesa']}")
+                    sleep(tempo)
+                    print(f"Locus defesa: {chefe['defesa']}")
+                    sleep(tempo)
                     print("Fraco")
                     sleep(tempo)
-                    player["defesa"] = 0
                     return player["defesa"]
+                print(f"{player['Nome']} defesa: {player['defesa']}")
+                sleep(tempo)
+                chefe["defesa"] -= player["forca"]
+                if chefe["defesa"] <= 0:
+                    chefe["defesa"] = 0
+                    print(f"Locus defesa: {chefe['defesa']}")
+                    sleep(tempo)
+                    return player["defesa"]
+                print(f"Locus defesa: {chefe['defesa']}")
+                sleep(tempo)
 
     elif boss == "Grunbeld":
         chefe = {
@@ -287,13 +329,13 @@ def batalhaBoss(player,boss):
                 player["defesa"] = 0
                 return player["defesa"]
         if acao.lower() == "lutar":
+            print(f"{player['Nome']} X {chefe['Nome']}")
             while (player["defesa"] >= 0 or chefe["defesa"] >= 0):
-                print(f"{player['Nome']} X {chefe['Nome']}")
                 sleep(tempo)
                 player["defesa"] -= chefe["forca"]
                 print(f"{player['Nome']} defesa: {player['defesa']}")
                 chefe["defesa"] -= player["forca"]
-                print(f"{chefe['Nome']} defesa: {chefe['defesa']}")
+                print(f"Grunbeld defesa: {chefe['defesa']}")
                 if player["defesa"] >= 0 and chefe["defesa"] <= 0:
                     return player["defesa"]
                 elif chefe["defesa"] >= 0 and player["defesa"] <= 0:
@@ -334,13 +376,13 @@ def batalhaBoss(player,boss):
                 player["defesa"] = 0
                 return player["defesa"]
         if acao.lower() == "lutar":
+            print(f"{player['Nome']} X {chefe['Nome']}")
             while (player["defesa"] >= 0 or chefe["defesa"] >= 0):
-                print(f"{player['Nome']} X {chefe['Nome']}")
                 sleep(tempo)
                 player["defesa"] -= chefe["forca"]
                 print(f"{player['Nome']} defesa: {player['defesa']}")
                 chefe["defesa"] -= player["forca"]
-                print(f"{chefe['Nome']} defesa: {chefe['defesa']}")
+                print(f"Zodd defesa: {chefe['defesa']}")
                 if player["defesa"] >= 0 and chefe["defesa"] <= 0:
                     return player["defesa"]
                 elif chefe["defesa"] >= 0 and player["defesa"] <= 0:

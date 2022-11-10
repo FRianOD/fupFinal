@@ -89,9 +89,9 @@ def quantidadeDeEscolhas(player, sala, escolhaAnterior):
             batalhaBoss(player, boss)
             if player["defesa"] > 0:
                 sleep(tempo)
-                print(f"Você derrotou o BOSS: {boss}!!!\n")
+                print(f"Você derrotou o BOSS: {boss}!!!")
                 sleep(tempo)
-                print(f"Parabens!!!\n")
+                print(f"Parabens!!!")
                 sleep(tempo)
                 print(f"FIM DE JOGO!!!")
                 return "Acabou"
@@ -106,9 +106,8 @@ def quantidadeDeEscolhas(player, sala, escolhaAnterior):
                     sleep(tempo)
                     print("Você pode apenas ir para Cima")
                     sleep(tempo)
-                    #salas = ["Cima"]
-                    qualItem = item()
                     qualInimigo = inimigo()
+                    qualItem = item(qualInimigo)
                     result = salas(player,qualInimigo,qualItem)
                     if result == "Vitoria":
                         print(player)
@@ -129,9 +128,8 @@ def quantidadeDeEscolhas(player, sala, escolhaAnterior):
                     sleep(tempo)
                     print("Você pode apenas ir para Baixo")
                     sleep(tempo)
-                    #salas = ["Baixo"]
-                    qualItem = item()
                     qualInimigo = inimigo()
+                    qualItem = item(qualInimigo)
                     result = salas(player,qualInimigo,qualItem)
                     if result == "Vitoria":
                         print(player)
@@ -152,9 +150,8 @@ def quantidadeDeEscolhas(player, sala, escolhaAnterior):
                     sleep(tempo)
                     print("Você pode apenas ir para Esquerda")
                     sleep(tempo)
-                    #salas = ["Esquerda"]
-                    qualItem = item()
                     qualInimigo = inimigo()
+                    qualItem = item(qualInimigo)
                     result = salas(player,qualInimigo,qualItem)
                     if result == "Vitoria":
                         print(player)
@@ -175,9 +172,8 @@ def quantidadeDeEscolhas(player, sala, escolhaAnterior):
                     sleep(tempo)
                     print("Você pode apenas ir para Direita")
                     sleep(tempo)
-                    #salas = ["Direita"]
-                    qualItem = item()
                     qualInimigo = inimigo()
+                    qualItem = item(qualInimigo)
                     result = salas(player,qualInimigo,qualItem)
                     if result == "Vitoria":
                         print(player)
@@ -201,9 +197,8 @@ def quantidadeDeEscolhas(player, sala, escolhaAnterior):
                     sleep(tempo)
                     print("Você pode ir para Cima ou Baixo")
                     sleep(tempo)
-                    #salas = ["Cima", "Baixo"]
-                    qualItem = item()
                     qualInimigo = inimigo()
+                    qualItem = item(qualInimigo)
                     result = salas(player,qualInimigo,qualItem)
                     if result == "Vitoria":
                         print(player)
@@ -225,9 +220,8 @@ def quantidadeDeEscolhas(player, sala, escolhaAnterior):
                     sleep(tempo)
                     print("Você pode ir para Cima ou Direita")
                     sleep(tempo)
-                    #salas = ["Cima", "Direita"]
-                    qualItem = item()
                     qualInimigo = inimigo()
+                    qualItem = item(qualInimigo)
                     result = salas(player,qualInimigo,qualItem)
                     if result == "Vitoria":
                         print(player)
@@ -249,9 +243,8 @@ def quantidadeDeEscolhas(player, sala, escolhaAnterior):
                     sleep(tempo)
                     print("Você pode ir para Cima ou Esquerda")
                     sleep(tempo)
-                    #salas = ["Cima", "Esquerda"]
-                    qualItem = item()
                     qualInimigo = inimigo()
+                    qualItem = item(qualInimigo)
                     result = salas(player,qualInimigo,qualItem)
                     if result == "Vitoria":
                         print(player)
@@ -273,9 +266,8 @@ def quantidadeDeEscolhas(player, sala, escolhaAnterior):
                     sleep(tempo)
                     print("Você pode ir para Baixo ou Direita")
                     sleep(tempo)
-                    #salas = ["Baixo", "Direita"]
-                    qualItem = item()
                     qualInimigo = inimigo()
+                    qualItem = item(qualInimigo)
                     result = salas(player,qualInimigo,qualItem)
                     if result == "Vitoria":
                         print(player)
@@ -297,9 +289,8 @@ def quantidadeDeEscolhas(player, sala, escolhaAnterior):
                     sleep(tempo)
                     print("Você pode ir para Baixo ou Esquerda")
                     sleep(tempo)
-                    #salas = ["Baixo", "Esquerda"]
-                    qualItem = item()
                     qualInimigo = inimigo()
+                    qualItem = item(qualInimigo)
                     result = salas(player,qualInimigo,qualItem)
                     if result == "Vitoria":
                         print(player)
@@ -321,9 +312,8 @@ def quantidadeDeEscolhas(player, sala, escolhaAnterior):
                     sleep(tempo)
                     print("Você pode ir para Esquerda ou Direita")
                     sleep(tempo)
-                    #salas = ["Esquerda", "Direita"]
-                    qualItem = item()
                     qualInimigo = inimigo()
+                    qualItem = item(qualInimigo)
                     result = salas(player,qualInimigo,qualItem)
                     if result == "Vitoria":
                         print(player)
@@ -348,8 +338,8 @@ def quantidadeDeEscolhas(player, sala, escolhaAnterior):
                     sleep(tempo)
                     print("Você pode ir para Cima, Baixo ou Esquerda")
                     sleep(tempo)
-                    qualItem = item()
                     qualInimigo = inimigo()
+                    qualItem = item(qualInimigo)
                     result = salas(player,qualInimigo,qualItem)
                     if result == "Vitoria":
                         print(player)
@@ -371,8 +361,8 @@ def quantidadeDeEscolhas(player, sala, escolhaAnterior):
                     sleep(tempo)
                     print("Você pode ir para Cima, Baixo ou Direita")
                     sleep(tempo)
-                    qualItem = item()
                     qualInimigo = inimigo()
+                    qualItem = item(qualInimigo)
                     result = salas(player,qualInimigo,qualItem)
                     if result == "Vitoria":
                         print(player)
@@ -394,8 +384,8 @@ def quantidadeDeEscolhas(player, sala, escolhaAnterior):
                     sleep(tempo)
                     print("Você pode ir para Esquerda, Direita ou Cima")
                     sleep(tempo)
-                    qualItem = item()
                     qualInimigo = inimigo()
+                    qualItem = item(qualInimigo)
                     result = salas(player,qualInimigo,qualItem)
                     if result == "Vitoria":
                         print(player)
@@ -417,8 +407,8 @@ def quantidadeDeEscolhas(player, sala, escolhaAnterior):
                     sleep(tempo)
                     print("Você pode ir para Esquerda, Direita ou Baixo")
                     sleep(tempo)
-                    qualItem = item()
                     qualInimigo = inimigo()
+                    qualItem = item(qualInimigo)
                     result = salas(player,qualInimigo,qualItem)
                     if result == "Vitoria":
                         print(player)
