@@ -123,7 +123,7 @@ def quantidadeDeEscolhas(player, sala, escolhaAnterior):
                             sleep(tempo)
                         return escolha
                     else:
-                        break
+                        return "Acabou"
                 elif lados == 2 and not(escolhaAnterior == "Cima"):
                     print("A porta atras de você se fecha.")
                     sleep(tempo)
@@ -146,7 +146,7 @@ def quantidadeDeEscolhas(player, sala, escolhaAnterior):
                             sleep(tempo)
                         return escolha
                     else:
-                        break
+                        return "Acabou"
                 elif lados == 3 and not(escolhaAnterior == "Direita"):
                     print("A porta atras de você se fecha.")
                     sleep(tempo)
@@ -169,7 +169,7 @@ def quantidadeDeEscolhas(player, sala, escolhaAnterior):
                             sleep(tempo)              
                         return escolha
                     else:
-                        break
+                        return "Acabou"
                 elif lados == 4 and not(escolhaAnterior == "Esquerda"):
                     print("A porta atras de você se fecha.")
                     sleep(tempo)
@@ -192,7 +192,7 @@ def quantidadeDeEscolhas(player, sala, escolhaAnterior):
                             sleep(tempo)
                         return escolha
                     else:
-                        break   
+                        return "Acabou"  
         elif quantEscolhas == 2:
             while True:
                 lados = randint(1,6)
@@ -219,7 +219,7 @@ def quantidadeDeEscolhas(player, sala, escolhaAnterior):
                             sleep(tempo)
                         return escolha
                     else:
-                        break
+                        return "Acabou"
                 elif lados == 2 and not(escolhaAnterior == "Baixo" or escolhaAnterior == "Esquerda"):
                     print("A porta atras de você se fecha.")
                     sleep(tempo)
@@ -243,7 +243,7 @@ def quantidadeDeEscolhas(player, sala, escolhaAnterior):
                             sleep(tempo)
                         return escolha
                     else:
-                        break
+                        return "Acabou"
                 elif lados == 3 and not(escolhaAnterior == "Baixo" or escolhaAnterior == "Direita"):
                     print("A porta atras de você se fecha.")
                     sleep(tempo)
@@ -267,7 +267,7 @@ def quantidadeDeEscolhas(player, sala, escolhaAnterior):
                             sleep(tempo)
                         return escolha
                     else:
-                        break
+                        return "Acabou"
                 elif lados == 4 and not(escolhaAnterior == "Cima" or escolhaAnterior == "Esquerda"):
                     print("A porta atras de você se fecha.")
                     sleep(tempo)
@@ -291,7 +291,7 @@ def quantidadeDeEscolhas(player, sala, escolhaAnterior):
                             sleep(tempo)
                         return escolha
                     else:
-                        break
+                        return "Acabou"
                 elif lados == 5 and not(escolhaAnterior == "Cima" or escolhaAnterior == "Direita"):
                     print("A porta atras de você se fecha.")
                     sleep(tempo)
@@ -315,7 +315,7 @@ def quantidadeDeEscolhas(player, sala, escolhaAnterior):
                             sleep(tempo)
                         return escolha
                     else:
-                        break
+                        return "Acabou"
                 elif lados == 6 and not(escolhaAnterior == "Esquerda" or escolhaAnterior == "Direita"):
                     print("A porta atras de você se fecha.")
                     sleep(tempo)
@@ -339,7 +339,7 @@ def quantidadeDeEscolhas(player, sala, escolhaAnterior):
                             sleep(tempo)
                         return escolha
                     else:
-                        break
+                        return "Acabou"
         elif quantEscolhas == 3:
             while True:
                 lados = randint(1,4)
@@ -365,7 +365,7 @@ def quantidadeDeEscolhas(player, sala, escolhaAnterior):
                             sleep(tempo)
                         return escolha
                     else:
-                        break
+                        return "Acabou"
                 elif lados == 2 and not(escolhaAnterior == "Cima" or escolhaAnterior == "Baixo" or escolhaAnterior == "Esquerda"):
                     print("A porta atras de você se fecha.")
                     sleep(tempo)
@@ -388,7 +388,7 @@ def quantidadeDeEscolhas(player, sala, escolhaAnterior):
                             sleep(tempo)
                         return escolha
                     else:
-                        break
+                        return "Acabou"
                 elif lados == 3 and not(escolhaAnterior == "Direita" or escolhaAnterior == "Esquerda" or escolhaAnterior == "Baixo"):
                     print("A porta atras de você se fecha.")
                     sleep(tempo)
@@ -411,7 +411,7 @@ def quantidadeDeEscolhas(player, sala, escolhaAnterior):
                             sleep(tempo)
                         return escolha
                     else:
-                        break
+                        return "Acabou"
                 elif lados == 4 and not(escolhaAnterior == "Direita" or escolhaAnterior == "Esquerda" or escolhaAnterior == "Cima"):
                     print("A porta atras de você se fecha.")
                     sleep(tempo)
@@ -434,7 +434,7 @@ def quantidadeDeEscolhas(player, sala, escolhaAnterior):
                             sleep(tempo)
                         return escolha
                     else:
-                        break
+                        return "Acabou"
 nomePlayer = input("Insira um nome:\n")
 
 player1 = {
