@@ -1,4 +1,4 @@
-from funcoes import item, inimigo, batalha, aplicandoItem, fuga, qualBoss, batalhaBoss,salas
+from funcoes import item, inimigo, qualBoss, batalhaBoss,salas
 from random import randint
 from time import sleep
 def addStatus(player):
@@ -313,7 +313,7 @@ def quantidadeDeEscolhas(player, sala, escolhaAnterior):
                         return escolha
                     else:
                         break
-                elif lados == 6 and not(escolhaAnterior == "Baixo" or escolhaAnterior == "Esquerda"):
+                elif lados == 6 and not(escolhaAnterior == "Esquerda" or escolhaAnterior == "Direita"):
                     print("A porta atras de você se fecha.")
                     sleep(tempo)
                     print("Você pode ir para Esquerda ou Direita")

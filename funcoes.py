@@ -70,57 +70,82 @@ def aplicandoItem(player,item):
         player["fuga"] += 3
         return player["fuga"]
 def batalha(player, monstro):
+    tempo = 1
     if monstro == "Slime":
-        slime ={
+        mob ={
             "nome": "Slime",
             "forca": 1,
             "defesa": 3
         }
-        while (player["defesa"] >= 0 or slime["defesa"] >= 0):
-            player["defesa"] -= slime["forca"]
-            slime["defesa"] -= player["forca"]
-            if player["defesa"] >= 0 and slime["defesa"] <= 0:
+        while (player["defesa"] >= 0 or mob["defesa"] >= 0):
+            print(f"{player['Nome']} X {mob['nome']}")
+            sleep(tempo)
+            player["defesa"] -= mob["forca"]
+            print(f"{player['Nome']} defesa: {player['defesa']}")
+            sleep(tempo)
+            mob["defesa"] -= player["forca"]
+            print(f"{mob['Nome']} defesa: {mob['defesa']}")
+            sleep(tempo)
+            if player["defesa"] >= 0 and mob["defesa"] <= 0:
                 return "Vitoria"
-            elif slime["defesa"] >= 0 and player["defesa"] <= 0:
+            elif mob["defesa"] >= 0 and player["defesa"] <= 0:
                 return "GameOver"
     elif monstro == "Zumbi":
-        zumbi ={
+        mob ={
             "nome": "Zumbi",
             "forca": 2,
             "defesa": 3
         }
-        while (player["defesa"] >= 0 or zumbi["defesa"] >= 0):
-            player["defesa"] -= zumbi["forca"]
-            zumbi["defesa"] -= player["forca"]
-            if player["defesa"] >= 0 and zumbi["defesa"] <= 0:
+        while (player["defesa"] >= 0 or mob["defesa"] >= 0):
+            print(f"{player['Nome']} X {mob['nome']}")
+            sleep(tempo)
+            player["defesa"] -= mob["forca"]
+            print(f"{player['Nome']} defesa: {player['defesa']}")
+            sleep(tempo)
+            mob["defesa"] -= player["forca"]
+            print(f"{mob['Nome']} defesa: {mob['defesa']}")
+            sleep(tempo)
+            if player["defesa"] >= 0 and mob["defesa"] <= 0:
                 return "Vitoria"
-            elif zumbi["defesa"] >= 0 and player["defesa"] <= 0:
+            elif mob["defesa"] >= 0 and player["defesa"] <= 0:
                 return "GameOver"
     elif monstro == "Esqueleto":
-        esqueleto ={
+        mob ={
             "nome": "Esqueleto",
             "forca": 3,
             "defesa": 3
         }
-        while (player["defesa"] >= 0 or esqueleto["defesa"] >= 0):
-            player["defesa"] -= esqueleto["forca"]
-            esqueleto["defesa"] -= player["forca"]
-            if player["defesa"] >= 0 and esqueleto["defesa"] <= 0:
+        while (player["defesa"] >= 0 or mob["defesa"] >= 0):
+            print(f"{player['Nome']} X {mob['nome']}")
+            sleep(tempo)
+            player["defesa"] -= mob["forca"]
+            print(f"{player['Nome']} defesa: {player['defesa']}")
+            sleep(tempo)
+            mob["defesa"] -= player["forca"]
+            print(f"{mob['Nome']} defesa: {mob['defesa']}")
+            sleep(tempo)
+            if player["defesa"] >= 0 and mob["defesa"] <= 0:
                 return "Vitoria"
-            elif esqueleto["defesa"] >= 0 and player["defesa"] <= 0:
+            elif mob["defesa"] >= 0 and player["defesa"] <= 0:
                 return "GameOver"
     elif monstro == "Aranha":
-        aranha ={
+        mob ={
             "nome": "Aranha",
             "forca": 4,
             "defesa": 4
         }
-        while (player["defesa"] >= 0 or aranha["defesa"] >= 0):
-            player["defesa"] -= aranha["forca"]
-            aranha["defesa"] -= player["forca"]
-            if player["defesa"] >= 0 and aranha["defesa"] <= 0:
+        while (player["defesa"] >= 0 or mob["defesa"] >= 0):
+            print(f"{player['Nome']} X {mob['nome']}")
+            sleep(tempo)
+            player["defesa"] -= mob["forca"]
+            print(f"{player['Nome']} defesa: {player['defesa']}")
+            sleep(tempo)
+            mob["defesa"] -= player["forca"]
+            print(f"{mob['Nome']} defesa: {mob['defesa']}")
+            sleep(tempo)
+            if player["defesa"] >= 0 and mob["defesa"] <= 0:
                 return "Vitoria"
-            elif aranha["defesa"] >= 0 and player["defesa"] <= 0:
+            elif mob["defesa"] >= 0 and player["defesa"] <= 0:
                 return "GameOver"
 def fuga(player,monstro):
     mob = monstro
