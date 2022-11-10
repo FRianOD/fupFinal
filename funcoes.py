@@ -122,6 +122,56 @@ def batalha(player, monstro):
                 return "Vitoria"
             elif aranha["defesa"] >= 0 and player["defesa"] <= 0:
                 return "GameOver"
+def fuga(player,monstro):
+    mob = monstro
+    if mob == "Slime":
+        slime = {
+            "fuga": 4
+        }
+        if player["fuga"] >= slime["fuga"]:
+            return "fugiu"
+        elif player["fuga"] <= slime["fuga"]:
+            fugir = randint(1,5)
+            if fugir <= 2:
+                return "fugiu"
+            else:
+                return "falha"
+    elif mob == "Zumbi":
+        zumbi = {
+            "fuga": 5
+        }
+        if player["fuga"] >= zumbi["fuga"]:
+            return "fugiu"
+        elif player["fuga"] <= zumbi["fuga"]:
+            fugir = randint(1,5)
+            if fugir <= 3:
+                return "fugiu"
+            else:
+                return "falha"
+    elif mob == "Esqueleto":
+        esqueleto = {
+            "fuga": 6
+        }
+        if player["fuga"] >= esqueleto["fuga"]:
+            return "fugiu"
+        elif player["fuga"] <= esqueleto["fuga"]:
+            fugir = randint(1,5)
+            if fugir <= 4:
+                return "fugiu"
+            else:
+                return "falha"
+    elif mob == "Aranha":
+        aranha = {
+            "fuga": 7
+        }
+        if player["fuga"] >= aranha["fuga"]:
+            return "fugiu"
+        elif player["fuga"] <= aranha["fuga"]:
+            fugir = randint(1,5)
+            if fugir <= 4:
+                return "fugiu"
+            else:
+                return "falha"  
 def qualBoss():
     escolhaDeBoss = randint(0,2)
     bosses = ["Locus", "Grunbeld","Zodd"]
@@ -246,3 +296,45 @@ def batalhaBoss(player,boss):
                     print("Fraco")
                     player["defesa"] = 0
                     return player["defesa"]
+def salas(player,inimigo,item): 
+    tempo = 1
+    resultado = ""
+    print(f"Monstro na sala: {inimigo}")
+    sleep(tempo)
+    print(f"Item na sala: {item}")
+    sleep(tempo)
+    while not(inimigo == "Nenhum" and item == "Nenhum"):
+        if inimigo != "Nenhum":
+            lutar = input("Lutar contra o Monstro ou tentar Fugir ?\n")   #Input esperado lutar/fugir
+            sleep(tempo)
+            while not(lutar.lower() != "lutar" or lutar.lower() != "fugir"):
+                lutar = input("Lutar ou Fugir\n")
+                sleep(tempo)
+            if lutar.lower() == "lutar":
+                resultado = batalha(player,inimigo)
+                inimigo = "Nenhum"
+            elif lutar.lower() == "fugir":
+                fugir = fuga(player, inimigo)
+                if fugir == "fugiu":
+                    print("Você conseguiu fugir")
+                    sleep(tempo)
+                    inimigo = "Nenhum"
+                elif fugir == "falha":
+                    print("Você não conseguiu fugir, Seu status de fuga caiu para 0")
+                    sleep(tempo)
+                    player["fuga"] = 0
+        if player["defesa"] <= 0 :
+            print("Você perdeu")
+            input()
+            return "Derrota"
+        if resultado == "Vitoria" or inimigo == "Nenhum":
+            if item != "Nenhum":
+                usar = input("Usar item: S/N\n")
+                sleep(tempo)
+                while not(usar.lower() == "s" or usar.lower() == "n"):
+                    usar = input("Usar item: S/N\n")
+                    sleep(tempo)
+                if usar.lower() == "s":
+                    aplicandoItem(player, item)
+                    item = "Nenhum"
+    return "Vitoria"

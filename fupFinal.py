@@ -1,61 +1,80 @@
-from funcoes import item, inimigo, batalha, aplicandoItem, qualBoss, batalhaBoss
+from funcoes import item, inimigo, batalha, aplicandoItem, fuga, qualBoss, batalhaBoss,salas
 from random import randint
 from time import sleep
 def addStatus(player):
     tempo = 0.5
     
     print(f"Quanto de cada <STATUS> você quer dar para {player['nome']}?")
+    sleep(tempo)
+    print("Forças recomendadas: 2, 5, 10")
+    sleep(tempo)
     player["forca"] = int(input("Quanto de Força ? \n"))
     sleep(tempo)
 
     while player["forca"] <= 0 or player["forca"] > 10:
-        print("Força muito alta ou INVALIDA. Novo valor:")
+        print("Força muito alta ou INVALIDA. Novo valor.")
+        sleep(tempo)
+        print("Força max: 10")
         sleep(tempo)
         player["forca"] = int(input("Quanto de Força ? \n"))
         sleep(tempo)
 
+    print("Defesas recomendadas: 5, 9, 14.")
+    sleep(tempo)
     player["defesa"] = int(input("Quanto de Defesa ? \n"))
     sleep(tempo)
 
     if player["forca"] <= 2:        
         while player["defesa"] <= 0 or player["defesa"] > 14:
-            print("Defesa muito alta ou INVALIDA. Novo valor:")
+            print("Defesa muito alta ou INVALIDA. Novo valor.")
+            sleep(tempo)
+            print("Defesa max: 14.")
             sleep(tempo)
             player["defesa"] = int(input("Quanto de Defesa ? \n"))
             sleep(tempo)
 
     elif player["forca"] <= 5:        
         while player["defesa"] <= 0 or player["defesa"] > 9:
-            print("Defesa muito alta ou INVALIDA. Novo valor:")
+            print("Defesa muito alta ou INVALIDA. Novo valor.")
+            sleep(tempo)
+            print("Defesa max: 9.")
             sleep(tempo)
             player["defesa"] = int(input("Quanto de Defesa ? \n"))
             sleep(tempo)
 
     elif player["forca"] > 5:
         while player["defesa"] <= 0 or player["defesa"] > 5:
-            print("Defesa muito alta ou INVALIDA. Novo valor:")
+            print("Defesa muito alta ou INVALIDA. Novo valor.")
+            sleep(tempo)
+            print("Defesa max: 5.")
             sleep(tempo)
             player["defesa"] = int(input("Quanto de Defesa ? \n"))
             sleep(tempo)
 
+    print("Fuga recomendada: 3.")
+    sleep(tempo)
     player["fuga"] = int(input("Quanto de Fuga ? \n"))
     sleep(tempo)
 
     while player["fuga"] < 0 or player["fuga"] > 3:
         print("Fuga muito alta ou INVALIDA. Novo valor:")
         sleep(tempo)
+        print("Fuga max: 3.")
+        sleep(tempo)
         player["fuga"] = int(input("Quanto de Fuga ? \n"))
         sleep(tempo)
 
 def quantidadeDeEscolhas(player, sala, escolhaAnterior):
     while True:
-        quantEscolhas = 5 #randint(1,5)
+        quantEscolhas = randint(1,7)
         tempo = 1
         if sala == 0:
-            print("Você esta na sala principal.\nVocê segue para unica porta aberta")
+            print("Você esta na sala principal.")
+            sleep(tempo)
+            print("Você segue para unica porta aberta")
             sleep(tempo)
             return "Nenhum"
-        elif quantEscolhas == 5 and sala >= 7:
+        elif quantEscolhas >= 4 and sala >= 7:
             print("A porta atras de você se fecha.")
             sleep(tempo)
             print("Não a nenhuma porta aberta.")
@@ -82,125 +101,61 @@ def quantidadeDeEscolhas(player, sala, escolhaAnterior):
         elif quantEscolhas == 1:
             while True:
                 lados = randint(1,4)
-                if lados == 1 and escolhaAnterior != "Baixo":
-                    print("A porta atras de você se fecha.\nVocê pode apenas ir para Cima")
+                if lados == 1 and not(escolhaAnterior == "Baixo"):
+                    print("A porta atras de você se fecha.")
                     sleep(tempo)
-                    salas = ["Cima"]
+                    print("Você pode apenas ir para Cima")
+                    sleep(tempo)
+                    #salas = ["Cima"]
                     qualItem = item()
                     qualInimigo = inimigo()
-                    resultado = ""
-                    print(f"Monstro na sala: {qualInimigo}")
-                    sleep(tempo)
-                    print(f"Item na sala: {qualItem}")
-                    sleep(tempo)
-                    while not(qualInimigo == "Nenhum" and qualItem == "Nenhum"):
-                        if qualInimigo != "Nenhum":
-                            lutar = input("Lutar contra o Monstro agora ?: S/N\n")
-                            sleep(tempo)
-                            if lutar.lower() == "s":
-                                resultado = batalha(player,qualInimigo)
-                                qualInimigo = "Nenhum"
-                            
-                        if player["defesa"] <= 0 :
-                            print("Você perdeu")
-                            input()
-                            return "Derrota"
-                        if resultado == "Vitoria" or qualInimigo == "Nenhum":
-                            if qualItem != "Nenhum":
-                                usar = input("Usar item: S/N\n")
-                                sleep(tempo)
-                                while not(usar.lower() == "s" or usar.lower() == "n"):
-                                    usar = input("Usar item: S/N\n")
-                                    sleep(tempo)
-                                if usar.lower() == "s":
-                                    aplicandoItem(player, qualItem)
-                                    qualItem = "Nenhum"
-                    print(player)
-                    sleep(tempo)
-                    print("Sala Limpa!")
-                    sleep(tempo)
-                    print("Você so pode ir para Cima")
-                    escolha = input("Qual lado você ira ?\n")
-                    sleep(tempo)
-                    while escolha != "Cima":
-                        escolha = input("Você so pode ir para Cima\n")
+                    result = salas(player,qualInimigo,qualItem)
+                    if result == "Vitoria":
+                        print(player)
                         sleep(tempo)
-                    return escolha
-                elif lados == 2 and escolhaAnterior != "Cima":
-                    print("A porta atras de você se fecha.\nVocê pode apenas ir para Baixo")
-                    sleep(tempo)
-                    salas = ["Baixo"]
-                    qualItem = item()
-                    qualInimigo = inimigo()
-                    resultado = ""
-                    print(f"Monstro na sala: {qualInimigo}")
-                    sleep(tempo)
-                    print(f"Item na sala: {qualItem}")
-                    sleep(tempo)
-                    while not(qualInimigo == "Nenhum" and qualItem == "Nenhum"):
-                        if qualInimigo != "Nenhum":
-                            lutar = input("Lutar contra o Monstro agora ?: S/N\n")
-                            sleep(tempo)
-                            if lutar.lower() == "s":
-                                resultado = batalha(player,qualInimigo)
-                                qualInimigo = "Nenhum"
-                        if player["defesa"] <= 0 :
-                            print("Você perdeu")
-                            input()
-                            return "Derrota"
-                        if resultado == "Vitoria" or qualInimigo == "Nenhum":
-                            if qualItem != "Nenhum":
-                                usar = input("Usar item: S/N\n")
-                                sleep(tempo)
-                                while not(usar.lower() == "s" or usar.lower() == "n"):
-                                    usar = input("Usar item: S/N\n")
-                                    sleep(tempo)
-                                if usar.lower() == "s":
-                                    aplicandoItem(player, qualItem)
-                                    qualItem = "Nenhum"
-                    print(player)
-                    sleep(tempo)
-                    print("Sala Limpa!")
-                    sleep(tempo)
-                    print("Você so pode ir para Baixo")
-                    escolha = input("Qual lado você ira ?\n")
-                    sleep(tempo)
-                    while escolha != "Baixo":
-                        escolha = input("Você so pode ir para Baixo\n")
+                        print("Sala Limpa!")
                         sleep(tempo)
-                    return escolha
-                elif lados == 3 and escolhaAnterior != "Direita":
-                    print("A porta atras de você se fecha.\nVocê pode apenas ir para Esquerda")
+                        print("Você so pode ir para Cima")
+                        escolha = input("Qual lado você ira ?\n")
+                        sleep(tempo)
+                        while escolha != "Cima":
+                            escolha = input("Você so pode ir para Cima\n")
+                            sleep(tempo)
+                        return escolha
+                    else:
+                        break
+                elif lados == 2 and not(escolhaAnterior == "Cima"):
+                    print("A porta atras de você se fecha.")
                     sleep(tempo)
-                    salas = ["Esquerda"]
+                    print("Você pode apenas ir para Baixo")
+                    sleep(tempo)
+                    #salas = ["Baixo"]
                     qualItem = item()
                     qualInimigo = inimigo()
-                    resultado = ""
-                    print(f"Monstro na sala: {qualInimigo}")
-                    sleep(tempo)
-                    print(f"Item na sala: {qualItem}")
-                    sleep(tempo)
-                    while not(qualInimigo == "Nenhum" and qualItem == "Nenhum"):
-                        if qualInimigo != "Nenhum":
-                            lutar = input("Lutar contra o Monstro agora ?: S/N\n")
+                    result = salas(player,qualInimigo,qualItem)
+                    if result == "Vitoria":
+                        print(player)
+                        sleep(tempo)
+                        print("Sala Limpa!")
+                        sleep(tempo)
+                        print("Você so pode ir para Baixo")
+                        escolha = input("Qual lado você ira ?\n")
+                        sleep(tempo)
+                        while escolha != "Baixo":
+                            escolha = input("Você so pode ir para Baixo\n")
                             sleep(tempo)
-                            if lutar.lower() == "s":
-                                resultado = batalha(player,qualInimigo)
-                                qualInimigo = "Nenhum"
-                        if player["defesa"] <= 0 :
-                            print("Você perdeu")
-                            input()
-                            return "Derrota"
-                        if resultado == "Vitoria" or qualInimigo == "Nenhum":
-                            if qualItem != "Nenhum":
-                                usar = input("Usar item: S/N\n")
-                                sleep(tempo)
-                                while not(usar.lower() == "s" or usar.lower() == "n"):
-                                    usar = input("Usar item: S/N\n")
-                                    sleep(tempo)
-                                if usar.lower() == "s":
-                                    aplicandoItem(player, qualItem)
-                                    qualItem = "Nenhum"
+                        return escolha
+                    else:
+                        break
+                elif lados == 3 and not(escolhaAnterior == "Direita"):
+                    print("A porta atras de você se fecha.")
+                    sleep(tempo)
+                    print("Você pode apenas ir para Esquerda")
+                    sleep(tempo)
+                    #salas = ["Esquerda"]
+                    qualItem = item()
+                    qualInimigo = inimigo()
+                    salas(player,qualInimigo,qualItem)
                     print(player)
                     sleep(tempo)
                     print("Sala Limpa!")
@@ -212,394 +167,282 @@ def quantidadeDeEscolhas(player, sala, escolhaAnterior):
                         escolha = input("Você so pode ir para Esquerda\n")  
                         sleep(tempo)              
                     return escolha
-                elif lados == 4 and escolhaAnterior != "Esquerda":
-                    print("A porta atras de você se fecha.\nVocê pode apenas ir para Direita")
+                elif lados == 4 and not(escolhaAnterior == "Esquerda"):
+                    print("A porta atras de você se fecha.")
                     sleep(tempo)
-                    salas = ["Direita"]
+                    print("Você pode apenas ir para Direita")
+                    sleep(tempo)
+                    #salas = ["Direita"]
                     qualItem = item()
                     qualInimigo = inimigo()
-                    resultado = ""
-                    print(f"Monstro na sala: {qualInimigo}")
-                    sleep(tempo)
-                    print(f"Item na sala: {qualItem}")
-                    sleep(tempo)
-                    while not(qualInimigo == "Nenhum" and qualItem == "Nenhum"):
-                        if qualInimigo != "Nenhum":
-                            lutar = input("Lutar contra o Monstro agora ?: S/N\n")
-                            sleep(tempo)
-                            if lutar.lower() == "s":
-                                resultado = batalha(player,qualInimigo)
-                                qualInimigo = "Nenhum"
-                        if player["defesa"] <= 0:
-                            print("Você perdeu")
-                            input()
-                            return "Derrota"
-                        if resultado == "Vitoria" or qualInimigo == "Nenhum":
-                            if qualItem != "Nenhum":
-                                usar = input("Usar item: S/N\n")
-                                sleep(tempo)
-                                while not(usar.lower() == "s" or usar.lower() == "n"):
-                                    usar = input("Usar item: S/N\n")
-                                    sleep(tempo)
-                                if usar.lower() == "s":
-                                    aplicandoItem(player, qualItem)
-                                    qualItem = "Nenhum"
-                    print(player)
-                    sleep(tempo)
-                    print("Sala Limpa!")
-                    sleep(tempo)
-                    print("Você so pode ir para Direita")
-                    escolha = input("Qual lado você ira ?\n")
-                    sleep(tempo)
-                    while escolha != "Direita":
-                        escolha = input("Você so pode ir para Direita\n")
+                    result = salas(player,qualInimigo,qualItem)
+                    if result == "Vitoria":
+                        print(player)
                         sleep(tempo)
-                    return escolha
-    """
+                        print("Sala Limpa!")
+                        sleep(tempo)
+                        print("Você so pode ir para Direita")
+                        escolha = input("Qual lado você ira ?\n")
+                        sleep(tempo)
+                        while escolha != "Direita":
+                            escolha = input("Você so pode ir para Direita\n")
+                            sleep(tempo)
+                        return escolha
+                    else:
+                        break   
         elif quantEscolhas == 2:
             while True:
                 lados = randint(1,6)
-                if lados == 1 and (escolhaAnterior != "Cima" or escolhaAnterior != "Baixo"):
-                    print("A porta atras de você se fecha.\nVocê pode ir para Cima ou Baixo")
-                    salas = ["Cima", "Baixo"]
+                if lados == 1 and not(escolhaAnterior == "Cima" or escolhaAnterior == "Baixo"):
+                    print("A porta atras de você se fecha.")
+                    sleep(tempo)
+                    print("Você pode ir para Cima ou Baixo")
+                    sleep(tempo)
+                    #salas = ["Cima", "Baixo"]
                     qualItem = item()
                     qualInimigo = inimigo()
-                    resultado = ""
-                    print(f"Monstro na sala: {qualInimigo}")
-                    print(f"Item na sala: {qualItem}")
-                    while not(qualInimigo == "Nenhum" and qualItem == "Nenhum"):
-                        if qualInimigo != "Nenhum":            
-                            lutar = input("Lutar contra o Monstro agora ?: S/N\n")
-                            if lutar.lower() == "s":
-                                resultado = batalha(player,qualInimigo)
-                                qualInimigo = "Nenhum"
-                        if player["defesa"] <= 0 :
-                            print("Você perdeu")
-                            input()
-                            return "Derrota"
-                        if resultado == "Vitoria" or qualInimigo == "Nenhum":
-                            if qualItem != "Nenhum":
-                                usar = input("Usar item: S/N\n")
-                                while not(usar.lower() == "s" or usar.lower() == "n"):
-                                    usar = input("Usar item: S/N\n")
-                                if usar.lower() == "s":
-                                    aplicandoItem(player, qualItem)
-                                    qualItem = "Nenhum"
-                    print(player)
-                    print("Sala Limpa!")
-                    print("Você so pode ir para Cima ou Baixo")
-                    escolha = input("Qual lado você ira ?\n")
-                    while not(escolha == "Cima" or escolha == "Baixo"):
-                        escolha = input("Você so pode ir para Cima ou Baixo\n")
-                    return escolha
-                        
-                elif lados == 2 and (escolhaAnterior != "Baixo" or escolhaAnterior != "Esquerda"):
-                    print("A porta atras de você se fecha.\nVocê pode ir para Cima ou Direita")
-                    salas = ["Cima", "Direita"]
+                    result = salas(player,qualInimigo,qualItem)
+                    if result == "Vitoria":
+                        print(player)
+                        sleep(tempo)
+                        print("Sala Limpa!")
+                        sleep(tempo)
+                        print("Você so pode ir para Cima ou Baixo")
+                        sleep(tempo)
+                        escolha = input("Qual lado você ira ?\n")
+                        sleep(tempo)
+                        while not(escolha == "Cima" or escolha == "Baixo"):
+                            escolha = input("Você so pode ir para Cima ou Baixo\n")
+                            sleep(tempo)
+                        return escolha
+                    else:
+                        break
+                elif lados == 2 and not(escolhaAnterior == "Baixo" or escolhaAnterior == "Esquerda"):
+                    print("A porta atras de você se fecha.")
+                    sleep(tempo)
+                    print("Você pode ir para Cima ou Direita")
+                    sleep(tempo)
+                    #salas = ["Cima", "Direita"]
                     qualItem = item()
                     qualInimigo = inimigo()
-                    resultado = ""
-                    print(f"Monstro na sala: {qualInimigo}")
-                    print(f"Item na sala: {qualItem}")
-                    while not(qualInimigo == "Nenhum" and qualItem == "Nenhum"):
-                        if qualInimigo != "Nenhum":            
-                            lutar = input("Lutar contra o Monstro agora ?: S/N\n")
-                            if lutar.lower() == "s":
-                                resultado = batalha(player,qualInimigo)
-                                qualInimigo = "Nenhum"
-                        if player["defesa"] <= 0 :
-                            print("Você perdeu")
-                            input()
-                            return "Derrota"
-                        if resultado == "Vitoria" or qualInimigo == "Nenhum":
-                            if qualItem != "Nenhum":
-                                usar = input("Usar item: S/N\n")
-                                while not(usar.lower() == "s" or usar.lower() == "n"):
-                                    usar = input("Usar item: S/N\n")
-                                if usar.lower() == "s":
-                                    aplicandoItem(player, qualItem)
-                                    qualItem = "Nenhum"
-                    print(player)
-                    print("Sala Limpa!")
-                    print("Você so pode ir para Cima ou Direita")
-                    escolha = input("Qual lado você ira ?\n")
-                    while not(escolha == "Cima" or escolha == "Direita"):
-                        escolha = input("Você so pode ir para Cima ou Direita\n")
-                    return escolha
-                elif lados == 3 and (escolhaAnterior != "Baixo" or escolhaAnterior != "Direita"):
-                    print("A porta atras de você se fecha.\nVocê pode ir para Cima ou Esquerda")
-                    salas = ["Cima", "Esquerda"]
+                    result = salas(player,qualInimigo,qualItem)
+                    if result == "Vitoria":
+                        print(player)
+                        sleep(tempo)
+                        print("Sala Limpa!")
+                        sleep(tempo)
+                        print("Você so pode ir para Cima ou Direita")
+                        sleep(tempo)
+                        escolha = input("Qual lado você ira ?\n")
+                        sleep(tempo)
+                        while not(escolha == "Cima" or escolha == "Direita"):
+                            escolha = input("Você so pode ir para Cima ou Direita\n")
+                            sleep(tempo)
+                        return escolha
+                    else:
+                        break
+                elif lados == 3 and not(escolhaAnterior == "Baixo" or escolhaAnterior == "Direita"):
+                    print("A porta atras de você se fecha.")
+                    sleep(tempo)
+                    print("Você pode ir para Cima ou Esquerda")
+                    sleep(tempo)
+                    #salas = ["Cima", "Esquerda"]
                     qualItem = item()
                     qualInimigo = inimigo()
-                    resultado = ""
-                    print(f"Monstro na sala: {qualInimigo}")
-                    print(f"Item na sala: {qualItem}")
-                    while not(qualInimigo == "Nenhum" and qualItem == "Nenhum"):
-                        if qualInimigo != "Nenhum":
-                            lutar = input("Lutar contra o Monstro agora ?: S/N\n")
-                            if lutar.lower() == "s":
-                                resultado = batalha(player,qualInimigo)
-                                qualInimigo = "Nenhum"
-                        if player["defesa"] <= 0 :
-                            print("Você perdeu")
-                            input()
-                            return "Derrota"
-                        if resultado == "Vitoria" or qualInimigo == "Nenhum":
-                            if qualItem != "Nenhum":
-                                usar = input("Usar item: S/N\n")
-                                while not(usar.lower() == "s" or usar.lower() == "n"):
-                                    usar = input("Usar item: S/N\n")
-                                if usar.lower() == "s":
-                                    aplicandoItem(player, qualItem)
-                                    qualItem = "Nenhum"
-                    print(player)
-                    print("Sala Limpa!")
-                    print("Você so pode ir para Cima ou Esquerda")
-                    escolha = input("Qual lado você ira ?\n")
-                    while not(escolha == "Cima" or escolha == "Esquerda"):
-                        escolha = input("Você so pode ir para Cima ou Esquerda\n")
-                    return escolha
-                elif lados == 4 and (escolhaAnterior != "Cima" or escolhaAnterior != "Esquerda"):
-                    print("A porta atras de você se fecha.\nVocê pode ir para Baixo ou Direita")
-                    salas = ["Baixo", "Direita"]
+                    result = salas(player,qualInimigo,qualItem)
+                    if result == "Vitoria":
+                        print(player)
+                        sleep(tempo)
+                        print("Sala Limpa!")
+                        sleep(tempo)
+                        print("Você so pode ir para Cima ou Esquerda")
+                        sleep(tempo)
+                        escolha = input("Qual lado você ira ?\n")
+                        sleep(tempo)
+                        while not(escolha == "Cima" or escolha == "Esquerda"):
+                            escolha = input("Você so pode ir para Cima ou Esquerda\n")
+                            sleep(tempo)
+                        return escolha
+                    else:
+                        break
+                elif lados == 4 and not(escolhaAnterior == "Cima" or escolhaAnterior == "Esquerda"):
+                    print("A porta atras de você se fecha.")
+                    sleep(tempo)
+                    print("Você pode ir para Baixo ou Direita")
+                    sleep(tempo)
+                    #salas = ["Baixo", "Direita"]
                     qualItem = item()
                     qualInimigo = inimigo()
-                    resultado = ""
-                    print(f"Monstro na sala: {qualInimigo}")
-                    print(f"Item na sala: {qualItem}")            
-                    while not(qualInimigo == "Nenhum" and qualItem == "Nenhum"):
-                        if qualInimigo != "Nenhum":
-                            lutar = input("Lutar contra o Monstro agora ?: S/N\n")
-                            if lutar.lower() == "s":
-                                resultado = batalha(player,qualInimigo)
-                                qualInimigo = "Nenhum"
-                        if player["defesa"] <= 0 :
-                            print("Você perdeu")
-                            input()
-                            return "Derrota"
-                        if resultado == "Vitoria" or qualInimigo == "Nenhum":
-                            if qualItem != "Nenhum":
-                                usar = input("Usar item: S/N\n")
-                                while not(usar.lower() == "s" or usar.lower() == "n"):
-                                    usar = input("Usar item: S/N\n")
-                                if usar.lower() == "s":
-                                    aplicandoItem(player, qualItem)
-                                    qualItem = "Nenhum"
-                    print(player)
-                    print("Sala Limpa!")
-                    print("Você so pode ir para Baixo ou Direita")
-                    escolha = input("Qual lado você ira ?\n")
-                    while not(escolha == "Baixo" or escolha == "Direita"):
-                        escolha = input("Você so pode ir para Baixo ou Direita\n")
-                    return escolha
-                elif lados == 5 and (escolhaAnterior != "Cima" or escolhaAnterior != "Direita"):
-                    print("A porta atras de você se fecha.\nVocê pode ir para Baixo ou Esquerda")
-                    salas = ["Baixo", "Esquerda"]
+                    result = salas(player,qualInimigo,qualItem)
+                    if result == "Vitoria":
+                        print(player)
+                        sleep(tempo)
+                        print("Sala Limpa!")
+                        sleep(tempo)
+                        print("Você so pode ir para Baixo ou Direita")
+                        sleep(tempo)
+                        escolha = input("Qual lado você ira ?\n")
+                        sleep(tempo)
+                        while not(escolha == "Baixo" or escolha == "Direita"):
+                            escolha = input("Você so pode ir para Baixo ou Direita\n")
+                            sleep(tempo)
+                        return escolha
+                    else:
+                        break
+                elif lados == 5 and not(escolhaAnterior == "Cima" or escolhaAnterior == "Direita"):
+                    print("A porta atras de você se fecha.")
+                    sleep(tempo)
+                    print("Você pode ir para Baixo ou Esquerda")
+                    sleep(tempo)
+                    #salas = ["Baixo", "Esquerda"]
                     qualItem = item()
                     qualInimigo = inimigo()
-                    resultado = ""
-                    print(f"Monstro na sala: {qualInimigo}")
-                    print(f"Item na sala: {qualItem}")
-                    while not(qualInimigo == "Nenhum" and qualItem == "Nenhum"):
-                        if qualInimigo != "Nenhum":            
-                            lutar = input("Lutar contra o Monstro agora ?: S/N\n")
-                            if lutar.lower() == "s":
-                                resultado = batalha(player,qualInimigo)
-                                qualInimigo = "Nenhum"
-                        if player["defesa"] <= 0 :
-                            print("Você perdeu")
-                            input()
-                            return "Derrota"
-                        if resultado == "Vitoria" or qualInimigo == "Nenhum":
-                            if qualItem != "Nenhum":
-                                usar = input("Usar item: S/N\n")
-                                while not(usar.lower() == "s" or usar.lower() == "n"):
-                                    usar = input("Usar item: S/N\n")
-                                if usar.lower() == "s":
-                                    aplicandoItem(player, qualItem)
-                                    qualItem = "Nenhum"
-                    print(player)
-                    print("Sala Limpa!")
-                    print("Você so pode ir para Baixo ou Esquerda")
-                    escolha = input("Qual lado você ira ?\n")
-                    while not(escolha == "Baixo" or escolha == "Esquerda"):
-                        escolha = input("Você so pode ir para Baixo ou Esquerda\n")
-                    return escolha
-                elif lados == 6 and (escolhaAnterior != "Baixo" or escolhaAnterior != "Esquerda"):
-                    print("A porta atras de você se fecha.\nVocê pode ir para Esquerda ou Direita")
-                    salas = ["Esquerda", "Direita"]
+                    result = salas(player,qualInimigo,qualItem)
+                    if result == "Vitoria":
+                        print(player)
+                        sleep(tempo)
+                        print("Sala Limpa!")
+                        sleep(tempo)
+                        print("Você so pode ir para Baixo ou Esquerda")
+                        sleep(tempo)
+                        escolha = input("Qual lado você ira ?\n")
+                        sleep(tempo)
+                        while not(escolha == "Baixo" or escolha == "Esquerda"):
+                            escolha = input("Você so pode ir para Baixo ou Esquerda\n")
+                            sleep(tempo)
+                        return escolha
+                    else:
+                        break
+                elif lados == 6 and not(escolhaAnterior == "Baixo" or escolhaAnterior == "Esquerda"):
+                    print("A porta atras de você se fecha.")
+                    sleep(tempo)
+                    print("Você pode ir para Esquerda ou Direita")
+                    sleep(tempo)
+                    #salas = ["Esquerda", "Direita"]
                     qualItem = item()
                     qualInimigo = inimigo()
-                    resultado = ""
-                    print(f"Monstro na sala: {qualInimigo}")
-                    print(f"Item na sala: {qualItem}")           
-                    while not(qualInimigo == "Nenhum" and qualItem == "Nenhum"):
-                        if qualInimigo != "Nenhum":            
-                            lutar = input("Lutar contra o Monstro agora ?: S/N\n")
-                            if lutar.lower() == "s":
-                                resultado = batalha(player,qualInimigo)
-                                qualInimigo = "Nenhum"
-                        if player["defesa"] <= 0 :
-                            print("Você perdeu")
-                            input()
-                            return "Derrota"
-                        if resultado == "Vitoria" or qualInimigo == "Nenhum":
-                            if qualItem != "Nenhum":
-                                usar = input("Usar item: S/N\n")
-                                while not(usar.lower() == "s" or usar.lower() == "n"):
-                                    usar = input("Usar item: S/N\n")
-                                if usar.lower() == "s":
-                                    aplicandoItem(player, qualItem)
-                                    qualItem = "Nenhum"
-                    print(player)
-                    print("Sala Limpa!")
-                    print("Você so pode ir para Esquerda ou Direita")
-                    escolha = input("Qual lado você ira ?\n")
-                    while not(escolha == "Esquerda" or escolha == "Direita"):
-                        escolha = input("Você so pode ir para Esquerda ou Direita\n")
-                    return escolha
+                    result = salas(player,qualInimigo,qualItem)
+                    if result == "Vitoria":
+                        print(player)
+                        sleep(tempo)
+                        print("Sala Limpa!")
+                        sleep(tempo)
+                        print("Você so pode ir para Esquerda ou Direita")
+                        sleep(tempo)
+                        escolha = input("Qual lado você ira ?\n")
+                        sleep(tempo)
+                        while not(escolha == "Esquerda" or escolha == "Direita"):
+                            escolha = input("Você so pode ir para Esquerda ou Direita\n")
+                            sleep(tempo)
+                        return escolha
+                    else:
+                        break
         elif quantEscolhas == 3:
             while True:
                 lados = randint(1,4)
-                if lados == 1 and (escolhaAnterior == "Cima" or escolhaAnterior == "Baixo" or escolhaAnterior == "Direita"):
-                    print("A porta atras de você se fecha.\nVocê pode ir para Cima, Baixo ou Esquerda")
+                if lados == 1 and not(escolhaAnterior == "Cima" or escolhaAnterior == "Baixo" or escolhaAnterior == "Direita"):
+                    print("A porta atras de você se fecha.")
+                    sleep(tempo)
+                    print("Você pode ir para Cima, Baixo ou Esquerda")
+                    sleep(tempo)
                     qualItem = item()
                     qualInimigo = inimigo()
-                    resultado = ""
-                    print(f"Monstro na sala: {qualInimigo}")
-                    print(f"Item na sala: {qualItem}")            
-                    while not(qualInimigo == "Nenhum" and qualItem == "Nenhum"):
-                        if qualInimigo != "Nenhum":            
-                            lutar = input("Lutar contra o Monstro agora ?: S/N\n")
-                            if lutar.lower() == "s":
-                                resultado = batalha(player,qualInimigo)
-                                qualInimigo = "Nenhum"
-                        if player["defesa"] <= 0 :
-                            print("Você perdeu")
-                            input()
-                            return "Derrota"
-                        if resultado == "Vitoria" or qualInimigo == "Nenhum":
-                            if qualItem != "Nenhum":
-                                usar = input("Usar item: S/N\n")
-                                while not(usar.lower() == "s" or usar.lower() == "n"):
-                                    usar = input("Usar item: S/N\n")
-                                if usar.lower() == "s":
-                                    aplicandoItem(player, qualItem)
-                                    qualItem = "Nenhum"
-                    print(player)
-                    print("Sala Limpa!")
-                    print("Você so pode ir para Cima, Baixo ou Esquerda")
-                    escolha = input("Qual lado você ira ?\n")
-                    while not(escolha == "Cima" or escolha == "Baixo" or escolha == "Esquerda"):
-                        escolha = input("Você so pode ir para Cima, Baixo ou Esquerda\n")
-                    return escolha
-                elif lados == 2 and (escolhaAnterior == "Cima" or escolhaAnterior == "Baixo" or escolhaAnterior == "Esquerda"):
-                    print("A porta atras de você se fecha.\nVocê pode ir para Cima, Baixo ou Direita")
+                    result = salas(player,qualInimigo,qualItem)
+                    if result == "Vitoria":
+                        print(player)
+                        sleep(tempo)
+                        print("Sala Limpa!")
+                        sleep(tempo)
+                        print("Você so pode ir para Cima, Baixo ou Esquerda")
+                        sleep(tempo)
+                        escolha = input("Qual lado você ira ?\n")
+                        sleep(tempo)
+                        while not(escolha == "Cima" or escolha == "Baixo" or escolha == "Esquerda"):
+                            escolha = input("Você so pode ir para Cima, Baixo ou Esquerda\n")
+                            sleep(tempo)
+                        return escolha
+                    else:
+                        break
+                elif lados == 2 and not(escolhaAnterior == "Cima" or escolhaAnterior == "Baixo" or escolhaAnterior == "Esquerda"):
+                    print("A porta atras de você se fecha.")
+                    sleep(tempo)
+                    print("Você pode ir para Cima, Baixo ou Direita")
+                    sleep(tempo)
                     qualItem = item()
                     qualInimigo = inimigo()
-                    resultado = ""
-                    print(f"Monstro na sala: {qualInimigo}")
-                    print(f"Item na sala: {qualItem}")            
-                    while not(qualInimigo == "Nenhum" and qualItem == "Nenhum"):
-                        if qualInimigo != "Nenhum":            
-                            lutar = input("Lutar contra o Monstro agora ?: S/N\n")
-                            if lutar.lower() == "s":
-                                resultado = batalha(player,qualInimigo)
-                                qualInimigo = "Nenhum"
-                        if player["defesa"] <= 0 :
-                            print("Você perdeu")
-                            input()
-                            return "Derrota"
-                        if resultado == "Vitoria" or qualInimigo == "Nenhum":
-                            if qualItem != "Nenhum":
-                                usar = input("Usar item: S/N\n")
-                                while not(usar.lower() == "s" or usar.lower() == "n"):
-                                    usar = input("Usar item: S/N\n")
-                                if usar.lower() == "s":
-                                    aplicandoItem(player, qualItem)
-                                    qualItem = "Nenhum"
-                    print(player)
-                    print("Sala Limpa!")
-                    print("Você so pode ir para Cima, Baixo ou Direita")
-                    escolha = input("Qual lado você ira ?\n")
-                    while not(escolha == "Cima" or escolha == "Baixo" or escolha == "Direita"):
-                        escolha = input("Você so pode ir para Cima, Baixo ou Direita\n")
-                    return escolha
-                elif lados == 3 and (escolhaAnterior == "Direita" or escolhaAnterior == "Esquerda" or escolhaAnterior == "Baixo"):
-                    print("A porta atras de você se fecha.\nVocê pode ir para Esquerda, Direita ou Cima")
+                    result = salas(player,qualInimigo,qualItem)
+                    if result == "Vitoria":
+                        print(player)
+                        sleep(tempo)
+                        print("Sala Limpa!")
+                        sleep(tempo)
+                        print("Você so pode ir para Cima, Baixo ou Direita")
+                        sleep(tempo)
+                        escolha = input("Qual lado você ira ?\n")
+                        sleep(tempo)
+                        while not(escolha == "Cima" or escolha == "Baixo" or escolha == "Direita"):
+                            escolha = input("Você so pode ir para Cima, Baixo ou Direita\n")
+                            sleep(tempo)
+                        return escolha
+                    else:
+                        break
+                elif lados == 3 and not(escolhaAnterior == "Direita" or escolhaAnterior == "Esquerda" or escolhaAnterior == "Baixo"):
+                    print("A porta atras de você se fecha.")
+                    sleep(tempo)
+                    print("Você pode ir para Esquerda, Direita ou Cima")
+                    sleep(tempo)
                     qualItem = item()
                     qualInimigo = inimigo()
-                    resultado = ""
-                    print(f"Monstro na sala: {qualInimigo}")
-                    print(f"Item na sala: {qualItem}")            
-                    while not(qualInimigo == "Nenhum" and qualItem == "Nenhum"):
-                        if qualInimigo != "Nenhum":            
-                            lutar = input("Lutar contra o Monstro agora ?: S/N\n")
-                            if lutar.lower() == "s":
-                                resultado = batalha(player,qualInimigo)
-                                qualInimigo = "Nenhum"
-                        if player["defesa"] <= 0 :
-                            print("Você perdeu")
-                            input()
-                            return "Derrota"
-                        if resultado == "Vitoria" or qualInimigo == "Nenhum":
-                            if qualItem != "Nenhum":
-                                usar = input("Usar item: S/N\n")
-                                while not(usar.lower() == "s" or usar.lower() == "n"):
-                                    usar = input("Usar item: S/N\n")
-                                if usar.lower() == "s":
-                                    aplicandoItem(player, qualItem)
-                                    qualItem = "Nenhum"
-                    print(player)
-                    print("Sala Limpa!")
-                    print("Você so pode ir para Esquerda, Direita ou Cima")
-                    escolha = input("Qual lado você ira ?\n")
-                    while not(escolha == "Direita" or escolha == "Esquerda" or escolha == "Cima"):
-                        escolha = input("Você so pode ir para Esquerda, Direita ou Cima\n")
-                    return escolha
-                elif lados == 4 and (escolhaAnterior == "Direita" or escolhaAnterior == "Esquerda" or escolhaAnterior == "Cima"):
-                    print("A porta atras de você se fecha.\nVocê pode ir para Esquerda, Direita ou Baixo")
+                    result = salas(player,qualInimigo,qualItem)
+                    if result == "Vitoria":
+                        print(player)
+                        sleep(tempo)
+                        print("Sala Limpa!")
+                        sleep(tempo)
+                        print("Você so pode ir para Esquerda, Direita ou Cima")
+                        sleep(tempo)
+                        escolha = input("Qual lado você ira ?\n")
+                        sleep(tempo)
+                        while not(escolha == "Direita" or escolha == "Esquerda" or escolha == "Cima"):
+                            escolha = input("Você so pode ir para Esquerda, Direita ou Cima\n")
+                            sleep(tempo)
+                        return escolha
+                    else:
+                        break
+                elif lados == 4 and not(escolhaAnterior == "Direita" or escolhaAnterior == "Esquerda" or escolhaAnterior == "Cima"):
+                    print("A porta atras de você se fecha.")
+                    sleep(tempo)
+                    print("Você pode ir para Esquerda, Direita ou Baixo")
+                    sleep(tempo)
                     qualItem = item()
                     qualInimigo = inimigo()
-                    resultado = ""
-                    print(f"Monstro na sala: {qualInimigo}")
-                    print(f"Item na sala: {qualItem}")            
-                    while not(qualInimigo == "Nenhum" and qualItem == "Nenhum"):
-                        if qualInimigo != "Nenhum":           
-                            lutar = input("Lutar contra o Monstro agora ?: S/N\n")
-                            if lutar.lower() == "s":
-                                resultado = batalha(player,qualInimigo)
-                                qualInimigo = "Nenhum"
-                        if player["defesa"] <= 0 :
-                            print("Você perdeu")
-                            input
-                            return "Derrota"
-                        if resultado == "Vitoria" or qualInimigo == "Nenhum":
-                            if qualItem != "Nenhum":
-                                usar = input("Usar item: S/N\n")
-                                while not(usar.lower() == "s" or usar.lower() == "n"):
-                                    usar = input("Usar item: S/N\n")
-                                if usar.lower() == "s":
-                                    aplicandoItem(player, qualItem)
-                                    qualItem = "Nenhum"
-                    print(player)
-                    print("Sala Limpa!")
-                    print("Você so pode ir para Esquerda, Direita ou Baixo")
-                    escolha = input("Qual lado você ira ?\n")
-                    while not(escolha == "Esquerda" or escolha == "Direita" or escolha == "Baixo"):
-                        escolha = input("Você so pode ir para Direita, Esquerda ou Baixo\n")
-                    return escolha
-    """
+                    result = salas(player,qualInimigo,qualItem)
+                    if result == "Vitoria":
+                        print(player)
+                        sleep(tempo)
+                        print("Sala Limpa!")
+                        sleep(tempo)
+                        print("Você so pode ir para Esquerda, Direita ou Baixo")
+                        sleep(tempo)
+                        escolha = input("Qual lado você ira ?\n")
+                        sleep(tempo)
+                        while not(escolha == "Esquerda" or escolha == "Direita" or escolha == "Baixo"):
+                            escolha = input("Você so pode ir para Direita, Esquerda ou Baixo\n")
+                            sleep(tempo)
+                        return escolha
+                    else:
+                        break
+nomePlayer = input("Insira um nome:\n")
+
 player1 = {
-    "nome": "jogador1",
-    "itens": [],
+    "nome": nomePlayer,
     "forca": 0,
     "defesa": 0,
     "fuga": 0
 }
 addStatus(player1)
 escolha = "Nenhum"
-contSala = 7
+contSala = 0
 while escolha == "Nenhum" or escolha == "Cima" or escolha == "Baixo" or escolha == "Esquerda" or escolha == "Direita":
     escolhaAnterior = escolha
     escolha = quantidadeDeEscolhas(player1, contSala, escolhaAnterior)
