@@ -13,7 +13,7 @@ def temInimigo():
     else:
         return "N"
 def item(inimigo):
-    qualItem = randint(0,2)
+    qualItem = randint(0,3)
     qualVariacao = randint(0,2)
     if temItem(inimigo) == "S":
         if qualItem == 0:
@@ -22,60 +22,90 @@ def item(inimigo):
         elif qualItem == 1:
             qualEscudo = ["Escudo de Madeira", "Escudo de Ferro", "Escudo Hylian"]
             return qualEscudo[qualVariacao]
-        else:
+        elif qualItem == 2:
             qualBota = ["Meia", "Bota de Couro", "Botas Espaciais"]
             return qualBota[qualVariacao]
+        elif qualItem == 3:
+            BO = ["Espada de Madeira Amaldiçoada","Escudo de Ferro Amaldiçoado","Meia Furada"]
+            return BO[qualVariacao]
+        elif qualItem == 4:
+            pass  #ITENS RUINS ??
     else:
         return "Nenhum"
-def inimigo():
+def inimigo(sala):
     qualInimigo = randint(0,3)
-    monstros = ["Slime", "Zumbi","Esqueleto","Aranha"]
     if temInimigo() == "S":
-        if qualInimigo == 0:
-            return monstros[qualInimigo]
-        elif qualInimigo == 1:
-            return monstros[qualInimigo]
-        elif qualInimigo == 2:
-            return monstros[qualInimigo]
-        else:
-            return monstros[qualInimigo]
+        if sala <= 7:
+            monstros = ["Slime", "Zumbi","Esqueleto","Aranha"]
+            if qualInimigo == 0:
+                return monstros[qualInimigo]
+            elif qualInimigo == 1:
+                return monstros[qualInimigo]
+            elif qualInimigo == 2:
+                return monstros[qualInimigo]
+            else:
+                return monstros[qualInimigo]
+        elif sala > 7:
+            monstros = ["Cavaleiro Negro", "Placeholder1","Placeholder2","Arquimago"]
+            if qualInimigo == 0:
+                return monstros[qualInimigo]
+            elif qualInimigo == 1:
+                return monstros[qualInimigo]
+            elif qualInimigo == 2:
+                return monstros[qualInimigo]
+            else:
+                return monstros[qualInimigo]
     else:
         return "Nenhum"
 def aplicandoItem(player,item):
     if item == "Espada de Madeira":
         player["forca"] += 1
-        return player["forca"]
+        
     elif item == "Espada de Ferro":
         player["forca"] += 2
-        return player["forca"]
+        
     elif item == "Dragon Slayer":
         player["forca"] += 3
-        return player["forca"]
+        
     elif item == "Escudo de Madeira":
         player["defesa"] += 2
-        return player["defesa"]
+        
     elif item == "Escudo de Ferro":
         player["defesa"] += 3
-        return player["defesa"]
+        
     elif item == "Escudo Hylian":
         player["defesa"] += 5
-        return player["defesa"]
+        
     elif item == "Meia":
         player["fuga"] += 1
-        return player["fuga"]
+        
     elif item == "Bota de Couro":
         player["fuga"] += 2
-        return player["fuga"]
+        
     elif item == "Botas Espaciais":
         player["fuga"] += 3
-        return player["fuga"]
+        
+    elif item == "Espada de Madeira Amaldiçoada":
+        player["forca"] += 3
+        player["defesa"] -= 1
+        player["fuga"] -= 1
+
+    elif item == "Escudo de Ferro Amaldiçoado":
+        player["defesa"] += 3
+        player["forca"] -= 1
+        player["fuga"] -= 1
+
+    elif item == "Meia Furada":
+        player["fuga"] += 4
+        player["forca"] -= 2
+        player["defesa"] -= 2   
 def batalha(player, monstro):
     tempo = 1
     if monstro == "Slime":
         mob ={
             "Nome": "Slime",
             "forca": 1,
-            "defesa": 3
+            "defesa": 2
         }
         while (player["defesa"] >= 0 or mob["defesa"] >= 0):
             print(f"{player['Nome']} X {mob['Nome']}")
@@ -97,8 +127,7 @@ def batalha(player, monstro):
                 sleep(tempo)
                 return "Vitoria"
             print(f"{mob['Nome']} defesa: {mob['defesa']}")
-            sleep(tempo)
-            
+            sleep(tempo)           
     elif monstro == "Zumbi":
         mob ={
             "Nome": "Zumbi",
@@ -156,9 +185,145 @@ def batalha(player, monstro):
     elif monstro == "Aranha":
         mob ={
             "Nome": "Aranha",
+            "forca": 3,
+            "defesa": 4
+        }
+        while (player["defesa"] >= 0 or mob["defesa"] >= 0):
+            print(f"{player['Nome']} X {mob['Nome']}")
+            sleep(tempo)
+            player["defesa"] -= mob["forca"]
+            if player["defesa"] <= 0:
+                player["defesa"] = 0
+                print(f"{player['Nome']} defesa: {player['defesa']}")
+                sleep(tempo)
+                print(f"{mob['Nome']} defesa: {mob['defesa']}")
+                sleep(tempo)
+                return "GameOver"
+            print(f"{player['Nome']} defesa: {player['defesa']}")
+            sleep(tempo)
+            mob["defesa"] -= player["forca"]
+            if mob["defesa"] <= 0:
+                mob["defesa"] = 0
+                print(f"{mob['Nome']} defesa: {mob['defesa']}")
+                sleep(tempo)
+                return "Vitoria"
+            print(f"{mob['Nome']} defesa: {mob['defesa']}")
+            sleep(tempo)
+    elif monstro == "Cavaleiro Negro":
+        mob ={
+            "Nome": "Espadachim Negro",
             "forca": 4,
             "defesa": 4
         }
+        sleep(tempo)
+        print(f"Nome: {mob['Nome']}")
+        sleep(tempo)
+        print(f"forca: {mob['forca']}")
+        sleep(tempo)
+        print(f"defesa: {mob['defesa']}")
+        sleep(tempo)
+        while (player["defesa"] >= 0 or mob["defesa"] >= 0):
+            print(f"{player['Nome']} X {mob['Nome']}")
+            sleep(tempo)
+            player["defesa"] -= mob["forca"]
+            if player["defesa"] <= 0:
+                player["defesa"] = 0
+                print(f"{player['Nome']} defesa: {player['defesa']}")
+                sleep(tempo)
+                print(f"{mob['Nome']} defesa: {mob['defesa']}")
+                sleep(tempo)
+                return "GameOver"
+            print(f"{player['Nome']} defesa: {player['defesa']}")
+            sleep(tempo)
+            mob["defesa"] -= player["forca"]
+            if mob["defesa"] <= 0:
+                mob["defesa"] = 0
+                print(f"{mob['Nome']} defesa: {mob['defesa']}")
+                sleep(tempo)
+                return "Vitoria"
+            print(f"{mob['Nome']} defesa: {mob['defesa']}")
+            sleep(tempo)
+    elif monstro == "Placeholder1":
+        mob ={
+            "Nome": "Placeholder1",
+            "forca": 3,
+            "defesa": 5
+        }
+        sleep(tempo)
+        print(f"Nome: {mob['Nome']}")
+        sleep(tempo)
+        print(f"forca: {mob['forca']}")
+        sleep(tempo)
+        print(f"defesa: {mob['defesa']}")
+        sleep(tempo)
+        while (player["defesa"] >= 0 or mob["defesa"] >= 0):
+            print(f"{player['Nome']} X {mob['Nome']}")
+            sleep(tempo)
+            player["defesa"] -= mob["forca"]
+            if player["defesa"] <= 0:
+                player["defesa"] = 0
+                print(f"{player['Nome']} defesa: {player['defesa']}")
+                sleep(tempo)
+                print(f"{mob['Nome']} defesa: {mob['defesa']}")
+                sleep(tempo)
+                return "GameOver"
+            print(f"{player['Nome']} defesa: {player['defesa']}")
+            sleep(tempo)
+            mob["defesa"] -= player["forca"]
+            if mob["defesa"] <= 0:
+                mob["defesa"] = 0
+                print(f"{mob['Nome']} defesa: {mob['defesa']}")
+                sleep(tempo)
+                return "Vitoria"
+            print(f"{mob['Nome']} defesa: {mob['defesa']}")
+            sleep(tempo)
+    elif monstro == "Placeholder2":
+        mob ={
+            "Nome": "Placeholder2",
+            "forca": 4,
+            "defesa": 5
+        }
+        sleep(tempo)
+        print(f"Nome: {mob['Nome']}")
+        sleep(tempo)
+        print(f"forca: {mob['forca']}")
+        sleep(tempo)
+        print(f"defesa: {mob['defesa']}")
+        sleep(tempo)
+        while (player["defesa"] >= 0 or mob["defesa"] >= 0):
+            print(f"{player['Nome']} X {mob['Nome']}")
+            sleep(tempo)
+            player["defesa"] -= mob["forca"]
+            if player["defesa"] <= 0:
+                player["defesa"] = 0
+                print(f"{player['Nome']} defesa: {player['defesa']}")
+                sleep(tempo)
+                print(f"{mob['Nome']} defesa: {mob['defesa']}")
+                sleep(tempo)
+                return "GameOver"
+            print(f"{player['Nome']} defesa: {player['defesa']}")
+            sleep(tempo)
+            mob["defesa"] -= player["forca"]
+            if mob["defesa"] <= 0:
+                mob["defesa"] = 0
+                print(f"{mob['Nome']} defesa: {mob['defesa']}")
+                sleep(tempo)
+                return "Vitoria"
+            print(f"{mob['Nome']} defesa: {mob['defesa']}")
+            sleep(tempo)
+    elif monstro == "Arquimago":
+        mob ={
+            "Nome": "Arquimago",
+            "forca": 6,
+            "defesa": 2
+        }
+        sleep(tempo)
+        print(f"Nome: {mob['Nome']}")
+        sleep(tempo)
+        print(f"forca: {mob['forca']}")
+        sleep(tempo)
+        print(f"defesa: {mob['defesa']}")
+        sleep(tempo)
         while (player["defesa"] >= 0 or mob["defesa"] >= 0):
             print(f"{player['Nome']} X {mob['Nome']}")
             sleep(tempo)
@@ -190,7 +355,7 @@ def fuga(player,monstro):
             return "fugiu"
         elif player["fuga"] <= slime["fuga"]:
             fugir = randint(1,5)
-            if fugir <= 2:
+            if fugir <= 4:
                 return "fugiu"
             else:
                 return "falha"
@@ -214,7 +379,7 @@ def fuga(player,monstro):
             return "fugiu"
         elif player["fuga"] <= esqueleto["fuga"]:
             fugir = randint(1,5)
-            if fugir <= 4:
+            if fugir <= 2:
                 return "fugiu"
             else:
                 return "falha"
@@ -226,10 +391,58 @@ def fuga(player,monstro):
             return "fugiu"
         elif player["fuga"] <= aranha["fuga"]:
             fugir = randint(1,5)
-            if fugir <= 4:
+            if fugir == 1:
                 return "fugiu"
             else:
                 return "falha"  
+    elif mob == "Cavaleiro Negro":
+        cavaleiroNegro = {
+            "fuga": 8
+        }
+        if player["fuga"] >= cavaleiroNegro["fuga"]:
+            return "fugiu"
+        elif player["fuga"] <= cavaleiroNegro["fuga"]:
+            fugir = randint(1,5)
+            if fugir >= 4:
+                return "fugiu"
+            else:
+                return "falha" 
+    elif mob == "Placeholder1":
+        placeholder1 = {
+            "fuga": 9
+        }
+        if player["fuga"] >= placeholder1["fuga"]:
+            return "fugiu"
+        elif player["fuga"] <= placeholder1["fuga"]:
+            fugir = randint(1,5)
+            if fugir >= 4:
+                return "fugiu"
+            else:
+                return "falha" 
+    elif mob == "Placeholder2":
+        placeholder2 = {
+            "fuga": 9
+        }
+        if player["fuga"] >= placeholder2["fuga"]:
+            return "fugiu"
+        elif player["fuga"] <= placeholder2["fuga"]:
+            fugir = randint(1,5)
+            if fugir >= 4:
+                return "fugiu"
+            else:
+                return "falha" 
+    elif mob == "Arquimago":
+        arquiMago = {
+            "fuga": 10
+        }
+        if player["fuga"] >= arquiMago["fuga"]:
+            return "fugiu"
+        elif player["fuga"] <= arquiMago["fuga"]:
+            fugir = randint(1,5)
+            if fugir >= 4:
+                return "fugiu"
+            else:
+                return "falha" 
 def qualBoss():
     escolhaDeBoss = randint(0,2)
     bosses = ["Locus", "Grunbeld","Zodd"]
@@ -430,5 +643,7 @@ def salas(player,inimigo,item):
                     sleep(tempo)
                 if usar.lower() == "s":
                     aplicandoItem(player, item)
+                    item = "Nenhum"
+                elif usar.lower() == "n":
                     item = "Nenhum"
     return "Vitoria"
