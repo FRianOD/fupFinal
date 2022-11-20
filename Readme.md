@@ -16,4 +16,4 @@ Listas;
 Dicionarios;
 Arquivos.
 
-Faltando apenas o conteudo de Matrix
+Faltando apenas o conteudo de Matriz
