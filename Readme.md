@@ -2,6 +2,8 @@ Universidade Federal do Ceara - Russas
 Cadeira - Fundamentos de Programação
 Nome - Francisco Rian de Oliveira Dutra
 
+!!!RODAR O ARQUIVO menu.py!!!
+
 Este é um projeto desenvolvido para avaliação da cadeira Fundamentos de Programação.
 O projeto visa testar todas as habilidades desenvolvidas durante a cadeira que foi dada em Python.
 O projeto possui:
