@@ -8,7 +8,8 @@ Arqueiro Esqueleto Gigante;Uma versao maior, mais poderosa, mas tambem mais lent
 Wheel Skeletons;Esses esqueletos usam uma grande roda com pontas de madeira, permitindo que rolem em sua direcao em alta velocidade, causando assim uma grande quantidade de dano se estiverem em seu caminho.
 Demonio asa de Morcego;Um demonio de cor clara relativamente pequeno brandindo uma Lanca do Demonio.
 Mimic;Mimics sao inimigos disfarcados de baus de tesouro, dai seu nome. Eles estao esperando pacientemente que um aventureiro credulo venha direto para suas garras gananciosas.
-Golem de Cristal;Enormes monstros cristalinos azuis que se movem bem devagar e atacam com grande força.
+Golem de Cristal;Enormes monstros cristalinos azuis que se movem bem devagar e atacam com grande forca.
+Sentinela;Enormes cavaleiros gigantes empunhando alabardas gigantes e escudos de torre.
 Black Knight;Outrora orgulhosos Cavaleiros de Prata de gwyn, o Lorde das chamas. Diz-se que esses cavaleiros foram queimados de preto em sua luta com os Demonios do Caos, e isso os levou a ter alta resistencia ao fogo.
 Demonio Corvo;Um inimigo alto e imponente com um corpo humano nu emaciado e uma cabeca e asas de corvo substituindo a cabeca e os bracos normais.
 Sif;Sif, o Grande Lobo Cinza companheiro de Sir Artorias, o Abysswalker. Depois que Artorias faleceu, o espirito de Sif se tornou o guardiao do tumulo de Artorias apos sua morte.

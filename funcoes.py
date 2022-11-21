@@ -51,7 +51,7 @@ def livro():
     itensDefesa = ["Escudo de Madeira", "Escudo de Randuin", "Alucard Mail", "Escudo Hylian", "Berserk Armor", "Armadura de Warmog", "Escudo de Ferro Amaldiçoado"]
     itensFuga = ["Meia", "Botas Galvanizadas de Aço", "Passos de Mercurio","Bota de Couro", "Botas Espaciais", "Meia Furada"]
     itensConsumiveis = ["Pedra de amolar quebrada","Maçã envenenada","Poção de Veneno","Poção de Fraqueza","Poção de Lentidão","Anel Amaldiçoado","Anel da Paralisia"]
-    monstros = ["Slime", "Rato", "Morto-vivo", "Esqueleto","Arqueiro Esqueleto", "Esqueleto Gigante","Arqueiro Esqueleto Gigante","Wheel Skeletons","Mimic","Demonio asa de Morcego","Golem de Cristal", "Black Knight", "Demonio Corvo", "Sif", "Arquimago"]
+    monstros = ["Slime", "Rato", "Morto-vivo", "Esqueleto","Arqueiro Esqueleto", "Esqueleto Gigante","Arqueiro Esqueleto Gigante","Wheel Skeletons","Mimic","Demonio asa de Morcego","Golem de Cristal", "Sentinela", "Black Knight", "Demonio Corvo", "Sif", "Arquimago"]
     while True:
         escolha = input("\nVocê quer olhar Itens, Monstros ou Sair?   (itens/monstros/sair)\n")
         while not(escolha.lower() == "itens" or escolha.lower() == "monstros" or escolha.lower() == "sair"):
@@ -195,9 +195,9 @@ def inimigo(sala):
     if sala <= 7: 
         qualInimigo = randint(0,9) #Se a sala for menor igual a 6 sorteia todos os monstros da lista
     else:
-        qualInimigo = randint(10,14) #Se a sala for maior que 6 so sorteia os 4 utimos monstros da lista
+        qualInimigo = randint(10,15) #Se a sala for maior que 6 so sorteia os 4 utimos monstros da lista
     if temInimigo() == "S":
-            monstros = ["Slime", "Rato", "Morto-vivo", "Esqueleto","Arqueiro Esqueleto", "Esqueleto Gigante","Arqueiro Esqueleto Gigante","Wheel Skeletons","Mimic","Demonio asa de Morcego","Golem de Cristal", "Black Knight", "Demonio Corvo", "Sif", "Arquimago"]
+            monstros = ["Slime", "Rato", "Morto-vivo", "Esqueleto","Arqueiro Esqueleto", "Esqueleto Gigante","Arqueiro Esqueleto Gigante","Wheel Skeletons","Mimic","Demonio asa de Morcego","Golem de Cristal", "Sentinelas", "Black Knight", "Demonio Corvo", "Sif", "Arquimago"]
             if qualInimigo == 0:
                 return monstros[qualInimigo]
             elif qualInimigo == 1:
@@ -221,6 +221,14 @@ def inimigo(sala):
             elif qualInimigo == 10:
                 return monstros[qualInimigo]
             elif qualInimigo == 11:
+                return monstros[qualInimigo]
+            elif qualInimigo == 12:
+                return monstros[qualInimigo]
+            elif qualInimigo == 13:
+                return monstros[qualInimigo]
+            elif qualInimigo == 14:
+                return monstros[qualInimigo]
+            elif qualInimigo == 15:
                 return monstros[qualInimigo]
             
     else:
@@ -370,27 +378,33 @@ def batalha(player, monstro):
         } 
     elif monstro == "Mimic":
         mob ={
-            "Nome": "Black Knight",
+            "Nome": "Mimic",
             "forca": 4500,
             "defesa": 27500
         }       
     elif monstro == "Demonio asa de Morcego":
         mob ={
-            "Nome": "Black Knight",
+            "Nome": "Demonio asa de Morcego",
             "forca": 4500,
             "defesa": 30000
         }       
     elif monstro == "Golem de Cristal":
         mob ={
-            "Nome": "Black Knight",
+            "Nome": "Golem de Cristal",
             "forca": 4750,
             "defesa": 35000
-        }       
+        }
+    elif monstro == "Sentinela":
+        mob ={
+            "Nome": "Sentinela",
+            "forca": 3375,
+            "defesa": 39000
+        }            
     elif monstro == "Black Knight":
         mob ={
             "Nome": "Black Knight",
             "forca": 3500,
-            "defesa": 40000
+            "defesa": 42530
         }          
     elif monstro == "Demonio Corvo":
         mob ={

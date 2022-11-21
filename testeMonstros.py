@@ -1,5 +1,5 @@
 from time import sleep
-monstros = ["Mimic","Demonio asa de Morcego","Golem de Cristal","Slime", "Rato", "Morto-vivo", "Esqueleto","Arqueiro Esqueleto", "Esqueleto Gigante","Arqueiro Esqueleto Gigante","Wheel Skeletons", "Black Knight", "Demonio Corvo", "Sif", "Arquimago"]
+monstros = ["Sentinela","Mimic","Demonio asa de Morcego","Golem de Cristal","Slime", "Rato", "Morto-vivo", "Esqueleto","Arqueiro Esqueleto", "Esqueleto Gigante","Arqueiro Esqueleto Gigante","Wheel Skeletons", "Black Knight", "Demonio Corvo", "Sif", "Arquimago"]
 tempo = 0.01
 arq = open("monstros.txt", "r")
 for i in arq:
