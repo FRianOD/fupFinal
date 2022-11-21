@@ -2,11 +2,12 @@ Slime;Seu movimento lento e velocidade de ataque os tornam mais um incomodo do q
 Rato;O rato tem um machado alojado em seu olho esquerdo, de um encontro anterior, e provavelmente cego.
 Morto-vivo;Os mortos-vivos sao vistos como uma maldicao ou uma doenca pelos vivos. Assim como voce e o proximo que vira.
 Esqueleto;Utiliza tecnicas de combate habeis e sao rapidos para punir atacantes imprudentes. Equipado com uma pequena espada curva e escudo.
-Esqueleto Gigante;TEXTO ESQUELETO GIGANTE
-Arqueiro Esqueleto Gigante;TEXTO ARQUEIRO ESQUELETO GIGANTE
-Wheel Skeletons;TEXTO RODA DE ESQUELETOS
+Arqueiro Esqueleto;Utiliza tecnicas de combate habeis e sao rapidos para punir atacantes imprudentes. Equipado com um pequeno arco.
+Esqueleto Gigante;Uma versao maior e muito mais poderosa, mas pesada de seu guerreiro esqueletico medio. Felizmente, eles nao sao tao rapidos quanto seus primos menores.
+Arqueiro Esqueleto Gigante;Uma versao maior, mais poderosa, mas tambem mais lenta do seu arqueiro esqueletico.
+Wheel Skeletons;Esses esqueletos usam uma grande roda com pontas de madeira, permitindo que rolem em sua direcao em alta velocidade, causando assim uma grande quantidade de dano se estiverem em seu caminho.
 Black Knight;Outrora orgulhosos Cavaleiros de Prata de gwyn, o Lorde das chamas. Diz-se que esses cavaleiros foram queimados de preto em sua luta com os Demonios do Caos, e isso os levou a ter alta resistencia ao fogo.
-Lagarto de Cristal;TEXTO LAGARTO
+Demonio Corvo;Um inimigo alto e imponente com um corpo humano nu emaciado e uma cabeca e asas de corvo substituindo a cabeca e os bracos normais.
 Sif;Sif, o Grande Lobo Cinza companheiro de Sir Artorias, o Abysswalker. Depois que Artorias faleceu, o espirito de Sif se tornou o guardiao do tumulo de Artorias apos sua morte.
 Arquimago;Arquimagos sao poderosos conjuradores dedicados ao estudo das artes arcanas. poderoso mas fragil.
 Izalith;A piromantica mais poderosa, foi uma das divindades que derrotaram os dragoes ha muito tempo atras, onde usou sua Lord Soul para criar grandes tempestades de fogo para derrotar os dragoes.

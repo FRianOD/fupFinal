@@ -51,7 +51,7 @@ def livro():
     itensDefesa = ["Escudo de Madeira", "Escudo de Randuin", "Alucard Mail", "Escudo Hylian", "Berserk Armor", "Armadura de Warmog", "Escudo de Ferro Amaldiçoado"]
     itensFuga = ["Meia", "Botas Galvanizadas de Aço", "Passos de Mercurio","Bota de Couro", "Botas Espaciais", "Meia Furada"]
     itensConsumiveis = ["Pedra de amolar quebrada","Maçã envenenada","Poção de Veneno","Poção de Fraqueza","Poção de Lentidão","Anel Amaldiçoado","Anel da Paralisia"]
-    monstros = ["Slime", "Rato", "Morto-vivo", "Esqueleto", "Aranha", "Black Knight", "Lagarto de Cristal", "Sif", "Arquimago"]
+    monstros = ["Slime", "Rato", "Morto-vivo", "Esqueleto","Arqueiro Esqueleto", "Esqueleto Gigante","Arqueiro Esqueleto Gigante","Wheel Skeletons", "Black Knight", "Demonio Corvo", "Sif", "Arquimago"]
     while True:
         escolha = input("\nVocê quer olhar Itens, Monstros ou Sair?   (itens/monstros/sair)\n")
         while not(escolha.lower() == "itens" or escolha.lower() == "monstros" or escolha.lower() == "sair"):
@@ -197,7 +197,7 @@ def inimigo(sala):
     else:
         qualInimigo = randint(7,10) #Se a sala for maior que 6 so sorteia os 4 utimos monstros da lista
     if temInimigo() == "S":
-            monstros = ["Slime", "Rato", "Morto-vivo", "Esqueleto", "Esqueleto Gigante","Arqueiro Esqueleto Gigante","Wheel Skeletons", "Black Knight", "Lagarto de Cristal", "Sif", "Arquimago"]
+            monstros = ["Slime", "Rato", "Morto-vivo", "Esqueleto","Arqueiro Esqueleto", "Esqueleto Gigante","Arqueiro Esqueleto Gigante","Wheel Skeletons", "Black Knight", "Demonio Corvo", "Sif", "Arquimago"]
             if qualInimigo == 0:
                 return monstros[qualInimigo]
             elif qualInimigo == 1:
@@ -219,6 +219,8 @@ def inimigo(sala):
             elif qualInimigo == 9:
                 return monstros[qualInimigo]
             elif qualInimigo == 10:
+                return monstros[qualInimigo]
+            elif qualInimigo == 11:
                 return monstros[qualInimigo]
             
     else:
@@ -341,7 +343,13 @@ def batalha(player, monstro):
             "Nome": "Esqueleto",
             "forca": 2750,
             "defesa": 20000
-        }          
+        }       
+    elif monstro == "Arqueiro Esqueleto":
+        mob ={
+            "Nome": "Arqueiro Esqueleto",
+            "forca": 2750,
+            "defesa": 20000
+        }             
     elif monstro == "Esqueleto Gigante":
         mob ={
             "Nome": "Esqueleto Gigante",
@@ -366,9 +374,9 @@ def batalha(player, monstro):
             "forca": 3500,
             "defesa": 35000
         }          
-    elif monstro == "Lagarto de Cristal":
+    elif monstro == "Demonio Corvo":
         mob ={
-            "Nome": "Lagarto de Cristal",
+            "Nome": "Demonio Corvo",
             "forca": 2900,
             "defesa": 32000
         }     
@@ -735,55 +743,65 @@ def detalhes(monstro):
     input()
     arq.close()
 def fogueira(player,sala):
-    d20 = randint(0,20)
-    if d20 <= 5:
-        print("Você limpou a sala e avistou um braseiro jogado no chão")
-        verStatus = input("Ver Status no braseiro? (S/N)")
-        while not(verStatus.lower() == "s" or verStatus.lower() == "n"):
-            sentar = input("Ver Status no braseiro? (S/N)")
-        if verStatus.lower() == "s":
-            mostrarStatus(player,sala)
-        return
-    elif d20 > 5 and d20 <= 15:
-        sentar = input("Você limpou a sala e avistou uma fogueira com um braseiro ao lado, sentar ? (S/N)")
-        while not(sentar.lower() == "s" or sentar.lower() == "n"):
-            sentar = input("Você limpou a sala e avistou uma fogueira com um braseiro ao lado, sentar ? (S/N)")
-        if sentar.lower() == "s":
-            player["forca"] += 200
-            player["defesa"] += 1200
-            player["fuga"] += 1
+    d5 = randint(1,5)
+    if d5 <= 3:
+        d20 = randint(0,20)
+        if d20 <= 5:
+            print("Você limpou a sala, você avistou um braseiro jogado no chão")
             verStatus = input("Ver Status no braseiro? (S/N)")
             while not(verStatus.lower() == "s" or verStatus.lower() == "n"):
                 sentar = input("Ver Status no braseiro? (S/N)")
             if verStatus.lower() == "s":
                 mostrarStatus(player,sala)
-        if sentar.lower() == "n":
-            verStatus = input("Ver Status no braseiro? (S/N)")
-            while not(verStatus.lower() == "s" or verStatus.lower() == "n"):
-                sentar = input("Ver Status no braseiro? (S/N)")
-            if verStatus.lower() == "s":
-                mostrarStatus(player,sala)
-        return
-    elif d20 > 15:
-        sentar = input("Você limpou a sala e avistou uma fogueira sagrada com um braseiro ao lado, sentar ? (S/N)")
-        while not(sentar.lower() == "s" or sentar.lower() == "n"):
-            sentar = input("Você limpou a sala e avistou uma fogueira sagrada com um braseiro ao lado, sentar ? (S/N)")
-        if sentar.lower() == "s":
-            player["forca"] += 600
-            player["defesa"] += 3600
-            player["fuga"] += 2
-            verStatus = input("Ver Status no braseiro? (S/N)")
-            while not(verStatus.lower() == "s" or verStatus.lower() == "n"):
-                sentar = input("Ver Status no braseiro? (S/N)")
-            if verStatus.lower() == "s":
-                mostrarStatus(player,sala)
-        if sentar.lower() == "n":
-            verStatus = input("Ver Status no braseiro? (S/N)")
-            while not(verStatus.lower() == "s" or verStatus.lower() == "n"):
-                sentar = input("Ver Status no braseiro? (S/N)")
-            if verStatus.lower() == "s":
-                mostrarStatus(player,sala)
-        return
+            return
+        elif d20 > 5 and d20 <= 15:
+            sentar = input("Você limpou a sala, você avistou uma fogueira com um braseiro ao lado, sentar ? (S/N)")
+            while not(sentar.lower() == "s" or sentar.lower() == "n"):
+                sentar = input("Você limpou a sala, você avistou uma fogueira com um braseiro ao lado, sentar ? (S/N)")
+            if sentar.lower() == "s":
+                player["forca"] += 200
+                player["defesa"] += 1200
+                player["fuga"] += 1
+                verStatus = input("Ver Status no braseiro? (S/N)")
+                while not(verStatus.lower() == "s" or verStatus.lower() == "n"):
+                    sentar = input("Ver Status no braseiro? (S/N)")
+                if verStatus.lower() == "s":
+                    mostrarStatus(player,sala)
+            if sentar.lower() == "n":
+                verStatus = input("Ver Status no braseiro? (S/N)")
+                while not(verStatus.lower() == "s" or verStatus.lower() == "n"):
+                    sentar = input("Ver Status no braseiro? (S/N)")
+                if verStatus.lower() == "s":
+                    mostrarStatus(player,sala)
+            return
+        elif d20 > 15:
+            sentar = input("Você limpou a sala, você avistou uma fogueira sagrada com um braseiro ao lado, sentar ? (S/N)")
+            while not(sentar.lower() == "s" or sentar.lower() == "n"):
+                sentar = input("Você limpou a sala, você avistou uma fogueira sagrada com um braseiro ao lado, sentar ? (S/N)")
+            if sentar.lower() == "s":
+                player["forca"] += 600
+                player["defesa"] += 3600
+                player["fuga"] += 2
+                verStatus = input("Ver Status no braseiro? (S/N)")
+                while not(verStatus.lower() == "s" or verStatus.lower() == "n"):
+                    sentar = input("Ver Status no braseiro? (S/N)")
+                if verStatus.lower() == "s":
+                    mostrarStatus(player,sala)
+            if sentar.lower() == "n":
+                verStatus = input("Ver Status no braseiro? (S/N)")
+                while not(verStatus.lower() == "s" or verStatus.lower() == "n"):
+                    sentar = input("Ver Status no braseiro? (S/N)")
+                if verStatus.lower() == "s":
+                    mostrarStatus(player,sala)
+            return
+    elif d5 > 3:
+        d20 = randint(1,20)
+        if d20 <= 13:
+            print("A sala esta limpa apenas a(s) porta(s) espera você")
+        if d20 > 13 and d20 <= 18:
+            print("FOGUEIRA AMALDIÇOADA")
+        else:
+            print("Fogueira Fudida")
 def salas(player,inimigo,item):
     #Cria as coisas que tem em toda sala como: Inimigo, Item, Batalha, etc... 
     tempo = 1
