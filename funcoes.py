@@ -744,20 +744,20 @@ def detalhes(monstro):
     arq.close()
 def fogueira(player,sala):
     d5 = randint(1,5)
-    if d5 <= 3:
+    if d5 <= 4:
         d20 = randint(0,20)
         if d20 <= 5:
-            print("Você limpou a sala, você avistou um braseiro jogado no chão")
-            verStatus = input("Ver Status no braseiro? (S/N)")
+            print("Você limpou a sala e avistou um braseiro jogado no chão")
+            verStatus = input("Pegar braseiro e ver Status ? (S/N)")
             while not(verStatus.lower() == "s" or verStatus.lower() == "n"):
-                sentar = input("Ver Status no braseiro? (S/N)")
+                sentar = input("Pegar braseiro e ver Status ? (S/N)")
             if verStatus.lower() == "s":
                 mostrarStatus(player,sala)
             return
         elif d20 > 5 and d20 <= 15:
-            sentar = input("Você limpou a sala, você avistou uma fogueira com um braseiro ao lado, sentar ? (S/N)")
+            sentar = input("Você limpou a sala e avistou uma fogueira com um braseiro ao lado, sentar ? (S/N)")
             while not(sentar.lower() == "s" or sentar.lower() == "n"):
-                sentar = input("Você limpou a sala, você avistou uma fogueira com um braseiro ao lado, sentar ? (S/N)")
+                sentar = input("Você limpou a sala e avistou uma fogueira com um braseiro ao lado, sentar ? (S/N)")
             if sentar.lower() == "s":
                 player["forca"] += 200
                 player["defesa"] += 1200
@@ -768,16 +768,16 @@ def fogueira(player,sala):
                 if verStatus.lower() == "s":
                     mostrarStatus(player,sala)
             if sentar.lower() == "n":
-                verStatus = input("Ver Status no braseiro? (S/N)")
+                verStatus = input("Pegar braseiro e ver Status ? (S/N)")
                 while not(verStatus.lower() == "s" or verStatus.lower() == "n"):
-                    sentar = input("Ver Status no braseiro? (S/N)")
+                    sentar = input("Pegar braseiro e ver Status ? (S/N)")
                 if verStatus.lower() == "s":
                     mostrarStatus(player,sala)
             return
         elif d20 > 15:
-            sentar = input("Você limpou a sala, você avistou uma fogueira sagrada com um braseiro ao lado, sentar ? (S/N)")
+            sentar = input("Você limpou a sala e avistou uma fogueira sagrada com um braseiro ao lado, sentar ? (S/N)")
             while not(sentar.lower() == "s" or sentar.lower() == "n"):
-                sentar = input("Você limpou a sala, você avistou uma fogueira sagrada com um braseiro ao lado, sentar ? (S/N)")
+                sentar = input("Você limpou a sala e avistou uma fogueira sagrada com um braseiro ao lado, sentar ? (S/N)")
             if sentar.lower() == "s":
                 player["forca"] += 600
                 player["defesa"] += 3600
@@ -788,20 +788,56 @@ def fogueira(player,sala):
                 if verStatus.lower() == "s":
                     mostrarStatus(player,sala)
             if sentar.lower() == "n":
+                verStatus = input("Pegar braseiro e ver Status ? (S/N)")
+                while not(verStatus.lower() == "s" or verStatus.lower() == "n"):
+                    sentar = input("Pegar braseiro e ver Status ? (S/N)")
+                if verStatus.lower() == "s":
+                    mostrarStatus(player,sala)
+            return
+    elif d5 > 4:
+        d20 = randint(1,20)
+        if d20 <= 13:
+            print("A sala esta limpa apenas a(s) porta(s) espera você")
+            return
+        if d20 > 13 and d20 <= 18:
+            sentar = input("Você limpou a sala e avistou uma fogueira, parece aver algo de errado com ela, a um braseiro ao lado, sentar ? (S/N)")
+            while not(sentar.lower() == "s" or sentar.lower() == "n"):
+                sentar = input("Você limpou a sala e avistou uma fogueira, parece aver algo de errado com ela, a um braseiro ao lado, sentar ? (S/N)")
+            if sentar.lower() == "s":
+                player["forca"] -= 250
+                player["defesa"] -= 1600
+                player["fuga"] -= 1
                 verStatus = input("Ver Status no braseiro? (S/N)")
                 while not(verStatus.lower() == "s" or verStatus.lower() == "n"):
                     sentar = input("Ver Status no braseiro? (S/N)")
                 if verStatus.lower() == "s":
                     mostrarStatus(player,sala)
+            if sentar.lower() == "n":
+                verStatus = input("Pegar braseiro e ver Status ? (S/N)")
+                while not(verStatus.lower() == "s" or verStatus.lower() == "n"):
+                    sentar = input("Pegar braseiro e ver Status ? (S/N)")
+                if verStatus.lower() == "s":
+                    mostrarStatus(player,sala)
             return
-    elif d5 > 3:
-        d20 = randint(1,20)
-        if d20 <= 13:
-            print("A sala esta limpa apenas a(s) porta(s) espera você")
-        if d20 > 13 and d20 <= 18:
-            print("FOGUEIRA AMALDIÇOADA")
         else:
-            print("Fogueira Fudida")
+            sentar = input("Você limpou a sala e avistou uma fogueira amaldiçoada, a um braseiro ao lado, pode não ser bom sentar, sentar ? (S/N)")
+            while not(sentar.lower() == "s" or sentar.lower() == "n"):
+                sentar = input("Você limpou a sala e avistou uma fogueira amaldiçoada, a um braseiro ao lado, pode não ser bom sentar, sentar ? (S/N)")
+            if sentar.lower() == "s":
+                player["forca"] -= 750
+                player["defesa"] -= 4400
+                player["fuga"] -= 3
+                verStatus = input("Ver Status no braseiro? (S/N)")
+                while not(verStatus.lower() == "s" or verStatus.lower() == "n"):
+                    sentar = input("Ver Status no braseiro? (S/N)")
+                if verStatus.lower() == "s":
+                    mostrarStatus(player,sala)
+            if sentar.lower() == "n":
+                verStatus = input("Pegar braseiro e ver Status ? (S/N)")
+                while not(verStatus.lower() == "s" or verStatus.lower() == "n"):
+                    sentar = input("Pegar braseiro e ver Status ? (S/N)")
+                if verStatus.lower() == "s":
+                    mostrarStatus(player,sala)
 def salas(player,inimigo,item):
     #Cria as coisas que tem em toda sala como: Inimigo, Item, Batalha, etc... 
     tempo = 1
