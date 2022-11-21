@@ -51,7 +51,7 @@ def livro():
     itensDefesa = ["Escudo de Madeira", "Escudo de Randuin", "Alucard Mail", "Escudo Hylian", "Berserk Armor", "Armadura de Warmog", "Escudo de Ferro Amaldiçoado"]
     itensFuga = ["Meia", "Botas Galvanizadas de Aço", "Passos de Mercurio","Bota de Couro", "Botas Espaciais", "Meia Furada"]
     itensConsumiveis = ["Pedra de amolar quebrada","Maçã envenenada","Poção de Veneno","Poção de Fraqueza","Poção de Lentidão","Anel Amaldiçoado","Anel da Paralisia"]
-    monstros = ["Slime", "Rato", "Morto-vivo", "Esqueleto","Arqueiro Esqueleto", "Esqueleto Gigante","Arqueiro Esqueleto Gigante","Wheel Skeletons", "Black Knight", "Demonio Corvo", "Sif", "Arquimago"]
+    monstros = ["Slime", "Rato", "Morto-vivo", "Esqueleto","Arqueiro Esqueleto", "Esqueleto Gigante","Arqueiro Esqueleto Gigante","Wheel Skeletons","Mimic","Demonio asa de Morcego","Golem de Cristal", "Black Knight", "Demonio Corvo", "Sif", "Arquimago"]
     while True:
         escolha = input("\nVocê quer olhar Itens, Monstros ou Sair?   (itens/monstros/sair)\n")
         while not(escolha.lower() == "itens" or escolha.lower() == "monstros" or escolha.lower() == "sair"):
@@ -193,11 +193,11 @@ def item(inimigo):
         return "Nenhum"
 def inimigo(sala):
     if sala <= 7: 
-        qualInimigo = randint(0,6) #Se a sala for menor igual a 6 sorteia todos os monstros da lista
+        qualInimigo = randint(0,9) #Se a sala for menor igual a 6 sorteia todos os monstros da lista
     else:
-        qualInimigo = randint(7,10) #Se a sala for maior que 6 so sorteia os 4 utimos monstros da lista
+        qualInimigo = randint(10,14) #Se a sala for maior que 6 so sorteia os 4 utimos monstros da lista
     if temInimigo() == "S":
-            monstros = ["Slime", "Rato", "Morto-vivo", "Esqueleto","Arqueiro Esqueleto", "Esqueleto Gigante","Arqueiro Esqueleto Gigante","Wheel Skeletons", "Black Knight", "Demonio Corvo", "Sif", "Arquimago"]
+            monstros = ["Slime", "Rato", "Morto-vivo", "Esqueleto","Arqueiro Esqueleto", "Esqueleto Gigante","Arqueiro Esqueleto Gigante","Wheel Skeletons","Mimic","Demonio asa de Morcego","Golem de Cristal", "Black Knight", "Demonio Corvo", "Sif", "Arquimago"]
             if qualInimigo == 0:
                 return monstros[qualInimigo]
             elif qualInimigo == 1:
@@ -319,7 +319,7 @@ def aplicandoItem(player,item):
         player["fuga"] -= 4
 def batalha(player, monstro):
     tempo = 1
-    #Quando a função é chamada ela recebe um monstro, cria um dicionario desse monstro e batalha com o player, retornando Vitoria ou Derrota
+    #Quando a função é chamada ela recebe um monstro, cria um dicionario desse monstro e batalha com o player, retornando Vitoria ou GameOver
     if monstro == "Slime":
         mob ={
             "Nome": "Slime",
@@ -347,8 +347,8 @@ def batalha(player, monstro):
     elif monstro == "Arqueiro Esqueleto":
         mob ={
             "Nome": "Arqueiro Esqueleto",
-            "forca": 2750,
-            "defesa": 20000
+            "forca": 3000,
+            "defesa": 18500
         }             
     elif monstro == "Esqueleto Gigante":
         mob ={
@@ -368,29 +368,47 @@ def batalha(player, monstro):
             "forca": 4000,
             "defesa": 25000
         } 
+    elif monstro == "Mimic":
+        mob ={
+            "Nome": "Black Knight",
+            "forca": 4500,
+            "defesa": 27500
+        }       
+    elif monstro == "Demonio asa de Morcego":
+        mob ={
+            "Nome": "Black Knight",
+            "forca": 4500,
+            "defesa": 30000
+        }       
+    elif monstro == "Golem de Cristal":
+        mob ={
+            "Nome": "Black Knight",
+            "forca": 4750,
+            "defesa": 35000
+        }       
     elif monstro == "Black Knight":
         mob ={
             "Nome": "Black Knight",
             "forca": 3500,
-            "defesa": 35000
+            "defesa": 40000
         }          
     elif monstro == "Demonio Corvo":
         mob ={
             "Nome": "Demonio Corvo",
-            "forca": 2900,
-            "defesa": 32000
+            "forca": 3400,
+            "defesa": 37405
         }     
     elif monstro == "Sif":
         mob ={
             "Nome": "Sif",
-            "forca": 3450,
-            "defesa": 32500
+            "forca": 3755,
+            "defesa": 35315
         }       
     elif monstro == "Arquimago":
         mob ={
             "Nome": "Arquimago",
-            "forca": 4000,
-            "defesa": 25000
+            "forca": 4500,
+            "defesa": 30100
         }
     sleep(tempo)
     print(f"Nome: {mob['Nome']}")
@@ -422,8 +440,7 @@ def batalha(player, monstro):
         sleep(tempo)     
 def fuga(player,monstro):
     #A função recebe um monstro, cria um dicionario com um "Chave:Valor" que é fuga,dps comparando fuga de player com fuga de mob, retornando Fugiu ou Falha
-    mob = monstro
-    if mob == "Slime":
+    if monstro == "Slime":
         slime = {
             "fuga": 5
         }
@@ -437,7 +454,7 @@ def fuga(player,monstro):
                 return "fugiu"
             else:
                 return "falha"
-    elif mob == "Rato":
+    elif monstro == "Rato":
         rato = {
             "fuga": 5
         }
@@ -451,7 +468,7 @@ def fuga(player,monstro):
                 return "fugiu"
             else:
                 return "falha"
-    elif mob == "Morto-vivo":
+    elif monstro == "Morto-vivo":
         undead = {
             "fuga": 5
         }
@@ -465,7 +482,7 @@ def fuga(player,monstro):
                 return "fugiu"
             else:
                 return "falha"
-    elif mob == "Esqueleto":
+    elif monstro == "Esqueleto":
         esqueleto = {
             "fuga": 6
         }
@@ -479,21 +496,105 @@ def fuga(player,monstro):
                 return "fugiu"
             else:
                 return "falha"
-    elif mob == "Aranha":
-        aranha = {
-            "fuga": 7
+    elif monstro == "Arqueiro Esqueleto":
+        arqueiroEsqueleto = {
+            "fuga": 6
         }
-        if player["fuga"] >= aranha["fuga"]:
+        if player["fuga"] >= arqueiroEsqueleto["fuga"]:
             player["fuga"] -= 2
             return "fugiu"
-        elif player["fuga"] <= aranha["fuga"]:
+        elif player["fuga"] <= arqueiroEsqueleto["fuga"]:
             fugir = randint(1,5)
             if fugir == 1:
                 player["fuga"] -= 1
                 return "fugiu"
             else:
-                return "falha"  
-    elif mob == "Black Knight":
+                return "falha" 
+    elif monstro == "Esquelto Gigante":
+        esqueletoGigante = {
+            "fuga": 7
+        }
+        if player["fuga"] >= esqueletoGigante["fuga"]:
+            player["fuga"] -= 2
+            return "fugiu"
+        elif player["fuga"] <= esqueletoGigante["fuga"]:
+            fugir = randint(1,5)
+            if fugir == 1:
+                player["fuga"] -= 1
+                return "fugiu"
+            else:
+                return "falha"
+    elif monstro == "Arqueiro Esqueleto Gigante":
+        arqueiroEsqueletoGigante = {
+            "fuga": 7
+        }
+        if player["fuga"] >= arqueiroEsqueletoGigante["fuga"]:
+            player["fuga"] -= 2
+            return "fugiu"
+        elif player["fuga"] <= arqueiroEsqueletoGigante["fuga"]:
+            fugir = randint(1,5)
+            if fugir == 1:
+                player["fuga"] -= 1
+                return "fugiu"
+            else:
+                return "falha"
+    elif monstro == "Wheel Skeletons":
+        roda = {
+            "fuga": 7
+        }
+        if player["fuga"] >= roda["fuga"]:
+            player["fuga"] -= 2
+            return "fugiu"
+        elif player["fuga"] <= roda["fuga"]:
+            fugir = randint(1,5)
+            if fugir == 1:
+                player["fuga"] -= 1
+                return "fugiu"
+            else:
+                return "falha"
+    elif monstro == "Mimic":
+        mimic = {
+            "fuga": 7
+        }
+        if player["fuga"] >= mimic["fuga"]:
+            player["fuga"] -= 2
+            return "fugiu"
+        elif player["fuga"] <= mimic["fuga"]:
+            fugir = randint(1,5)
+            if fugir == 1:
+                player["fuga"] -= 1
+                return "fugiu"
+            else:
+                return "falha"
+    elif monstro == "Demonio asa de Morcego":
+        demonioAsadeMorcego = {
+            "fuga": 7
+        }
+        if player["fuga"] >= demonioAsadeMorcego["fuga"]:
+            player["fuga"] -= 2
+            return "fugiu"
+        elif player["fuga"] <= demonioAsadeMorcego["fuga"]:
+            fugir = randint(1,5)
+            if fugir == 1:
+                player["fuga"] -= 1
+                return "fugiu"
+            else:
+                return "falha"      
+    elif monstro == "Golem de Cristal":
+        golemdeCristal = {
+            "fuga": 7
+        }
+        if player["fuga"] >= golemdeCristal["fuga"]:
+            player["fuga"] -= 2
+            return "fugiu"
+        elif player["fuga"] <= golemdeCristal["fuga"]:
+            fugir = randint(1,5)
+            if fugir == 1:
+                player["fuga"] -= 1
+                return "fugiu"
+            else:
+                return "falha"       
+    elif monstro == "Black Knight":
         blackKnight = {
             "fuga": 10
         }
@@ -507,21 +608,21 @@ def fuga(player,monstro):
                 return "fugiu"
             else:
                 return "falha" 
-    elif mob == "Lagarto de Cristal":
-        lagartoDeCristal = {
+    elif monstro == "Demonio Corvo":
+        demonioCorvo = {
             "fuga": 11
         }
-        if player["fuga"] >= lagartoDeCristal["fuga"]:
+        if player["fuga"] >= demonioCorvo["fuga"]:
             player["fuga"] -= 3
             return "fugiu"
-        elif player["fuga"] <= lagartoDeCristal["fuga"]:
+        elif player["fuga"] <= demonioCorvo["fuga"]:
             fugir = randint(1,5)
             if fugir >= 4:
                 player["fuga"] -= 2
                 return "fugiu"
             else:
                 return "falha" 
-    elif mob == "Sif":
+    elif monstro == "Sif":
         sif = {
             "fuga": 11
         }
@@ -535,7 +636,7 @@ def fuga(player,monstro):
                 return "fugiu"
             else:
                 return "falha" 
-    elif mob == "Arquimago":
+    elif monstro == "Arquimago":
         arquiMago = {
             "fuga": 13
         }
