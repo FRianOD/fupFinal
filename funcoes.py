@@ -197,7 +197,7 @@ def inimigo(sala):
     else:
         qualInimigo = randint(10,15) #Se a sala for maior que 6 so sorteia os 4 utimos monstros da lista
     if temInimigo() == "S":
-            monstros = ["Slime", "Rato", "Morto-vivo", "Esqueleto","Arqueiro Esqueleto", "Esqueleto Gigante","Arqueiro Esqueleto Gigante","Wheel Skeletons","Mimic","Demonio asa de Morcego","Golem de Cristal", "Sentinelas", "Black Knight", "Demonio Corvo", "Sif", "Arquimago"]
+            monstros = ["Slime", "Rato", "Morto-vivo", "Esqueleto","Arqueiro Esqueleto", "Esqueleto Gigante","Arqueiro Esqueleto Gigante","Wheel Skeletons","Mimic","Demonio asa de Morcego","Golem de Cristal", "Sentinela", "Black Knight", "Demonio Corvo", "Sif", "Arquimago"]
             if qualInimigo == 0:
                 return monstros[qualInimigo]
             elif qualInimigo == 1:
@@ -523,7 +523,7 @@ def fuga(player,monstro):
                 return "fugiu"
             else:
                 return "falha" 
-    elif monstro == "Esquelo Gigante":
+    elif monstro == "Esqueleto Gigante":
         esqueletoGigante = {
             "fuga": 7
         }
@@ -979,7 +979,7 @@ def salas(player,inimigo,item):
             lutar = input("Lutar contra o Monstro, ver detalhes ou tentar Fugir?   (lutar/detalhes/fugir)\n")   #Input esperado lutar/detalhes/fugir
             sleep(tempo)
             while not(lutar.lower() == "lutar" or lutar.lower() == "detalhes" or lutar.lower() == "fugir"):
-                lutar = input("Lutar, verdetalhes ou Fugir?   (lutar/detalhes/fugir)\n")
+                lutar = input("Lutar, ver detalhes ou Fugir?   (lutar/detalhes/fugir)\n")
                 sleep(tempo)
             if lutar.lower() == "lutar":
                 resultado = batalha(player,inimigo)
