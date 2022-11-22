@@ -52,6 +52,7 @@ def livro():
     itensFuga = ["Meia", "Botas Galvanizadas de Aço", "Passos de Mercurio","Bota de Couro", "Botas Espaciais", "Meia Furada"]
     itensConsumiveis = ["Pedra de amolar quebrada","Maçã envenenada","Poção de Veneno","Poção de Fraqueza","Poção de Lentidão","Anel Amaldiçoado","Anel da Paralisia"]
     monstros = ["Slime", "Rato", "Morto-vivo", "Esqueleto","Arqueiro Esqueleto", "Esqueleto Gigante","Arqueiro Esqueleto Gigante","Wheel Skeletons","Mimic","Demonio asa de Morcego","Golem de Cristal", "Sentinela", "Black Knight", "Demonio Corvo", "Sif", "Arquimago"]
+    vazio = []
     while True:
         escolha = input("\nVocê quer olhar Itens, Monstros ou Sair?   (itens/monstros/sair)\n")
         while not(escolha.lower() == "itens" or escolha.lower() == "monstros" or escolha.lower() == "sair"):
