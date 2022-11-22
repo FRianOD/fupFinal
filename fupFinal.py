@@ -5,7 +5,7 @@ def jogar():
     def quantidadeDeEscolhas(player, sala, escolhaAnterior):
         while True:
             quantEscolhas = randint(1,7)
-            tempo = 1.5
+            tempo = 1
             if sala == 0:
                 print("Você esta na sala principal.")
                 sleep(tempo)

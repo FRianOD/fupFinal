@@ -1,6 +1,5 @@
 Universidade Federal do Ceara - Russas
 Cadeira - Fundamentos de Programação
-Nome - Francisco Rian de Oliveira Dutra
 
 !!!RODAR O ARQUIVO menu.py!!!
 

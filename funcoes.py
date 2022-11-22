@@ -89,16 +89,16 @@ def addStatus(player):
     
     print(f"\nQuanto de cada <STATUS> você quer dar para {player['Nome']}?")
     sleep(tempo)
-    print("Forças recomendadas: 4500, 6000, 7500")
+    print("Forças recomendadas: 5500, 7000, 8000")
     sleep(tempo)
     player["forca"] = int(input("Quanto de Força ? \n"))
     print()
     sleep(tempo)
 
-    while player["forca"] <= 0 or player["forca"] > 7500:
+    while player["forca"] <= 0 or player["forca"] >= 8000:
         print("Força muito alta ou INVALIDA. Novo valor.")
         sleep(tempo)
-        print("Força max: 7500")
+        print("Força max: 8000")
         sleep(tempo)
         player["forca"] = int(input("Quanto de Força ? \n"))
         sleep(tempo)
@@ -109,7 +109,7 @@ def addStatus(player):
     print()
     sleep(tempo)
 
-    if player["forca"] <= 4500:        
+    if player["forca"] <= 5500:        
         while player["defesa"] <= 0 or player["defesa"] > 45000:
             print("Defesa muito alta ou INVALIDA. Novo valor.")
             sleep(tempo)
@@ -119,7 +119,7 @@ def addStatus(player):
             print()
             sleep(tempo)
 
-    elif player["forca"] <= 6000:        
+    elif player["forca"] <= 7000:        
         while player["defesa"] <= 0 or player["defesa"] > 35000:
             print("Defesa muito alta ou INVALIDA. Novo valor.")
             sleep(tempo)
@@ -129,7 +129,7 @@ def addStatus(player):
             print()
             sleep(tempo)
 
-    elif player["forca"] > 7500:
+    elif player["forca"] >= 8000:
         while player["defesa"] <= 0 or player["defesa"] > 30000:
             print("Defesa muito alta ou INVALIDA. Novo valor.")
             sleep(tempo)
@@ -230,7 +230,6 @@ def inimigo(sala):
                 return monstros[qualInimigo]
             elif qualInimigo == 15:
                 return monstros[qualInimigo]
-            
     else:
         return "Nenhum"
 def aplicandoItem(player,item):
@@ -431,9 +430,9 @@ def batalha(player, monstro):
     sleep(tempo)
     print(f"defesa: {mob['defesa']}")
     sleep(tempo)
+    print(f"{player['Nome']} X {mob['Nome']}")
+    sleep(tempo)
     while (player["defesa"] >= 0 or mob["defesa"] >= 0):
-        print(f"{player['Nome']} X {mob['Nome']}")
-        sleep(tempo)
         mob["defesa"] -= player["forca"]
         if mob["defesa"] <= 0:
             mob["defesa"] = 0
@@ -524,7 +523,7 @@ def fuga(player,monstro):
                 return "fugiu"
             else:
                 return "falha" 
-    elif monstro == "Esquelto Gigante":
+    elif monstro == "Esquelo Gigante":
         esqueletoGigante = {
             "fuga": 7
         }
@@ -607,6 +606,20 @@ def fuga(player,monstro):
                 player["fuga"] -= 1
                 return "fugiu"
             else:
+                return "falha"
+    elif monstro == "Sentinela":
+        sentinela = {
+            "fuga": 7
+        }
+        if player["fuga"] >= sentinela["fuga"]:
+            player["fuga"] -= 2
+            return "fugiu"
+        elif player["fuga"] <= sentinela["fuga"]:
+            fugir = randint(1,5)
+            if fugir == 1:
+                player["fuga"] -= 1
+                return "fugiu"
+            else:
                 return "falha"       
     elif monstro == "Black Knight":
         blackKnight = {
@@ -681,7 +694,7 @@ def batalhaBoss(player,boss):
         chefe = {
             "Nome": "Bruxa de Izalith",
             "forca": 15000,
-            "defesa": 40000
+            "defesa": 45055
         }
         sleep(tempo)
         print(f"Nome: {chefe['Nome']}")
@@ -697,7 +710,7 @@ def batalhaBoss(player,boss):
             acao = input("Você ira lutar, ver detalhes ou tentar fugir ?")  #Inputs esperados lutar/fugir
             sleep(tempo)
             tentativa = 0  #Variavel contador
-            while acao.lower() != "lutar" or acao.lower() != "detalhes":
+            while not(acao.lower() == "lutar" or acao.lower() == "detalhes"):
                 if tentativa < 2:
                     print("Lute ou morra")
                     sleep(tempo)
@@ -736,8 +749,8 @@ def batalhaBoss(player,boss):
     elif boss == "Nito":
         chefe = {
             "Nome": "Nito, o Lorde dos Túmulos",
-            "forca": 8500,
-            "defesa": 55000
+            "forca": 7500,
+            "defesa": 57000
         }
         sleep(tempo)
         print(f"Nome: {chefe['Nome']}")
@@ -753,7 +766,7 @@ def batalhaBoss(player,boss):
             acao = input("Você ira lutar, ver detalhes ou tentar fugir ?")  #Inputs esperados lutar/fugir
             sleep(tempo)
             tentativa = 0  #Variavel contador
-            while acao.lower() != "lutar" or acao.lower() != "detalhes":
+            while not(acao.lower() == "lutar" or acao.lower() == "detalhes"):
                 if tentativa < 2:
                     print("Lute ou morra")
                     sleep(tempo)
@@ -793,7 +806,7 @@ def batalhaBoss(player,boss):
         chefe = {
             "Nome": "Gwyn, o Lorde das Cinzas",
             "forca": 13500,
-            "defesa": 50000
+            "defesa": 53505
         }
         sleep(tempo)
         print(f"Nome: {chefe['Nome']}")
@@ -809,7 +822,7 @@ def batalhaBoss(player,boss):
             acao = input("Você ira lutar, ver detalhes ou tentar fugir ? (lutar/detalhes/fugir")  #Inputs esperados lutar/fugir
             sleep(tempo)
             tentativa = 0  #Variavel contador
-            while acao.lower() != "lutar" or acao.lower() != "detalhes":
+            while not(acao.lower() == "lutar" or acao.lower() == "detalhes"):
                 if tentativa < 2:
                     print("Lute ou morra")
                     sleep(tempo)
