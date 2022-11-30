@@ -1,11 +1,10 @@
 from random import randint
 from time import sleep
 def menu():
-    tempo = 1
-    sleep(tempo) #Menu simples apenas prints
+    tempo = 0.8
     print(f"-------------------")
     sleep(tempo)
-    print(f"-  TerminalSouls  -")   #A DECIDIR
+    print(f"-  TerminalSouls  -")
     sleep(tempo)
     print(f"-------------------")
     sleep(tempo)
@@ -22,13 +21,17 @@ def menu():
     print(f"-------------------\n")
     sleep(tempo)
 def instrucoes():
-    tempo = 1 #Apresentação de como funciona o jogo
+    tempo = 0.8 #Apresentação de como funciona o jogo
     sleep(tempo)
     print(f"-O jogo tem como objetivo garantir uma experiencia diferente a cada Execução-")
     sleep(tempo)
-    print(f"-19 Itens que aparecem aleatoriamente-")
+    print(f"-16 Monstros que aparecem aleatoriamente-")
     sleep(tempo)
-    print(f"-8 Monstros que aparecem aleatoriamente-")
+    print(f"-Derrote o Monstro que a na sala para pegar o item-")
+    sleep(tempo)
+    print(f"-Sempre que tem algum Monstro na sala tem algum item-")
+    sleep(tempo)
+    print(f"-26 Itens que aparecem aleatoriamente-")
     sleep(tempo)
     print(f"-A 3 Chefes diferentes-")
     sleep(tempo)
@@ -44,6 +47,142 @@ def mostrarLista(lista):
     sleep(tempo)
     print("______________________________\n")
     sleep(tempo)
+def verStatusItensDano():
+    arq = open("arquivos/itensDeDano.txt", "r")
+
+    itens = []
+
+    linhas = arq.readlines()
+    
+    for linha in linhas:
+        
+        dados = linha.split(".")
+
+        item = {
+            "indice" : int(dados[0].strip()),
+            "nome" : dados[1].strip(),
+            "dano" : int(dados[2].strip()),
+            "defesa" : int(dados[3].strip()),
+            "fuga" : int(dados[4].strip())
+        }
+
+        itens.append(item)
+
+    arq.close()
+    
+    escolha = int(input("Digite o indice de Algum item mostrado antes: \n"))
+
+    for i in itens:
+        if i["indice"] == escolha:
+            print(f"Nome: {i['nome']}")
+            print(f"Dano: {i['dano']}")
+            print(f"Defesa: {i['defesa']}")
+            print(f"Fuga: {i['fuga']}")
+    
+    else:
+        return None
+def verStatusMonstros():
+    arq = open("arquivos/monstrosDados.txt", "r")
+
+    monstros = []
+
+    linhas = arq.readlines()
+    
+    for linha in linhas:
+        
+        dados = linha.split(".")
+
+        monstro = {
+            "indice" : int(dados[0].strip()),
+            "nome" : dados[1].strip(),
+            "dano" : int(dados[2].strip()),
+            "defesa" : int(dados[3].strip()),
+            "fuga" : int(dados[4].strip())
+        }
+
+        monstros.append(monstro)
+
+    arq.close()
+    
+    escolha = int(input("Digite o indice de Algum item mostrado antes: \n"))
+
+    for i in monstros:
+        if i["indice"] == escolha:
+            print(f"Nome: {i['nome']}")
+            print(f"Dano: {i['dano']}")
+            print(f"Defesa: {i['defesa']}")
+            print(f"Fuga: {i['fuga']}")
+    
+    else:
+        return None
+def verStatusItensArmadura():
+    arq = open("arquivos/itensDeArmadura.txt", "r")
+
+    armaduras = []
+
+    linhas = arq.readlines()
+    
+    for linha in linhas:
+        
+        dados = linha.split(".")
+
+        armadura = {
+            "indice" : int(dados[0].strip()),
+            "nome" : dados[1].strip(),
+            "dano" : int(dados[2].strip()),
+            "defesa" : int(dados[3].strip()),
+            "fuga" : int(dados[4].strip())
+        }
+
+        armaduras.append(armadura)
+
+    arq.close()
+    
+    escolha = int(input("Digite o indice de Algum item mostrado antes: \n"))
+
+    for i in armaduras:
+        if i["indice"] == escolha:
+            print(f"Nome: {i['nome']}")
+            print(f"Dano: {i['dano']}")
+            print(f"Defesa: {i['defesa']}")
+            print(f"Fuga: {i['fuga']}")
+    
+    else:
+        return None
+def verStatusItensFuga():
+    arq = open("arquivos/itensDeFuga.txt", "r")
+
+    fugas = []
+
+    linhas = arq.readlines()
+    
+    for linha in linhas:
+        
+        dados = linha.split(".")
+
+        fuga = {
+            "indice" : int(dados[0].strip()),
+            "nome" : dados[1].strip(),
+            "dano" : int(dados[2].strip()),
+            "defesa" : int(dados[3].strip()),
+            "fuga" : int(dados[4].strip())
+        }
+
+        fugas.append(fuga)
+
+    arq.close()
+    
+    escolha = int(input("Digite o indice de Algum item mostrado antes: \n"))
+
+    for i in fugas:
+        if i["indice"] == escolha:
+            print(f"Nome: {i['nome']}")
+            print(f"Dano: {i['dano']}")
+            print(f"Defesa: {i['defesa']}")
+            print(f"Fuga: {i['fuga']}")
+    
+    else:
+        return None
 def livro():
     #Apresentação de mobs e itens
     tempo = 0.8
@@ -65,6 +204,15 @@ def livro():
                     qualitem = input("\nVer espadas, armaduras, itens de fuga, consumiveis ou sair ?   (espadas/armaduras/fuga/consumiveis/sair)\n")
                 if qualitem.lower() == "espadas":
                     mostrarLista(itensDano)
+                    while True:
+                        verItem = input("Ver status de algum item ? (S/N)")
+                        while not(verItem.lower() == "s" or verItem() == "n"):
+                            verItem = input("Ver status de algum item ? (S/N)")
+                        if verItem.lower() == "s":
+                            verStatusItensDano()
+                        else:
+                            break
+
                     continue
                 elif qualitem.lower() == "armaduras":
                     mostrarLista(itensDefesa)
@@ -83,9 +231,23 @@ def livro():
         elif escolha.lower() == "sair":
             break
 def creditos():
-    input() #Creditos / Nome da equipe
+    tempo = 0.8
+    sleep(tempo)
+    print("------------------")
+    sleep(tempo)
+    print("- Francisco Rian -")
+    sleep(tempo)
+    print("- Jhon Krys      -")
+    sleep(tempo)
+    print("- Kaua Ribeiro   -")
+    sleep(tempo)
+    print("- Pedro Luca     -")
+    sleep(tempo)
+    print("------------------")
+    sleep(tempo)
+    input()
 def addStatus(player):
-    tempo = 1  #Adiciona o status ao dicionario Player
+    tempo = 0.8  #Adiciona o status ao dicionario Player
     
     print(f"\nQuanto de cada <STATUS> você quer dar para {player['Nome']}?")
     sleep(tempo)
@@ -95,7 +257,7 @@ def addStatus(player):
     print()
     sleep(tempo)
 
-    while player["forca"] <= 0 or player["forca"] >= 8000:
+    while player["forca"] <= 0 or player["forca"] > 8000:
         print("Força muito alta ou INVALIDA. Novo valor.")
         sleep(tempo)
         print("Força max: 8000")
@@ -251,35 +413,35 @@ def aplicandoItem(player,item):
         player["fuga"] -= 1
         
     elif item == "Escudo de Madeira":
-        player["defesa"] += 2500
+        player["defesa"] += 3500
     
     elif item == "Escudo de Randuin":
-        player["defesa"] += 2750
-
-    elif item == "Alucard Mail":
-        player["defesa"] += 3250
-        
-    elif item == "Escudo Hylian":
         player["defesa"] += 4000
 
+    elif item == "Alucard Mail":
+        player["defesa"] += 4250
+        
+    elif item == "Escudo Hylian":
+        player["defesa"] += 5205
+
     elif item == "Berserk Armor":
-        player["defesa"] += 3500
+        player["defesa"] += 4500
         player["forca"] += 750
         player["fuga"] -= 1
 
     elif item == "Armadura de Warmog":
-        player["defesa"] += 4000
+        player["defesa"] += 6000
         
     elif item == "Meia":
         player["fuga"] += 1
     
     elif item == "Botas Galvanizadas de Aço":
         player["fuga"] += 2
-        player["defesa"] += 1000
+        player["defesa"] += 2000
 
     elif item == "Passos de Mercurio":
         player["fuga"] += 2
-        player["defesa"] += 1000
+        player["defesa"] += 2000
 
     elif item == "Bota de Couro":
         player["fuga"] += 2
@@ -288,28 +450,28 @@ def aplicandoItem(player,item):
         player["fuga"] += 3
         
     elif item == "Espada de Madeira Amaldiçoada":
-        player["forca"] += 3500
-        player["defesa"] -= 3000
-        player["fuga"] -= 3
+        player["forca"] += 5500
+        player["defesa"] -= 2000
+        player["fuga"] -= 2
 
     elif item == "Escudo de Ferro Amaldiçoado":
-        player["defesa"] += 3500
-        player["forca"] -= 3000
-        player["fuga"] -= 3
+        player["defesa"] += 5500
+        player["forca"] -= 2000
+        player["fuga"] -= 2
 
     elif item == "Meia Furada":
-        player["fuga"] += 3
-        player["forca"] -= 3500
-        player["defesa"] -= 3500 
+        player["fuga"] += 4
+        player["forca"] -= 2500
+        player["defesa"] -= 2500 
     
     elif item == "Pedra de amolar quebrada":
         player["forca"] -= 450
 
     elif item == "Maçã envenenada":
-        player["defesa"] -= 2000
+        player["defesa"] -= 3000
     
     elif item == "Poção de Veneno":
-        player["defesa"] -= 2005
+        player["defesa"] -= 3005
     
     elif item == "Poção de Fraqueza":
         player["forca"] -= 345
@@ -860,7 +1022,7 @@ def batalhaBoss(player,boss):
                 detalhes(boss)
 def detalhes(monstro):
     tempo = 0.05
-    arq = open("monstros.txt", "r")
+    arq = open("arquivos/detalhesMonstros.txt", "r")
     for i in arq:
         if monstro in i:
             textoMonstro = i.split(";")
@@ -871,54 +1033,74 @@ def detalhes(monstro):
     input()
     arq.close()
 def fogueira(player,sala):
+    tempo = 0.8
     d5 = randint(1,5)
     if d5 <= 4:
         d20 = randint(0,20)
         if d20 <= 5:
             print("Você limpou a sala e avistou um braseiro jogado no chão")
+            sleep(tempo)
             verStatus = input("Pegar braseiro e ver Status ? (S/N)")
+            sleep(tempo)
             while not(verStatus.lower() == "s" or verStatus.lower() == "n"):
                 sentar = input("Pegar braseiro e ver Status ? (S/N)")
+                sleep(tempo)
             if verStatus.lower() == "s":
                 mostrarStatus(player,sala)
             return
         elif d20 > 5 and d20 <= 15:
             sentar = input("Você limpou a sala e avistou uma fogueira com um braseiro ao lado, sentar ? (S/N)")
+            sleep(tempo)
             while not(sentar.lower() == "s" or sentar.lower() == "n"):
                 sentar = input("Você limpou a sala e avistou uma fogueira com um braseiro ao lado, sentar ? (S/N)")
+                sleep(tempo)
             if sentar.lower() == "s":
+                print("Você sente a chama ganhando força")
+                sleep(tempo)
                 player["forca"] += 200
-                player["defesa"] += 1200
+                player["defesa"] += 1600
                 player["fuga"] += 1
                 verStatus = input("Ver Status no braseiro? (S/N)")
+                sleep(tempo)
                 while not(verStatus.lower() == "s" or verStatus.lower() == "n"):
                     sentar = input("Ver Status no braseiro? (S/N)")
+                    sleep(tempo)
                 if verStatus.lower() == "s":
                     mostrarStatus(player,sala)
             if sentar.lower() == "n":
                 verStatus = input("Pegar braseiro e ver Status ? (S/N)")
+                sleep(tempo)
                 while not(verStatus.lower() == "s" or verStatus.lower() == "n"):
                     sentar = input("Pegar braseiro e ver Status ? (S/N)")
+                    sleep(tempo)
                 if verStatus.lower() == "s":
                     mostrarStatus(player,sala)
             return
         elif d20 > 15:
             sentar = input("Você limpou a sala e avistou uma fogueira sagrada com um braseiro ao lado, sentar ? (S/N)")
+            sleep(tempo)
             while not(sentar.lower() == "s" or sentar.lower() == "n"):
                 sentar = input("Você limpou a sala e avistou uma fogueira sagrada com um braseiro ao lado, sentar ? (S/N)")
+                sleep(tempo)
             if sentar.lower() == "s":
+                print("Você sente a Chama ficando mais forte")
+                sleep(tempo)
                 player["forca"] += 600
-                player["defesa"] += 3600
+                player["defesa"] += 4000
                 player["fuga"] += 2
                 verStatus = input("Ver Status no braseiro? (S/N)")
+                sleep(tempo)
                 while not(verStatus.lower() == "s" or verStatus.lower() == "n"):
                     sentar = input("Ver Status no braseiro? (S/N)")
+                    sleep(tempo)
                 if verStatus.lower() == "s":
                     mostrarStatus(player,sala)
             if sentar.lower() == "n":
                 verStatus = input("Pegar braseiro e ver Status ? (S/N)")
+                sleep(tempo)
                 while not(verStatus.lower() == "s" or verStatus.lower() == "n"):
                     sentar = input("Pegar braseiro e ver Status ? (S/N)")
+                    sleep(tempo)
                 if verStatus.lower() == "s":
                     mostrarStatus(player,sala)
             return
@@ -926,44 +1108,61 @@ def fogueira(player,sala):
         d20 = randint(1,20)
         if d20 <= 13:
             print("A sala esta limpa apenas a(s) porta(s) espera você")
+            sleep(tempo)
             return
         if d20 > 13 and d20 <= 18:
             sentar = input("Você limpou a sala e avistou uma fogueira, parece aver algo de errado com ela, a um braseiro ao lado, sentar ? (S/N)")
+            sleep(tempo)
             while not(sentar.lower() == "s" or sentar.lower() == "n"):
                 sentar = input("Você limpou a sala e avistou uma fogueira, parece aver algo de errado com ela, a um braseiro ao lado, sentar ? (S/N)")
+                sleep(tempo)
             if sentar.lower() == "s":
+                print("Você se sente a chama enfraquecendo")
+                sleep(tempo)
                 player["forca"] -= 250
-                player["defesa"] -= 1600
+                player["defesa"] -= 1800
                 player["fuga"] -= 1
                 verStatus = input("Ver Status no braseiro? (S/N)")
+                sleep(tempo)
                 while not(verStatus.lower() == "s" or verStatus.lower() == "n"):
                     sentar = input("Ver Status no braseiro? (S/N)")
+                    sleep(tempo)
                 if verStatus.lower() == "s":
                     mostrarStatus(player,sala)
             if sentar.lower() == "n":
                 verStatus = input("Pegar braseiro e ver Status ? (S/N)")
+                sleep(tempo)
                 while not(verStatus.lower() == "s" or verStatus.lower() == "n"):
                     sentar = input("Pegar braseiro e ver Status ? (S/N)")
+                    sleep(tempo)
                 if verStatus.lower() == "s":
                     mostrarStatus(player,sala)
             return
         else:
             sentar = input("Você limpou a sala e avistou uma fogueira amaldiçoada, a um braseiro ao lado, pode não ser bom sentar, sentar ? (S/N)")
+            sleep(tempo)
             while not(sentar.lower() == "s" or sentar.lower() == "n"):
                 sentar = input("Você limpou a sala e avistou uma fogueira amaldiçoada, a um braseiro ao lado, pode não ser bom sentar, sentar ? (S/N)")
+                sleep(tempo)
             if sentar.lower() == "s":
+                print("Você sente a chama se apagando")
+                sleep(tempo)
                 player["forca"] -= 750
                 player["defesa"] -= 4400
                 player["fuga"] -= 3
                 verStatus = input("Ver Status no braseiro? (S/N)")
+                sleep(tempo)
                 while not(verStatus.lower() == "s" or verStatus.lower() == "n"):
                     sentar = input("Ver Status no braseiro? (S/N)")
+                    sleep(tempo)
                 if verStatus.lower() == "s":
                     mostrarStatus(player,sala)
             if sentar.lower() == "n":
                 verStatus = input("Pegar braseiro e ver Status ? (S/N)")
+                sleep(tempo)
                 while not(verStatus.lower() == "s" or verStatus.lower() == "n"):
                     sentar = input("Pegar braseiro e ver Status ? (S/N)")
+                    sleep(tempo)
                 if verStatus.lower() == "s":
                     mostrarStatus(player,sala)
 def salas(player,inimigo,item):

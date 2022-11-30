@@ -1,0 +1,7 @@
+1 . Escudo de Madeira           . 0    . 0    . 0
+2 . Escudo de Randuin           . 0    . 0    . 0
+3 . Alucard Mail                . 0    . 0    . 0
+4 . Escudo Hylian               . 0    . 0    . 0
+5 . Berserk Armor               . 0    . 0    . 0
+6 . Armadura de Warmog          . 0    . 0    . 0
+7 . Escudo de Ferro Amaldiçoado . 0    . 0    . 0

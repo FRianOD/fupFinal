@@ -7,6 +7,12 @@ def jogar():
             quantEscolhas = randint(1,7)
             tempo = 1
             if sala == 0:
+                texto = '"Tudo veio do fogo e tudo retornara ao fogo - Eraclito"\n'
+                tempoTexto = 0.1
+                for i in texto:
+                    print(i, end='', flush=True)
+                    sleep(tempoTexto)
+                sleep(tempo)
                 print("Você esta na sala principal.")
                 sleep(tempo)
                 print("Você segue para unica porta aberta")

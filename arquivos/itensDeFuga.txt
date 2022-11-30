@@ -1,0 +1,6 @@
+1 . Meia                      . 0 . 0 . 0
+2 . Botas Galvanizadas de Aço . 0 . 0 . 0
+3 . Passos de Mercurio        . 0 . 0 . 0
+4 . Bota de Couro             . 0 . 0 . 0
+5 . Botas Espaciais           . 0 . 0 . 0
+6 . Meia Furada               . 0 . 0 . 0

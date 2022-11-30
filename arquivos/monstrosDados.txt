@@ -1,0 +1,16 @@
+1 . Slime                      . 0 . 0 . 0
+2 . Rato                       . 0 . 0 . 0
+3 . Morto-vivo	               . 0 . 0 . 0
+4 . Esqueleto		       . 0 . 0 . 0
+5 . Arqueiro Esqueleto	       . 0 . 0 . 0
+6 . Esqueleto Gigante          . 0 . 0 . 0
+7 . Arqueiro Esqueleto Gigante . 0 . 0 . 0
+8 . Wheel Skeletons            . 0 . 0 . 0
+9 . Mimic                      . 0 . 0 . 0
+10 . Demonio asa de Morcego    . 0 . 0 . 0
+11 . Golem de Cristal          . 0 . 0 . 0
+12 . Sentinela                 . 0 . 0 . 0
+13 . Black Knight              . 0 . 0 . 0
+14 . Demonio Corvo             . 0 . 0 . 0
+15 .  Sif                      . 0 . 0 . 0
+16 . Arquimago                 . 0 . 0 . 0
