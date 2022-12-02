@@ -1,0 +1,7 @@
+1 . Pedra de amolar quebrada . -450  . 0     . 0
+2 . Maçã envenenada          . 0     . -3000 . 0
+3 . Poção de Veneno          . 0     . -3005 . 0
+4 . Poção de Fraqueza        . -345  . 0     . 0
+5 . Poção de Lentidão        . 0     . 0     . -2
+6 . Anel Amaldiçoado         . -2500 . -5000 . -2
+7 . Anel da Paralisia        . 0     . 0     . -4

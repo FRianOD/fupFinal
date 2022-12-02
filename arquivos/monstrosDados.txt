@@ -1,16 +1,16 @@
-1 . Slime                      . 0 . 0 . 0
-2 . Rato                       . 0 . 0 . 0
-3 . Morto-vivo	               . 0 . 0 . 0
-4 . Esqueleto		       . 0 . 0 . 0
-5 . Arqueiro Esqueleto	       . 0 . 0 . 0
-6 . Esqueleto Gigante          . 0 . 0 . 0
-7 . Arqueiro Esqueleto Gigante . 0 . 0 . 0
-8 . Wheel Skeletons            . 0 . 0 . 0
-9 . Mimic                      . 0 . 0 . 0
-10 . Demonio asa de Morcego    . 0 . 0 . 0
-11 . Golem de Cristal          . 0 . 0 . 0
-12 . Sentinela                 . 0 . 0 . 0
-13 . Black Knight              . 0 . 0 . 0
-14 . Demonio Corvo             . 0 . 0 . 0
-15 .  Sif                      . 0 . 0 . 0
-16 . Arquimago                 . 0 . 0 . 0
+1  . Slime                      . 2000 . 15000 . 5
+2  . Rato                       . 2000 . 13500 . 5
+3  . Morto-vivo	                . 2750 . 17025 . 5
+4  . Esqueleto		        . 2750 . 20000 . 6
+5  . Arqueiro Esqueleto	        . 3000 . 18500 . 6
+6  . Esqueleto Gigante          . 3500 . 26000 . 7
+7  . Arqueiro Esqueleto Gigante . 4000 . 23500 . 7
+8  . Wheel Skeletons            . 4000 . 25000 . 7
+9  . Mimic                      . 4500 . 27500 . 7
+10 . Demonio asa de Morcego     . 4500 . 30000 . 7
+11 . Golem de Cristal           . 4750 . 35000 . 7
+12 . Sentinela                  . 3375 . 39000 . 7
+13 . Black Knight               . 3500 . 42530 . 10
+14 . Demonio Corvo              . 3400 . 37405 . 11
+15 . Sif                        . 3755 . 35315 . 11
+16 . Arquimago                  . 4500 . 30100 . 13
