@@ -1,6 +1,6 @@
-1      . Espada de Ferro               . 100     . 0       . 0
-2      . Alucard Sword                 . 300     . 0       . 0
-3      . Master Sword                  . 500     . 0       . 0
-4      . Laminas do Caos               . 500     . 0       . 0
-5      . Dragon Slayer                 . 750     . 0   	   . -1
-6      . Espada de Madeira Amaldiçoada . 1500    . 1000    . -2
+1      . Espada de Ferro               . 100     . 0        . 0
+2      . Alucard Sword                 . 300     . 0        . 0
+3      . Master Sword                  . 500     . 0        . 0
+4      . Laminas do Caos               . 500     . 0        . 0
+5      . Dragon Slayer                 . 750     . 0   	    . -1
+6      . Espada de Madeira Amaldiçoada . 1500    . -1000    . -2

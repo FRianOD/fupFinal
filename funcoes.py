@@ -20,22 +20,6 @@ def menu():
     sleep(tempo)
     print(f"-------------------\n")
     sleep(tempo)
-def instrucoes():
-    tempo = 0.8 #Apresentação de como funciona o jogo
-    sleep(tempo)
-    print(f"-O jogo tem como objetivo garantir uma experiencia diferente a cada Execução-")
-    sleep(tempo)
-    print(f"-16 Monstros que aparecem aleatoriamente-")
-    sleep(tempo)
-    print(f"-Derrote o Monstro que a na sala para pegar o item-")
-    sleep(tempo)
-    print(f"-Sempre que tem algum Monstro na sala tem algum item-")
-    sleep(tempo)
-    print(f"-26 Itens que aparecem aleatoriamente-")
-    sleep(tempo)
-    print(f"-A 3 Chefes diferentes-")
-    sleep(tempo)
-    input()
 def mostrarLista(lista):
     tempo = 0.5
     sleep(tempo)
@@ -244,6 +228,7 @@ def livro():
                             verItem = input("Ver status de algum item ? (S/N)")
                         if verItem.lower() == "s":
                             verStatusItensDano()
+                            continue
                         else:
                             break
 
@@ -296,6 +281,22 @@ def livro():
                 continue
         elif escolha.lower() == "sair":
             break
+def instrucoes():
+    tempo = 0.8 #Apresentação de como funciona o jogo
+    sleep(tempo)
+    print(f"-O jogo tem como objetivo garantir uma experiencia diferente a cada Execução-")
+    sleep(tempo)
+    print(f"-16 Monstros que aparecem aleatoriamente-")
+    sleep(tempo)
+    print(f"-Derrote o Monstro que a na sala para pegar o item-")
+    sleep(tempo)
+    print(f"-Sempre que tem algum Monstro na sala tem algum item-")
+    sleep(tempo)
+    print(f"-26 Itens que aparecem aleatoriamente-")
+    sleep(tempo)
+    print(f"-A 3 Chefes diferentes-")
+    sleep(tempo)
+    input()
 def creditos():
     tempo = 0.8
     sleep(tempo)
@@ -305,7 +306,7 @@ def creditos():
     sleep(tempo)
     print("- Jhon Krys      -")
     sleep(tempo)
-    print("- Kaua Ribeiro   -")
+    print("- Kauã Ribeiro   -")
     sleep(tempo)
     print("- Pedro Luca     -")
     sleep(tempo)
@@ -688,7 +689,7 @@ def fuga(player,monstro):
         if player["fuga"] >= slime["fuga"]:
             player["fuga"] -= 2
             return "fugiu"
-        elif player["fuga"] <= slime["fuga"]:
+        elif player["fuga"] < slime["fuga"]:
             fugir = randint(1,5)
             if fugir <= 4:
                 player["fuga"] -= 1
@@ -702,7 +703,7 @@ def fuga(player,monstro):
         if player["fuga"] >= rato["fuga"]:
             player["fuga"] -= 2
             return "fugiu"
-        elif player["fuga"] <= rato["fuga"]:
+        elif player["fuga"] < rato["fuga"]:
             fugir = randint(1,5)
             if fugir <= 4:
                 player["fuga"] -= 1
@@ -716,7 +717,7 @@ def fuga(player,monstro):
         if player["fuga"] >= undead["fuga"]:
             player["fuga"] -= 2
             return "fugiu"
-        elif player["fuga"] <= undead["fuga"]:
+        elif player["fuga"] < undead["fuga"]:
             fugir = randint(1,5)
             if fugir <= 3:
                 player["fuga"] -= 1
@@ -730,7 +731,7 @@ def fuga(player,monstro):
         if player["fuga"] >= esqueleto["fuga"]:
             player["fuga"] -= 2
             return "fugiu"
-        elif player["fuga"] <= esqueleto["fuga"]:
+        elif player["fuga"] < esqueleto["fuga"]:
             fugir = randint(1,5)
             if fugir <= 2:
                 player["fuga"] -= 1
@@ -744,7 +745,7 @@ def fuga(player,monstro):
         if player["fuga"] >= arqueiroEsqueleto["fuga"]:
             player["fuga"] -= 2
             return "fugiu"
-        elif player["fuga"] <= arqueiroEsqueleto["fuga"]:
+        elif player["fuga"] < arqueiroEsqueleto["fuga"]:
             fugir = randint(1,5)
             if fugir == 1:
                 player["fuga"] -= 1
@@ -758,7 +759,7 @@ def fuga(player,monstro):
         if player["fuga"] >= esqueletoGigante["fuga"]:
             player["fuga"] -= 2
             return "fugiu"
-        elif player["fuga"] <= esqueletoGigante["fuga"]:
+        elif player["fuga"] < esqueletoGigante["fuga"]:
             fugir = randint(1,5)
             if fugir == 1:
                 player["fuga"] -= 1
@@ -772,7 +773,7 @@ def fuga(player,monstro):
         if player["fuga"] >= arqueiroEsqueletoGigante["fuga"]:
             player["fuga"] -= 2
             return "fugiu"
-        elif player["fuga"] <= arqueiroEsqueletoGigante["fuga"]:
+        elif player["fuga"] < arqueiroEsqueletoGigante["fuga"]:
             fugir = randint(1,5)
             if fugir == 1:
                 player["fuga"] -= 1
@@ -786,7 +787,7 @@ def fuga(player,monstro):
         if player["fuga"] >= roda["fuga"]:
             player["fuga"] -= 2
             return "fugiu"
-        elif player["fuga"] <= roda["fuga"]:
+        elif player["fuga"] < roda["fuga"]:
             fugir = randint(1,5)
             if fugir == 1:
                 player["fuga"] -= 1
@@ -800,7 +801,7 @@ def fuga(player,monstro):
         if player["fuga"] >= mimic["fuga"]:
             player["fuga"] -= 2
             return "fugiu"
-        elif player["fuga"] <= mimic["fuga"]:
+        elif player["fuga"] < mimic["fuga"]:
             fugir = randint(1,5)
             if fugir == 1:
                 player["fuga"] -= 1
@@ -814,7 +815,7 @@ def fuga(player,monstro):
         if player["fuga"] >= demonioAsadeMorcego["fuga"]:
             player["fuga"] -= 2
             return "fugiu"
-        elif player["fuga"] <= demonioAsadeMorcego["fuga"]:
+        elif player["fuga"] < demonioAsadeMorcego["fuga"]:
             fugir = randint(1,5)
             if fugir == 1:
                 player["fuga"] -= 1
@@ -828,7 +829,7 @@ def fuga(player,monstro):
         if player["fuga"] >= golemdeCristal["fuga"]:
             player["fuga"] -= 2
             return "fugiu"
-        elif player["fuga"] <= golemdeCristal["fuga"]:
+        elif player["fuga"] < golemdeCristal["fuga"]:
             fugir = randint(1,5)
             if fugir == 1:
                 player["fuga"] -= 1
@@ -842,7 +843,7 @@ def fuga(player,monstro):
         if player["fuga"] >= sentinela["fuga"]:
             player["fuga"] -= 2
             return "fugiu"
-        elif player["fuga"] <= sentinela["fuga"]:
+        elif player["fuga"] < sentinela["fuga"]:
             fugir = randint(1,5)
             if fugir == 1:
                 player["fuga"] -= 1
@@ -856,7 +857,7 @@ def fuga(player,monstro):
         if player["fuga"] >= blackKnight["fuga"]:
             player["fuga"] -= 3
             return "fugiu"
-        elif player["fuga"] <= blackKnight["fuga"]:
+        elif player["fuga"] < blackKnight["fuga"]:
             fugir = randint(1,5)
             if fugir >= 4:
                 player["fuga"] -= 2
@@ -870,7 +871,7 @@ def fuga(player,monstro):
         if player["fuga"] >= demonioCorvo["fuga"]:
             player["fuga"] -= 3
             return "fugiu"
-        elif player["fuga"] <= demonioCorvo["fuga"]:
+        elif player["fuga"] < demonioCorvo["fuga"]:
             fugir = randint(1,5)
             if fugir >= 4:
                 player["fuga"] -= 2
@@ -884,7 +885,7 @@ def fuga(player,monstro):
         if player["fuga"] >= sif["fuga"]:
             player["fuga"] -= 3
             return "fugiu"
-        elif player["fuga"] <= sif["fuga"]:
+        elif player["fuga"] < sif["fuga"]:
             fugir = randint(1,5)
             if fugir >= 4:
                 player["fuga"] -= 2
@@ -898,7 +899,7 @@ def fuga(player,monstro):
         if player["fuga"] >= arquiMago["fuga"]:
             player["fuga"] -= 3
             return "fugiu"
-        elif player["fuga"] <= arquiMago["fuga"]:
+        elif player["fuga"] < arquiMago["fuga"]:
             fugir = randint(1,5)
             if fugir >= 4:
                 player["fuga"] -= 2
